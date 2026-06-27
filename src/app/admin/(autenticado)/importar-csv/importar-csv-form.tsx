@@ -6,6 +6,7 @@ import {
   parseCSV,
   validateRows,
   buildHeaderMap,
+  findIgnoredColumns,
   type ValidationResult,
   type PacienteInsert,
 } from "@/lib/csv";
@@ -14,7 +15,12 @@ import { importarCSVAction } from "../acciones";
 type PreviewState =
   | { kind: "idle" }
   | { kind: "parsing" }
-  | { kind: "preview"; result: ValidationResult; rawRows: number }
+  | {
+      kind: "preview";
+      result: ValidationResult;
+      rawRows: number;
+      ignoredColumns: string[];
+    }
   | { kind: "importing" }
   | { kind: "done"; inserted: number }
   | { kind: "error"; message: string };
@@ -39,10 +45,12 @@ export default function ImportarCSVForm() {
       }
       const headerToField = buildHeaderMap(parsed.headers);
       const validado = validateRows(parsed.rows, headerToField, "cargando…");
+      const ignored = findIgnoredColumns(parsed.headers, headerToField);
       setState({
         kind: "preview",
         result: validado,
         rawRows: parsed.totalRows,
+        ignoredColumns: ignored,
       });
     } catch (err) {
       setState({
@@ -174,13 +182,20 @@ function PreviewPanel({
   onImport,
   onReset,
 }: {
-  state: { kind: "preview"; result: ValidationResult; rawRows: number };
+  state: {
+    kind: "preview";
+    result: ValidationResult;
+    rawRows: number;
+    ignoredColumns: string[];
+  };
   isPending: boolean;
   onImport: () => void;
   onReset: () => void;
 }) {
-  const { valid, invalid } = state.result;
+  const { valid, invalid, totalNormalizations } = state.result;
   const total = valid.length + invalid.length;
+  const rowsWithNorms = valid.filter((r) => r.normalizations.length > 0).length;
+  const rowsWithWarnings = valid.filter((r) => r.warnings.length > 0).length;
 
   return (
     <div className="space-y-4">
@@ -197,24 +212,45 @@ function PreviewPanel({
             Cancelar
           </button>
         </div>
-        <div className="flex flex-wrap gap-3 text-sm">
+        <div className="flex flex-wrap gap-2 text-sm">
           <span className="inline-flex items-center gap-2 rounded-full bg-emerald-100 px-3 py-1 text-emerald-900">
-            <span className="font-semibold">{valid.length}</span> válidas
+            <span className="font-semibold">{valid.length}</span> listas para importar
           </span>
-          <span
-            className={`inline-flex items-center gap-2 rounded-full px-3 py-1 ${
-              invalid.length === 0
-                ? "bg-zinc-100 text-zinc-700"
-                : "bg-red-100 text-red-900"
-            }`}
-          >
-            <span className="font-semibold">{invalid.length}</span> con errores
-          </span>
+          {invalid.length > 0 ? (
+            <span className="inline-flex items-center gap-2 rounded-full bg-red-100 px-3 py-1 text-red-900">
+              <span className="font-semibold">{invalid.length}</span> con errores
+            </span>
+          ) : null}
+          {totalNormalizations > 0 ? (
+            <span className="inline-flex items-center gap-2 rounded-full bg-sky-100 px-3 py-1 text-sky-900">
+              <span className="font-semibold">{rowsWithNorms}</span>{" "}
+              {rowsWithNorms === 1 ? "fila normalizada" : "filas normalizadas"} ({totalNormalizations} cambios)
+            </span>
+          ) : null}
+          {rowsWithWarnings > 0 ? (
+            <span className="inline-flex items-center gap-2 rounded-full bg-amber-100 px-3 py-1 text-amber-900">
+              <span className="font-semibold">{rowsWithWarnings}</span> con avisos
+            </span>
+          ) : null}
         </div>
         {invalid.length > 0 ? (
           <div className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900">
             Las filas con errores no se importarán. Solucionalas en el CSV
             original y vuelve a subirlo, o ignóralas y continúa.
+          </div>
+        ) : null}
+        {state.ignoredColumns.length > 0 ? (
+          <div className="rounded-lg border border-zinc-200 bg-zinc-50 p-3 text-xs text-zinc-700">
+            <p className="font-medium text-zinc-800">
+              Columnas no reconocidas (se ignoraron):
+            </p>
+            <p className="mt-1 font-mono text-zinc-600">
+              {state.ignoredColumns.join(", ")}
+            </p>
+            <p className="mt-1 text-zinc-500">
+              Si alguna debería haberse usado, revisa que el nombre de la
+              cabecera coincida con los esperados.
+            </p>
           </div>
         ) : null}
         <div className="flex justify-end gap-2 pt-2">
@@ -225,7 +261,7 @@ function PreviewPanel({
             className="rounded-lg bg-zinc-900 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-zinc-800 active:bg-zinc-950 disabled:opacity-40"
           >
             Importar {valid.length}{" "}
-            {valid.length === 1 ? "fila válida" : "filas válidas"}
+            {valid.length === 1 ? "fila" : "filas"}
           </button>
         </div>
       </div>
@@ -252,9 +288,52 @@ function PreviewPanel({
         </details>
       ) : null}
 
+      {rowsWithNorms > 0 || rowsWithWarnings > 0 ? (
+        <details className="rounded-xl border border-sky-200 bg-sky-50">
+          <summary className="cursor-pointer px-4 py-3 text-sm font-semibold text-sky-900">
+            Ver limpieza automática ({totalNormalizations} cambio
+            {totalNormalizations === 1 ? "" : "s"})
+          </summary>
+          <ul className="divide-y divide-sky-200 px-4 pb-4 text-sm">
+            {valid
+              .filter((r) => r.normalizations.length > 0 || r.warnings.length > 0)
+              .map((row) => (
+                <li key={row.index} className="py-2">
+                  <p className="font-medium text-sky-900">
+                    Fila {row.index} —{" "}
+                    <span className="font-normal text-sky-800">
+                      {row.data?.nombre_completo}
+                    </span>
+                  </p>
+                  {row.normalizations.length > 0 ? (
+                    <ul className="ml-4 mt-1 space-y-0.5 text-sky-800">
+                      {row.normalizations.map((n, i) => (
+                        <li key={i}>
+                          <span className="font-mono">{n.field}</span>:{" "}
+                          <span className="line-through opacity-60">
+                            &ldquo;{n.from}&rdquo;
+                          </span>{" "}
+                          → <span className="font-medium">&ldquo;{n.to}&rdquo;</span>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : null}
+                  {row.warnings.length > 0 ? (
+                    <ul className="ml-4 mt-1 space-y-0.5 text-amber-800">
+                      {row.warnings.map((w, i) => (
+                        <li key={i}>⚠ {w}</li>
+                      ))}
+                    </ul>
+                  ) : null}
+                </li>
+              ))}
+          </ul>
+        </details>
+      ) : null}
+
       <details className="rounded-xl border border-zinc-200 bg-white">
         <summary className="cursor-pointer px-4 py-3 text-sm font-medium text-zinc-800">
-          Ver primeras {Math.min(valid.length, 10)} filas válidas
+          Ver primeras {Math.min(valid.length, 10)} filas que se importarán
         </summary>
         <div className="overflow-x-auto px-4 pb-4">
           <table className="min-w-full text-xs">
