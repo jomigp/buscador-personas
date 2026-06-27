@@ -8,9 +8,17 @@ import {
 } from "@/lib/clinical";
 import { crearPacienteAction } from "../acciones";
 
-const CENTRO_LS_KEY = "buscador.centro_salud_sugerido";
+type Props = {
+  centros: string[];
+  estados: string[];
+  municipios: string[];
+};
 
-export default function NuevoForm() {
+export default function NuevoForm({
+  centros,
+  estados,
+  municipios,
+}: Props) {
   const router = useRouter();
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
@@ -26,7 +34,7 @@ export default function NuevoForm() {
     const centro = String(formData.get("centro_salud") ?? "").trim();
     if (centro) {
       try {
-        window.localStorage.setItem(CENTRO_LS_KEY, centro);
+        window.localStorage.setItem("buscador.ultimo_centro", centro);
       } catch {
         /* localStorage no disponible */
       }
@@ -113,26 +121,47 @@ export default function NuevoForm() {
             name="centro_salud"
             required
             maxLength={120}
-            placeholder="Ej. Hospital Central de Valencia"
+            list="dl-centros"
+            placeholder="Elegí o escribí un centro"
             autoComplete="organization"
             className="w-full rounded-lg border border-zinc-300 px-3 py-3 focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900/10"
           />
+          <datalist id="dl-centros">
+            {centros.map((c) => (
+              <option key={c} value={c} />
+            ))}
+          </datalist>
+          <p className="text-xs text-zinc-500">
+            Si el centro no aparece, escribilo. Quedará guardado para la próxima.
+          </p>
         </Field>
         <Field label="Estado (geográfico)">
           <input
             name="estado_geografico"
             maxLength={80}
-            placeholder="Ej. Carabobo"
+            list="dl-estados"
+            placeholder="Elegí o escribí un estado"
             className="w-full rounded-lg border border-zinc-300 px-3 py-3 focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900/10"
           />
+          <datalist id="dl-estados">
+            {estados.map((e) => (
+              <option key={e} value={e} />
+            ))}
+          </datalist>
         </Field>
         <Field label="Municipio">
           <input
             name="municipio"
             maxLength={80}
-            placeholder="Ej. Valencia"
+            list="dl-municipios"
+            placeholder="Elegí o escribí un municipio"
             className="w-full rounded-lg border border-zinc-300 px-3 py-3 focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900/10"
           />
+          <datalist id="dl-municipios">
+            {municipios.map((m) => (
+              <option key={m} value={m} />
+            ))}
+          </datalist>
         </Field>
       </div>
 

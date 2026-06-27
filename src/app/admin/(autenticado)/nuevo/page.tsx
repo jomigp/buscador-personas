@@ -2,6 +2,7 @@
 // formulario cliente; al enviar invoca crearPacienteAction.
 
 import { createClient } from "@/lib/supabase/server";
+import { getDistinctValues } from "@/lib/centros";
 import NuevoForm from "./nuevo-form";
 
 export const dynamic = "force-dynamic";
@@ -11,9 +12,8 @@ export default async function NuevoPacientePage() {
   const {
     data: { user },
   } = await supabase.auth.getUser();
+  const { centros, estados, municipios } = await getDistinctValues();
 
-  // Sugerencia del último centro usado por este usuario (lee de localStorage
-  // en el cliente; aquí no podemos). Como fallback, mostramos placeholder.
   return (
     <div className="space-y-4">
       <div>
@@ -23,7 +23,11 @@ export default async function NuevoPacientePage() {
           quedará registrado como responsable de la carga.
         </p>
       </div>
-      <NuevoForm />
+      <NuevoForm
+        centros={centros}
+        estados={estados}
+        municipios={municipios}
+      />
     </div>
   );
 }

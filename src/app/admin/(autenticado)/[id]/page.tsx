@@ -5,6 +5,7 @@ import { createClient } from "@/lib/supabase/server";
 import { notFound } from "next/navigation";
 import EditarForm from "./editar-form";
 import { publicFotoUrl } from "@/lib/supabase/storage";
+import { getDistinctValues } from "@/lib/centros";
 
 export const dynamic = "force-dynamic";
 
@@ -23,6 +24,8 @@ export default async function EditarPacientePage({
 
   if (error || !data) notFound();
 
+  const { centros, estados, municipios } = await getDistinctValues();
+
   return (
     <div className="space-y-4">
       <div>
@@ -31,7 +34,13 @@ export default async function EditarPacientePage({
           Modifica los datos y guarda. Los cambios se reflejan al instante.
         </p>
       </div>
-      <EditarForm paciente={data} fotoUrl={publicFotoUrl(data.foto_path)} />
+      <EditarForm
+        paciente={data}
+        fotoUrl={publicFotoUrl(data.foto_path)}
+        centros={centros}
+        estados={estados}
+        municipios={municipios}
+      />
     </div>
   );
 }

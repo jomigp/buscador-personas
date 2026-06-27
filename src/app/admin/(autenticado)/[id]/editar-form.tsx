@@ -9,13 +9,21 @@ import {
 import { actualizarPacienteAction } from "../acciones";
 import type { Paciente } from "@/lib/supabase/types";
 
+type Props = {
+  paciente: Paciente;
+  fotoUrl: string | null;
+  centros: string[];
+  estados: string[];
+  municipios: string[];
+};
+
 export default function EditarForm({
   paciente,
   fotoUrl,
-}: {
-  paciente: Paciente;
-  fotoUrl: string | null;
-}) {
+  centros,
+  estados,
+  municipios,
+}: Props) {
   const router = useRouter();
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
@@ -108,25 +116,43 @@ export default function EditarForm({
             name="centro_salud"
             required
             maxLength={120}
+            list="dl-edit-centros"
             defaultValue={paciente.centro_salud}
             className="w-full rounded-lg border border-zinc-300 px-3 py-3"
           />
+          <datalist id="dl-edit-centros">
+            {centros.map((c) => (
+              <option key={c} value={c} />
+            ))}
+          </datalist>
         </Field>
         <Field label="Estado (geográfico)">
           <input
             name="estado_geografico"
             maxLength={80}
+            list="dl-edit-estados"
             defaultValue={paciente.estado_geografico ?? ""}
             className="w-full rounded-lg border border-zinc-300 px-3 py-3"
           />
+          <datalist id="dl-edit-estados">
+            {estados.map((e) => (
+              <option key={e} value={e} />
+            ))}
+          </datalist>
         </Field>
         <Field label="Municipio">
           <input
             name="municipio"
             maxLength={80}
+            list="dl-edit-municipios"
             defaultValue={paciente.municipio ?? ""}
             className="w-full rounded-lg border border-zinc-300 px-3 py-3"
           />
+          <datalist id="dl-edit-municipios">
+            {municipios.map((m) => (
+              <option key={m} value={m} />
+            ))}
+          </datalist>
         </Field>
       </div>
 
