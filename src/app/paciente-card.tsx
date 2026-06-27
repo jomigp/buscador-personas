@@ -5,7 +5,7 @@
 // personal de salud del centro cerrar el caso (la única vía válida es
 // que personal autenticado marque caso_cerrado = true).
 
-import { useState, useTransition } from "react";
+import { useEffect, useRef, useState, useTransition } from "react";
 import type { Paciente } from "@/lib/supabase/types";
 import {
   ESTADO_CLINICO_BADGE,
@@ -23,7 +23,29 @@ export default function PacienteCard({ paciente }: Props) {
   const [mensaje, setMensaje] = useState<string | null>(null);
   const [confirmText, setConfirmText] = useState("");
   const [isPending, startTransition] = useTransition();
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
   const fotoUrl = publicFotoUrl(paciente.foto_path);
+
+  // Escape cierra el modal + restaura foco al trigger.
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setOpen(false);
+        setConfirmText("");
+        triggerRef.current?.focus();
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    // Bloquear scroll del body mientras el modal está abierto
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [open]);
 
   function onConfirm(e: React.FormEvent) {
     e.preventDefault();
@@ -66,7 +88,7 @@ export default function PacienteCard({ paciente }: Props) {
         </div>
         <div className="min-w-0 flex-1 space-y-1">
           <div className="flex items-start justify-between gap-2">
-            <h3 className="text-base font-semibold text-zinc-900 truncate">
+            <h3 className="text-base font-semibold text-zinc-900 leading-snug break-words [hyphens:auto]">
               {paciente.nombre_completo}
             </h3>
             <span
@@ -103,13 +125,14 @@ export default function PacienteCard({ paciente }: Props) {
         </div>
       </div>
       <div className="border-t border-zinc-100 px-4 py-2 flex items-center justify-between gap-2 bg-zinc-50/50">
-        <span className="text-[11px] text-zinc-400">
+        <span className="text-xs text-zinc-500">
           Cargado {formatFecha(paciente.created_at)}
         </span>
         <button
+          ref={triggerRef}
           type="button"
           onClick={() => setOpen(true)}
-          className="text-xs font-medium text-zinc-700 underline underline-offset-2 hover:text-zinc-900"
+          className="touch-target inline-flex items-center justify-center px-3 text-xs font-medium text-zinc-800 underline underline-offset-2 hover:text-zinc-950"
         >
           Marcar como encontrado
         </button>
@@ -126,11 +149,26 @@ export default function PacienteCard({ paciente }: Props) {
           className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/50 p-0 sm:p-4"
           role="dialog"
           aria-modal="true"
+          aria-labelledby="modal-title"
+          onClick={(e) => {
+            // Click en el backdrop (no en el dialog) cierra el modal
+            if (e.target === e.currentTarget) {
+              setOpen(false);
+              setConfirmText("");
+              triggerRef.current?.focus();
+            }
+          }}
         >
-          <div className="w-full sm:max-w-md rounded-t-2xl sm:rounded-2xl bg-white shadow-xl">
+          <div
+            ref={dialogRef}
+            className="w-full sm:max-w-md rounded-t-2xl sm:rounded-2xl bg-white shadow-xl"
+          >
             <form onSubmit={onConfirm} className="p-5 space-y-4">
               <div className="space-y-1">
-                <h4 className="text-base font-semibold text-zinc-900">
+                <h4
+                  id="modal-title"
+                  className="text-base font-semibold text-zinc-900"
+                >
                   ¿Estás seguro de que {paciente.nombre_completo} ya fue
                   encontrado?
                 </h4>
@@ -158,16 +196,17 @@ export default function PacienteCard({ paciente }: Props) {
                   onClick={() => {
                     setOpen(false);
                     setConfirmText("");
+                    triggerRef.current?.focus();
                   }}
                   disabled={isPending}
-                  className="rounded-lg px-4 py-3 text-sm font-medium text-zinc-700 hover:text-zinc-900 disabled:opacity-50"
+                  className="touch-target rounded-lg px-4 text-sm font-medium text-zinc-700 hover:text-zinc-900 disabled:opacity-50"
                 >
                   Cancelar
                 </button>
                 <button
                   type="submit"
                   disabled={!necesitaConfirmacion || isPending}
-                  className="rounded-lg bg-zinc-900 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-zinc-800 active:bg-zinc-950 disabled:opacity-40"
+                  className="touch-target rounded-lg bg-zinc-900 px-5 text-sm font-semibold text-white shadow-sm hover:bg-zinc-800 active:bg-zinc-950 disabled:opacity-40"
                 >
                   {isPending ? "Enviando…" : "Confirmar"}
                 </button>

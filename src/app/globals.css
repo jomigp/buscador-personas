@@ -3,6 +3,7 @@
 :root {
   --background: #fafafa;
   --foreground: #18181b;
+  --focus-ring: 0 0 0 2px var(--background), 0 0 0 4px #0f172a;
 }
 
 @theme inline {
@@ -17,6 +18,7 @@ body {
     -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
     Arial, sans-serif;
   -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* Inputs grandes y táctiles — uso bajo estrés y mala conexión. */
@@ -27,10 +29,35 @@ button {
   font-size: 16px;
 }
 
-/* Quitar ring feo por defecto en iOS. */
-input:focus,
-select:focus,
-textarea:focus,
-button:focus {
+/* Focus visible accesible (WCAG 2.4.7). Solo aparece con teclado, no
+   con clicks de mouse. Dos anillos concéntricos: blanco + oscuro = contraste
+   sobre cualquier fondo. */
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+button:focus-visible,
+a:focus-visible,
+summary:focus-visible {
   outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: 0.5rem;
+}
+
+/* Touch targets minimos 44x44 (WCAG 2.5.5). Para botones sin texto visible
+   o iconos pequenos. */
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Transicion suave para estados de UI. Respeta prefers-reduced-motion. */
+@media (prefers-reduced-motion: no-preference) {
+  button,
+  a,
+  [role="button"] {
+    transition-property: color, background-color, border-color, opacity,
+      box-shadow, transform;
+    transition-duration: 150ms;
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
 }
