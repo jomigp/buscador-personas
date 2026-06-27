@@ -86,31 +86,14 @@ export default function Buscador({
     return Array.from(set).sort((a, b) => a.localeCompare(b, "es"));
   }, [estadoGeoInput, municipioInput, centros]);
 
-  // Valores efectivos: si el input quedo fuera de la cascada, mostrar vacío.
+  // El valor efectivo para submit es lo que el usuario escribio,
+  // INCLUSO si no esta en la lista de sugerencias. Asi puede buscar
+  // por texto parcial (ej. "Carlos Arvelo" para encontrar
+  // "Hospital Militar Dr. Carlos Arveledo"). La cascada solo afecta
+  // las opciones del datalist, no el valor del input.
   const estadoGeo = estadoGeoInput;
-  const municipio = municipiosFiltrados.includes(municipioInput)
-    ? municipioInput
-    : "";
-  const centro = centrosFiltrados.includes(centroInput) ? centroInput : "";
-
-  // Si el input quedo fuera de la cascada, sincronizarlo en background.
-  // Esta operacion es idempotente (no cambia si ya esta en sync) y
-  // se hace en useEffect con setTimeout 0 para evitar el cascading render
-  // que reporta el lint rule.
-  useEffect(() => {
-    if (municipioInput !== municipio) {
-      const t = setTimeout(() => setMunicipioInput(municipio), 0);
-      return () => clearTimeout(t);
-    }
-    return undefined;
-  }, [municipioInput, municipio]);
-  useEffect(() => {
-    if (centroInput !== centro) {
-      const t = setTimeout(() => setCentroInput(centro), 0);
-      return () => clearTimeout(t);
-    }
-    return undefined;
-  }, [centroInput, centro]);
+  const municipio = municipioInput;
+  const centro = centroInput;
 
   // Auto-submit con debounce al cambiar cualquier filtro.
   const firstRender = useRef(true);

@@ -47,13 +47,15 @@ export default async function Home({
     query = query.eq("estado_clinico", params.estado_clinico);
   }
   if (params.estado_geografico) {
-    query = query.eq("estado_geografico", params.estado_geografico);
+    // ILIKE para tolerar typos y diferencias de tipeo entre centros
+    // (ej. "Carlos Arvelo" encuentra "Carlos Arveledo").
+    query = query.ilike("estado_geografico", `%${params.estado_geografico}%`);
   }
   if (params.municipio) {
-    query = query.eq("municipio", params.municipio);
+    query = query.ilike("municipio", `%${params.municipio}%`);
   }
   if (params.centro_salud) {
-    query = query.eq("centro_salud", params.centro_salud);
+    query = query.ilike("centro_salud", `%${params.centro_salud}%`);
   }
   if (params.sexo) {
     query = query.eq("sexo", params.sexo);

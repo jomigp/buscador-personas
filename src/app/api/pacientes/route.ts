@@ -45,13 +45,13 @@ export async function GET(request: NextRequest) {
   }
 
   const estadoGeo = sp.get("estado_geografico")?.trim();
-  if (estadoGeo) query = query.eq("estado_geografico", estadoGeo);
+  if (estadoGeo) query = query.ilike("estado_geografico", `%${estadoGeo}%`);
 
   const municipio = sp.get("municipio")?.trim();
-  if (municipio) query = query.eq("municipio", municipio);
+  if (municipio) query = query.ilike("municipio", `%${municipio}%`);
 
   const centro = sp.get("centro_salud")?.trim();
-  if (centro) query = query.eq("centro_salud", centro);
+  if (centro) query = query.ilike("centro_salud", `%${centro}%`);
 
   const { data, count, error } = await query;
 
