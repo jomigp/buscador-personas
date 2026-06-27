@@ -1,0 +1,242 @@
+centro_salud,estado_geografico,municipio,red,tipo
+"Hospital ""Dr. José Gregorio Hernández""",AMAZONAS,Atures,MPPS,Hospital
+Hospital Militar Amazonas,AMAZONAS,Atures,MPPS,Hospital
+Hospital Dr. Jesús Eduardo Angulo Rivas,ANZOÁTEGUI,Anaco,MPPS,Hospital
+Hospital Dr. Luis Alberto Rojas,ANZOÁTEGUI,Freites,MPPS,Hospital
+Hospital Dr. Ybrahím Rodríguez Rojas,ANZOÁTEGUI,Piar,MPPS,Hospital
+Hospital Dr. Domingo Guzmán Lander,ANZOÁTEGUI,Simón Bolívar,IVSS,Hospital
+Hospital Universitario Dr. Luis Razetti,ANZOÁTEGUI,Simón Bolívar,MPPS,Hospital
+Hospital Dr. Felipe Guevara Rojas,ANZOÁTEGUI,Simón Rodríguez,MPPS,Hospital
+Hospital Dr. César Rodríguez Rodríguez,ANZOÁTEGUI,Sotillo,IVSS,Hospital
+"Hospital ""Dr. Miguel Ángel Blanco""",APURE,Achaguas,MPPS,Hospital
+Hospital General Dr. Pablo Acosta Ortiz,APURE,Fernando de Apure,MPPS,Hospital
+"Hospital ""Dr. Carlos Luis González""",APURE,Pedro Camejo,MPPS,Hospital
+Hospital General José Antonio Páez,APURE,Páez,MPPS,Hospital
+Cosmopolitan Salud,ARAGUA,Girardot,PRIVADO,Clínica
+Hospital Central de Maracay,ARAGUA,Girardot,MPPS,Hospital
+Hospital José María Vargas (IVSS),ARAGUA,Girardot,IVSS,Hospital
+"Hospital Universitario ""Dr. Pedro Emilio Carrillo""",ARAGUA,Girardot,MPPS,Hospital
+"Maternidad ""Dr. Rafael Castillo""",ARAGUA,Girardot,MPPS,Hospital
+"Hospital ""Dr. Oswaldo Villalobos Póliz""",ARAGUA,José Félix Ribas,MPPS,Hospital
+"Hospital ""Dr. José Ángel Bustamante""",ARAGUA,San Casimiro,MPPS,Hospital
+"Hospital ""Dr. Edgar Parra Morales""",ARAGUA,Santiago Mariño,MPPS,Hospital
+"Hospital ""Dr. Santos Aníbal Dominici"" (Cagua)",ARAGUA,Sucre,MPPS,Hospital
+"Hospital ""Dr. Rafael Zamora Arévalo""",ARAGUA,Zamora,MPPS,Hospital
+"Hospital Central ""Dr. Luis Razetti""",BARINAS,Barinas,MPPS,Hospital
+"Hospital Materno Infantil ""Dr. Jesús Briceño Méndez""",BARINAS,Barinas,MPPS,Hospital
+"Hospital ""Dr. José María Ortega""",BARINAS,Bolívar,MPPS,Hospital
+"Hospital ""Dr. Roberto Vargas Escobar""",BARINAS,Pedraza,MPPS,Hospital
+"Hospital ""Dr. Luis Razetti"" / Hospital de Puerto Ordaz",BOLÍVAR,Caroní,MPPS,Hospital
+Hospital Dr. Raúl Leoni – Guaiparo,BOLÍVAR,Caroní,MPPS,Hospital
+"Hospital ""Dr. Alfredo Viso Tulia"" (El Callao)",BOLÍVAR,El Callao,MPPS,Hospital
+Hospital Dr. Héctor Nouel Joubert,BOLÍVAR,Heres,IVSS,Hospital
+Hospital Materno Infantil,BOLÍVAR,Heres,MPPS,Hospital
+"Hospital Universitario ""Ruiz y Páez""",BOLÍVAR,Heres,MPPS,Hospital
+Hospital del Tórax,BOLÍVAR,Heres,MPPS,Hospital
+"Hospital ""Dr. Jesús Castro Villasmil""",BOLÍVAR,Piar,MPPS,Hospital
+"Hospital ""Dr. Aquiles Ayala"" (Tumeremo)",BOLÍVAR,Sifontes,MPPS,Hospital
+Hospital Distrital de Bejuma,CARABOBO,Bejuma,MPPS,Hospital
+Hospital Simón Bolívar,CARABOBO,Diego Ibarra,MPPS,Hospital
+Ambulatorio Guacara-Yagua,CARABOBO,Guacara,IVSS,Ambulatorio
+Hospital Dr. Miguel Malpica,CARABOBO,Guacara,MPPS,Hospital
+Ambulatorio Morón,CARABOBO,Juan José Mora,IVSS,Ambulatorio
+Hospital Tipo I de Morón,CARABOBO,Juan José Mora,MPPS,Hospital
+Hospital Materno María Ibarra,CARABOBO,Libertador,MPPS,Hospital
+Ambulatorio Dra. Bélgica Tovar Herrera,CARABOBO,Libertador (Tucuyito),IVSS,Ambulatorio
+Inversiones Cofradía,CARABOBO,Libertador (Tucuyito),PRIVADO,Clínica
+Ambulatorio Paraparal,CARABOBO,Los Guayos,IVSS,Ambulatorio
+Ambulatorio Dr. Luis Izaguirre Rodríguez,CARABOBO,Mariara (Diego Ibarra),IVSS,Ambulatorio
+Hospital Metropolitano del Norte,CARABOBO,Naguanagua,PRIVADO,Clínica
+Hospital Oncológico Dr. Miguel Pérez Carreño,CARABOBO,Naguanagua,MPPS,Hospital
+Hospital Psiquiátrico Dr. José Ortega Durán (Psiquiátrico de Bárbula),CARABOBO,Naguanagua,MPPS,Hospital
+"Hospital Universitario Dr. Ángel Larralde (HUAL / ""Hospital Carabobo"")",CARABOBO,Naguanagua,MPPS,Hospital
+Hospital Universitario Dr. Ángel Larralde (HUAL),CARABOBO,Naguanagua (Bárbula),IVSS,Ambulatorio
+Ambulatorio Santa Rosa,CARABOBO,Puerto Cabello,IVSS,Ambulatorio
+Hospital Dr. Adolfo Prince Lara,CARABOBO,Puerto Cabello,MPPS,Hospital
+Hospital Dr. José Francisco Molina Sierra,CARABOBO,Puerto Cabello,MPPS,Hospital
+Hospital Militar Francisco Isnardi,CARABOBO,Puerto Cabello,MPPS,Hospital
+Policlínica El Morro,CARABOBO,San Diego,PRIVADO,Clínica
+Ambulatorio Dr. Luis Rodríguez Panacci,CARABOBO,San Joaquín,IVSS,Ambulatorio
+Ambulatorio Dr. Emiliano Azcúnez,CARABOBO,Valencia,IVSS,Ambulatorio
+Ambulatorio Dr. Luis Guada Lacau,CARABOBO,Valencia,IVSS,Ambulatorio
+"Ciudad Hospitalaria ""Dr. Enrique Tejera"" (CHET)",CARABOBO,Valencia,MPPS,Hospital
+Hospital Materno Infantil Dr. José María Vargas,CARABOBO,Valencia,MPPS,Hospital
+Instituto Docente de Oftalmología (IDO),CARABOBO,Valencia,PRIVADO,Clínica
+Mundo Trauma,CARABOBO,Valencia,PRIVADO,Clínica
+Hospital Clínica Cojedes,COJEDES,Ezequiel Zamora,PRIVADO,Clínica
+"Hospital General ""Dr. Egor Nucete""",COJEDES,Ezequiel Zamora,MPPS,Hospital
+Llano Salud APS,COJEDES,Ezequiel Zamora,PRIVADO,Clínica
+"Hospital ""Eugenio Mariano González Padilla""",COJEDES,Lima Blanco,MPPS,Hospital
+"Hospital ""Dr. Jesús Mata de Gregorio"" (Pedernales)",DELTA AMACURO,Pedernales,MPPS,Hospital
+"Hospital ""Dr. Luis Razetti""",DELTA AMACURO,Tucupita,MPPS,Hospital
+Policlínica Delta,DELTA AMACURO,Tucupita,PRIVADO,Clínica
+CDI 23 de Enero,DISTRITO CAPITAL,Libertador,BARRIO ADENTRO,CDI
+CDI Antímano,DISTRITO CAPITAL,Libertador,BARRIO ADENTRO,CDI
+CDI Caricuao,DISTRITO CAPITAL,Libertador,BARRIO ADENTRO,CDI
+CDI Catia,DISTRITO CAPITAL,Libertador,BARRIO ADENTRO,CDI
+CDI El Valle,DISTRITO CAPITAL,Libertador,BARRIO ADENTRO,CDI
+CDI La Vega,DISTRITO CAPITAL,Libertador,BARRIO ADENTRO,CDI
+CDI San Agustín,DISTRITO CAPITAL,Libertador,BARRIO ADENTRO,CDI
+"Hospital Militar ""Dr. Carlos Arvelo""",DISTRITO CAPITAL,Libertador,MILITAR,Hospital
+"Hospital Militar ""Dr. Vicente Salias""",DISTRITO CAPITAL,Libertador,MILITAR,Hospital
+Policlínica Metropolitana,DISTRITO CAPITAL,Chacao,PRIVADO,Clínica
+Sanatrix,DISTRITO CAPITAL,Chacao,PRIVADO,Clínica
+Aquamater Maternidad Consciente,DISTRITO CAPITAL,Chacao (Chuao),PRIVADO,Clínica
+Complejo Hemato-Oncológico Dr. Domingo Luciani,DISTRITO CAPITAL,El Llanito,IVSS,Hospital
+Hospital Dr. Domingo Luciani,DISTRITO CAPITAL,El Llanito (Petare),IVSS,Hospital
+Ambulatorio Dr. Dilio Sequera Peraza,DISTRITO CAPITAL,Libertador,IVSS,Hospital
+Ambulatorio Dr. Ángel Vicente Ochoa,DISTRITO CAPITAL,Libertador,IVSS,Hospital
+Hospital Dr. José María Vargas,DISTRITO CAPITAL,Libertador,MPPS,Hospital
+Hospital Dr. Leopoldo Manrique Terrero,DISTRITO CAPITAL,Libertador,MPPS,Hospital
+Hospital General Dr. José Gregorio Hernández (Los Magallanes de Catia),DISTRITO CAPITAL,Libertador,MPPS,Hospital
+Hospital General Dr. José Ignacio Baldó (El Algodonal),DISTRITO CAPITAL,Libertador,MPPS,Hospital
+Hospital General de Lídice Dr. Jesús Yerena,DISTRITO CAPITAL,Libertador,MPPS,Hospital
+Hospital Materno Infantil de Caricuao,DISTRITO CAPITAL,Libertador,MPPS,Hospital
+Hospital Periférico de Catia,DISTRITO CAPITAL,Libertador,MPPS,Hospital
+Hospital Psiquiátrico de Caracas,DISTRITO CAPITAL,Libertador,MPPS,Hospital
+Hospital de Niños J.M. de los Ríos,DISTRITO CAPITAL,Libertador,MPPS,Hospital
+Maternidad Concepción Palacios,DISTRITO CAPITAL,Libertador,MPPS,Hospital
+Servicio Oncológico Hospitalario IVSS,DISTRITO CAPITAL,Libertador,IVSS,Hospital
+Unidad de Psiquiatría Dr. Jesús Mata de Gregorio,DISTRITO CAPITAL,Libertador,IVSS,Hospital
+Urológico San Román,DISTRITO CAPITAL,Libertador,PRIVADO,Clínica
+Fénix Salud (Torre Centro Clínico),DISTRITO CAPITAL,Libertador (San Bernardino),PRIVADO,Clínica
+Hospital de Clínicas Caracas,DISTRITO CAPITAL,Libertador (San Bernardino),PRIVADO,Clínica
+Policlínica La Arboleda,DISTRITO CAPITAL,Libertador (San Bernardino),PRIVADO,Clínica
+Hospital Dr. Miguel Pérez Carreño,DISTRITO CAPITAL,Los Ruices,IVSS,Hospital
+Hospital Dr. Pérez de León I,DISTRITO CAPITAL,Petare,MPPS,Hospital
+Hospital Dr. Pérez de León II,DISTRITO CAPITAL,Petare,IVSS,Hospital
+"Hospital ""Dr. Rafael Calles Sierra""",FALCÓN,Carirubana,MPPS,Hospital
+"Hospital ""Dr. José Gregorio Hernández"" (Churuguara)",FALCÓN,Federación,MPPS,Hospital
+"Hospital ""Dr. Adolfo Pons""",FALCÓN,Los Taques,MPPS,Hospital
+"Hospital Universitario ""Dr. Alfredo Van Grieken""",FALCÓN,Miranda,MPPS,Hospital
+"Hospital ""Dr. Francisco Urdaneta Delgado""",GUÁRICO,Francisco de Miranda,MPPS,Hospital
+Hospital Dr. Israel Ranuarez Balza,GUÁRICO,Juan Germán Roscio,MPPS,Hospital
+"Hospital ""Dr. Eduardo Briceño Méndez""",GUÁRICO,Leonardo Infante,MPPS,Hospital
+"Hospital ""Dr. Victorino Santaella"" (Altagracia)",GUÁRICO,Monagas,MPPS,Hospital
+Hospital Dr. Juan Aponte,GUÁRICO,Rómulo Gallegos,MPPS,Hospital
+Hospital Universitario Dr. Luis Razetti,LA GUAIRA (anteriormente Vargas),Anzoátegui,PRIVADO,Clínica
+Hospital Central de Maracay,LA GUAIRA (anteriormente Vargas),Aragua,PRIVADO,Clínica
+Hospital Universitario Ruiz y Páez,LA GUAIRA (anteriormente Vargas),Bolívar,PRIVADO,Clínica
+Ciudad Hospitalaria Dr. Enrique Tejera (CHET),LA GUAIRA (anteriormente Vargas),Carabobo,PRIVADO,Clínica
+Hospital Dr. José María Vargas,LA GUAIRA (anteriormente Vargas),Distrito Capital,PRIVADO,Clínica
+Hospital de Niños J.M. de los Ríos,LA GUAIRA (anteriormente Vargas),Distrito Capital,PRIVADO,Clínica
+Hospital Universitario Dr. Alfredo Van Grieken,LA GUAIRA (anteriormente Vargas),Falcón,PRIVADO,Clínica
+Hospital Central Antonio María Pineda,LA GUAIRA (anteriormente Vargas),Lara,PRIVADO,Clínica
+Hospital Universitario Antonio María Pineda,LA GUAIRA (anteriormente Vargas),Lara,PRIVADO,Clínica
+Hospital Dr. Manuel Núñez Tovar,LA GUAIRA (anteriormente Vargas),Monagas,PRIVADO,Clínica
+Hospital Universitario de Los Andes (IAHULA),LA GUAIRA (anteriormente Vargas),Mérida,PRIVADO,Clínica
+Hospital Universitario Dr. Miguel Oráa (HUMO),LA GUAIRA (anteriormente Vargas),Portuguesa,PRIVADO,Clínica
+Hospital Universitario Dr. Antonio Patricio de Alcalá (HUPAA),LA GUAIRA (anteriormente Vargas),Sucre,PRIVADO,Clínica
+Hospital Central Dr. Ernesto Revenga,LA GUAIRA (anteriormente Vargas),Táchira,PRIVADO,Clínica
+"Hospital ""Dr. José María Vargas"" (La Guaira)",LA GUAIRA (anteriormente Vargas),Vargas,MPPS,Hospital
+"Hospital ""Dr. Simón Rodríguez""",LA GUAIRA (anteriormente Vargas),Vargas,MPPS,Hospital
+IEQ Centro del Este CA,LA GUAIRA (anteriormente Vargas),Vargas,PRIVADO,Clínica
+Hospital Central Dr. Urquinaona,LA GUAIRA (anteriormente Vargas),Zulia,PRIVADO,Clínica
+Hospital General del Sur Dr. Pedro Iturbe,LA GUAIRA (anteriormente Vargas),Zulia,PRIVADO,Clínica
+Hospital Universitario de Maracaibo (HUM),LA GUAIRA (anteriormente Vargas),Zulia,PRIVADO,Clínica
+"Hospital ""Dr. Luis Beltrán Leal"" (Sanare)",LARA,Andrés Eloy Blanco,MPPS,Hospital
+"Hospital ""Dr. Pastor Oropeza""",LARA,Iribarren,IVSS,Hospital
+"Hospital Central ""Antonio María Pineda""",LARA,Iribarren,MPPS,Hospital
+"Hospital Pediátrico ""Dr. Agustín Zubillaga""",LARA,Iribarren,MPPS,Hospital
+"Hospital Universitario ""Antonio María Pineda""",LARA,Iribarren,MPPS,Hospital
+IEQ Centro del Este,LARA,Iribarren,PRIVADO,Clínica
+"Hospital ""Dr. Félix Rodríguez Díaz""",LARA,Jiménez,MPPS,Hospital
+"Hospital ""Dr. Rafael González Plaza""",LARA,Torres,MPPS,Hospital
+Hospital Dr. Hermógenes Rivero Saldívia,MIRANDA,Acevedo,MPPS,Hospital
+CDI El Guapo,MIRANDA,Andrés Bello (Barlovento),BARRIO ADENTRO,CDI
+Ambulatorio Dr. José González Navarro,MIRANDA,Baruta (La Trinidad),IVSS,Hospital
+Hospital General de Higuerote,MIRANDA,Brión,MPPS,Hospital
+CDI La Loma,MIRANDA,Brión (Cúpira),BARRIO ADENTRO,CDI
+Maternidad Cirila Vegas,MIRANDA,Buroz,MPPS,Hospital
+Maternidad de Carrizal,MIRANDA,Carrizal,MPPS,Hospital
+Hospital José Ramón Figuera,MIRANDA,Cristóbal Rojas,MPPS,Hospital
+Hospital Santa Teresita de Jesús,MIRANDA,Independencia,MPPS,Hospital
+Ambulatorio Los Teques,MIRANDA,Libertador,IVSS,Hospital
+Hospital General Dr. Victorino Santaella Ruiz,MIRANDA,Libertador,MPPS,Hospital
+Hospital Dr. Luis Razetti,MIRANDA,Paz Castillo,MPPS,Hospital
+Hospital Dr. Jesús León Rivas,MIRANDA,Pedro Gual,MPPS,Hospital
+Hospital Francisco Rafael García,MIRANDA,Plaza,MPPS,Hospital
+CDI La Vaquera,MIRANDA,Plaza (Guarenas),BARRIO ADENTRO,CDI
+CDI Oropeza,MIRANDA,Plaza (Guarenas),BARRIO ADENTRO,CDI
+CDI San José,MIRANDA,Plaza (Guarenas),BARRIO ADENTRO,CDI
+Hospital Dr. Luis Salazar Domínguez,MIRANDA,Plaza (Guarenas),IVSS,Hospital
+Hospital Dr. Ernesto Regener,MIRANDA,Páez,MPPS,Hospital
+CDI San Antonio de Yare,MIRANDA,Simón Bolívar,BARRIO ADENTRO,CDI
+Hospital Materno Infantil del Este Dr. Yoel Valencia Parpacen,MIRANDA,Sucre,MPPS,Hospital
+Hospital Pérez de León II,MIRANDA,Sucre,MPPS,Hospital
+CDI Río de Janeiro,MIRANDA,Sucre (El Llanito),BARRIO ADENTRO,CDI
+Hospital Dr. Domingo Luciani,MIRANDA,Sucre (El Llanito),IVSS,Hospital
+Unidad de Psiquiatría Dr. Jesús Mata de Gregorio,MIRANDA,Sucre (Los Chorros),IVSS,Hospital
+CDI Barrio Bolívar,MIRANDA,Sucre (Petare),BARRIO ADENTRO,CDI
+CDI La Urbina I y II,MIRANDA,Sucre (Petare),BARRIO ADENTRO,CDI
+CDI Los Dos Caminos,MIRANDA,Sucre (Petare),BARRIO ADENTRO,CDI
+CDI Paulo VI,MIRANDA,Sucre (Petare),BARRIO ADENTRO,CDI
+CDI San Miguel Arcángel,MIRANDA,Sucre (Petare),BARRIO ADENTRO,CDI
+Hospital General Simón Bolívar,MIRANDA,Tomás Lander,MPPS,Hospital
+CDI Cristóbal Rojas,MIRANDA,Tomás Lander (Ocumare),BARRIO ADENTRO,CDI
+Hospital Dr. Miguel Osío de Cúa,MIRANDA,Urdaneta,MPPS,Hospital
+Ambulatorio Dr. Julio de Armas,MIRANDA,Urdaneta (Cúa),IVSS,Hospital
+Hospital Dr. Oscio,MIRANDA,Urdaneta (Cúa),IVSS,Hospital
+Hospital General Eugenio P. D'Bellad,MIRANDA,Zamora,MPPS,Hospital
+CAT Antonio Treviño,MIRANDA,Zamora (Guatire),BARRIO ADENTRO,CAT
+CDI Pedro José Doria,MIRANDA,Zamora (Guatire),BARRIO ADENTRO,CDI
+Hospital Petrolero / PDVSA,MONAGAS,,IVSS,Hospital
+"Hospital ""Dr. Luis Daniel Beauperthuy""",MONAGAS,Caripe,MPPS,Hospital
+"Hospital ""Dr. José Gregorio Hernández"" (Punta de Mata)",MONAGAS,Ezequiel Zamora,MPPS,Hospital
+"Hospital ""Dr. Manuel Núñez Tovar""",MONAGAS,Maturín,MPPS,Hospital
+"Hospital ""Dr. Eduardo Orta Marcano""",MÉRIDA,Alberto Adriani,MPPS,Hospital
+Hospital Dr. Alberto Zaccara,MÉRIDA,Libertador,IVSS,Hospital
+Hospital Universitario de Los Andes (IAHULA),MÉRIDA,Libertador,MPPS,Hospital
+"Hospital ""Dr. Tulio Febres Cordero"" (Santa Bárbara)",MÉRIDA,Obispos,MPPS,Hospital
+"Hospital ""Dr. Juan Pablo Peña""",MÉRIDA,Rangel,MPPS,Hospital
+"Hospital ""Dr. José Gregorio Hernández""",MÉRIDA,Sucre,MPPS,Hospital
+"Hospital ""Dr. Buenaventura García""",NUEVA ESPARTA,Arismendi,MPPS,Hospital
+"Hospital ""Dr. Plácido Plaza""",NUEVA ESPARTA,Gómez,MPPS,Hospital
+"Hospital ""Dr. Luis Ortega""",NUEVA ESPARTA,Maneiro,MPPS,Hospital
+"Hospital ""Dr. Héctor Pouey""",NUEVA ESPARTA,Marcano,MPPS,Hospital
+"Hospital ""Dr. Ricardo Longobardi""",PORTUGUESA,Araure,MPPS,Hospital
+"Hospital ""Dr. José Francisco Torrealba""",PORTUGUESA,Guanare,MPPS,Hospital
+"Hospital ""Dr. Baudilio Lara""",PORTUGUESA,Páez,MPPS,Hospital
+"Hospital Universitario ""Dr. Miguel Oráa"" (HUMO)",PORTUGUESA,Páez,MPPS,Hospital
+"Hospital ""Dr. Celestino Hernández Placer""",SUCRE,,IVSS,Hospital
+"Hospital ""Dr. Luis Figueroa""",SUCRE,Bermúdez,MPPS,Hospital
+"Hospital ""Dr. Ramón Orozco Álvarez""",SUCRE,Cajigal,MPPS,Hospital
+"Hospital ""Dr. Tulio Arends""",SUCRE,Sucre,MPPS,Hospital
+"Hospital Universitario ""Dr. Antonio Patricio de Alcalá"" (HUPAA)",SUCRE,Sucre,MPPS,Hospital
+Hospital Dr. Manuel Enrique Tovar,TRUJILLO,,IVSS,Hospital
+"Hospital ""Dr. José Santos Millán""",TRUJILLO,Boconó,MPPS,Hospital
+"Hospital ""Dr. Carlos Solórzano Zerpa""",TRUJILLO,Pampánito,MPPS,Hospital
+"Hospital Central de Trujillo ""Dr. Pedro Emilio Carrillo""",TRUJILLO,Trujillo,MPPS,Hospital
+"Hospital ""Dr. Florencio Jiménez""",TRUJILLO,Valera,MPPS,Hospital
+"Hospital ""Dr. Felipe Guevara Rojas"" (Colón)",TÁCHIRA,Ayacucho,MPPS,Hospital
+"Hospital ""Dr. José Gregorio Hernández"" (Frontera)",TÁCHIRA,Bolívar,MPPS,Hospital
+"Hospital ""Dr. Luis Razetti"" (Táriba)",TÁCHIRA,Cárdenas,MPPS,Hospital
+"Hospital ""Dr. Manuel Anselmi""",TÁCHIRA,Jáuregui,MPPS,Hospital
+"Hospital Central ""Dr. Ernesto Revenga""",TÁCHIRA,San Cristóbal,MPPS,Hospital
+"Hospital Regional ""Dr. Patrocinio Peñuela Ruiz""",TÁCHIRA,San Cristóbal,MPPS,Hospital
+"Hospital ""Dr. Raimundo Villasmil""",YARACUY,Bolívar,MPPS,Hospital
+"Hospital ""Dr. Rafael Vicente Andrade""",YARACUY,Bruzual,MPPS,Hospital
+"Hospital ""Dr. Julio Cruz Álvarez""",YARACUY,Peña,MPPS,Hospital
+"Hospital ""Plácido Daniel Rodríguez Rivero""",YARACUY,San Felipe,MPPS,Hospital
+"Hospital ""Dr. Adolfo D'Empaire""",ZULIA,Cabimas,MPPS,Hospital
+New Clínica D'Empaire,ZULIA,Cabimas,PRIVADO,Clínica
+"Hospital ""Dr. Carlos Eduardo García""",ZULIA,Machiques de Perijá,MPPS,Hospital
+"Hospital ""Dr. José Prudencio Padilla""",ZULIA,Mara,MPPS,Hospital
+"Hospital Central ""Dr. Urquinaona""",ZULIA,Maracaibo,MPPS,Hospital
+Hospital Clínico,ZULIA,Maracaibo,MPPS,Hospital
+Hospital Coromoto,ZULIA,Maracaibo,MPPS,Hospital
+Hospital Dr. Manuel Noriega Trigo,ZULIA,Maracaibo,IVSS,Hospital
+"Hospital General del Sur ""Dr. Pedro Iturbe""",ZULIA,Maracaibo,MPPS,Hospital
+Hospital Madre Rafols,ZULIA,Maracaibo,MPPS,Hospital
+Hospital Materno Infantil de Cuatricentenario,ZULIA,Maracaibo,MPPS,Hospital
+Hospital Materno Infantil de El Marite,ZULIA,Maracaibo,MPPS,Hospital
+Hospital Militar,ZULIA,Maracaibo,MPPS,Hospital
+Hospital Universitario de Maracaibo (HUM),ZULIA,Maracaibo,MPPS,Hospital
+Hospital de Niños (Foundation Hospital of Pediatrics),ZULIA,Maracaibo,MPPS,Hospital
+Hospital de Policías,ZULIA,Maracaibo,MPPS,Hospital
+IVSS Ambulatorio Norte de Maracaibo,ZULIA,Maracaibo,IVSS,Hospital
+Maternidad Castillo Plaza,ZULIA,Maracaibo,MPPS,Hospital
+Hospital Chiquinquirá,ZULIA,Maracaibo (Parroquia Chiquinquirá),MPPS,Hospital
+"Unidad de Radioterapia y Medicina Nuclear ""Dr. Jorge García Tamayo""",ZULIA,Maracaibo (Parroquia Chiquinquirá),MPPS,Hospital
+"Hospital de Niños ""Dr. Jorge Lizarraga"" (Ciudad Ojeda)",ZULIA,Valmore Rodríguez,MPPS,Hospital
+AME Asistencia Médica (Punto Fijo/Falcón),ZULIA,—,PRIVADO,Clínica
