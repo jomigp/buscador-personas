@@ -1,5 +1,5 @@
 // Seed de hospitales publicos de Venezuela extraidos del Monitor de
-// Hospitales de Convite AC (junio 2026). 171 hospitales publicos.
+// Hospitales de Convite AC (junio 2026).
 //
 // Usado por getDistinctValues() para que el autocomplete de los formularios
 // tenga sugerencias desde el primer paciente - antes de que se cargue
@@ -24,27 +24,15 @@ export const HOSPITALES_SEED: HospitalSeed[] = [
     "tipo": "II"
   },
   {
-    "centro_salud": "Hospital Dr. Jesus Eduardo Angulo Rivas",
-    "estado_geografico": "Anzoátegui",
-    "municipio": "Anaco",
-    "tipo": "I"
-  },
-  {
-    "centro_salud": "Hospital Dr. Rafael Rangel",
-    "estado_geografico": "Anzoátegui",
-    "municipio": "Aragua",
-    "tipo": "I"
-  },
-  {
     "centro_salud": "Hospital Antonio Jose Rondon Lugo",
     "estado_geografico": "Anzoátegui",
     "municipio": "Manuel Ezequiel Bruzual",
     "tipo": "I"
   },
   {
-    "centro_salud": "Hospital Pedro Gomez Rolingson",
+    "centro_salud": "Hospital Dr. Jesus Eduardo Angulo Rivas",
     "estado_geografico": "Anzoátegui",
-    "municipio": "Piritu",
+    "municipio": "Anaco",
     "tipo": "I"
   },
   {
@@ -54,10 +42,34 @@ export const HOSPITALES_SEED: HospitalSeed[] = [
     "tipo": "IV"
   },
   {
+    "centro_salud": "Hospital Dr. Rafael Rangel",
+    "estado_geografico": "Anzoátegui",
+    "municipio": "Aragua",
+    "tipo": "I"
+  },
+  {
+    "centro_salud": "Hospital Pedro Gomez Rolingson",
+    "estado_geografico": "Anzoátegui",
+    "municipio": "Piritu",
+    "tipo": "I"
+  },
+  {
     "centro_salud": "Hospital Dr. Francisco Antonio Risqu Ez",
     "estado_geografico": "Apure",
     "municipio": "Achaguas",
     "tipo": "I"
+  },
+  {
+    "centro_salud": "Hospital Dr. Pablo Acosta Ortiz",
+    "estado_geografico": "Apure",
+    "municipio": "San Fernando",
+    "tipo": "III"
+  },
+  {
+    "centro_salud": "Hospital Jose Antonio Paez",
+    "estado_geografico": "Apure",
+    "municipio": "Paez",
+    "tipo": "II"
   },
   {
     "centro_salud": "Hospital Lorenza Castillo",
@@ -69,24 +81,6 @@ export const HOSPITALES_SEED: HospitalSeed[] = [
     "centro_salud": "Hospital Romulo Gallegos",
     "estado_geografico": "Apure",
     "municipio": "Romulo Gallegos Urbana",
-    "tipo": "I"
-  },
-  {
-    "centro_salud": "Hospital Jose Antonio Paez",
-    "estado_geografico": "Apure",
-    "municipio": "Paez",
-    "tipo": "II"
-  },
-  {
-    "centro_salud": "Hospital Dr. Pablo Acosta Ortiz",
-    "estado_geografico": "Apure",
-    "municipio": "San Fernando",
-    "tipo": "III"
-  },
-  {
-    "centro_salud": "Hospital Nuestra Señora De La Caridad",
-    "estado_geografico": "Aragua",
-    "municipio": "San Sebastian",
     "tipo": "I"
   },
   {
@@ -102,6 +96,18 @@ export const HOSPITALES_SEED: HospitalSeed[] = [
     "tipo": ""
   },
   {
+    "centro_salud": "Hospital Nuestra Señora De La Caridad",
+    "estado_geografico": "Aragua",
+    "municipio": "San Sebastian",
+    "tipo": "I"
+  },
+  {
+    "centro_salud": "Hospital Dr. Francisco Lazo Marti",
+    "estado_geografico": "Barinas",
+    "municipio": "Edraza",
+    "tipo": "I"
+  },
+  {
     "centro_salud": "Hospital Dr. Jesus Arnoldo Camacho Peña",
     "estado_geografico": "Barinas",
     "municipio": "Alberto Arvelo Torrealba",
@@ -114,16 +120,16 @@ export const HOSPITALES_SEED: HospitalSeed[] = [
     "tipo": "I"
   },
   {
+    "centro_salud": "Hospital Dr. Manuel Heredia Salas",
+    "estado_geografico": "Barinas",
+    "municipio": "Ojas",
+    "tipo": "I"
+  },
+  {
     "centro_salud": "Hospital Luis Razeti",
     "estado_geografico": "Barinas",
     "municipio": "Barinas",
     "tipo": "III"
-  },
-  {
-    "centro_salud": "Hospital Primero De D",
-    "estado_geografico": "Barinas",
-    "municipio": "Barinas",
-    "tipo": "II"
   },
   {
     "centro_salud": "Hospital Nuestra Señora Del Car Men",
@@ -132,15 +138,15 @@ export const HOSPITALES_SEED: HospitalSeed[] = [
     "tipo": "I"
   },
   {
-    "centro_salud": "Hospital Dr. Francisco Lazo Marti",
+    "centro_salud": "Hospital Primero De D",
     "estado_geografico": "Barinas",
-    "municipio": "Edraza",
-    "tipo": "I"
+    "municipio": "Barinas",
+    "tipo": "II"
   },
   {
-    "centro_salud": "Hospital Dr. Manuel Heredia Salas",
-    "estado_geografico": "Barinas",
-    "municipio": "Ojas",
+    "centro_salud": "Hospital 25 De Marzo I Bolívar",
+    "estado_geografico": "Bolívar",
+    "municipio": "nd",
     "tipo": "I"
   },
   {
@@ -156,13 +162,37 @@ export const HOSPITALES_SEED: HospitalSeed[] = [
     "tipo": "I"
   },
   {
+    "centro_salud": "Hospital Dr. Arnoldo Gabaldon",
+    "estado_geografico": "Bolívar",
+    "municipio": "Cedeño",
+    "tipo": "I"
+  },
+  {
     "centro_salud": "Hospital Dr. Raul Leoni O. (Ivss)",
     "estado_geografico": "Bolívar",
     "municipio": "Caroni",
     "tipo": "IV"
   },
   {
-    "centro_salud": "Hospital 25 De Marzo I Bolívar",
+    "centro_salud": "Hospital Guri Ormesa",
+    "estado_geografico": "Bolívar",
+    "municipio": "Bolivariano Angostura",
+    "tipo": "I"
+  },
+  {
+    "centro_salud": "Hospital Hector Nouel Joubert (Ivss)",
+    "estado_geografico": "Bolívar",
+    "municipio": "Heres",
+    "tipo": "III"
+  },
+  {
+    "centro_salud": "Hospital Militar Dr. Cesar Ares Bello D Estriban",
+    "estado_geografico": "Bolívar",
+    "municipio": "nd",
+    "tipo": "militar"
+  },
+  {
+    "centro_salud": "Hospital Rosario Vera Zurita",
     "estado_geografico": "Bolívar",
     "municipio": "nd",
     "tipo": "I"
@@ -174,58 +204,22 @@ export const HOSPITALES_SEED: HospitalSeed[] = [
     "tipo": "III"
   },
   {
-    "centro_salud": "Hospital Dr. Arnoldo Gabaldon",
-    "estado_geografico": "Bolívar",
-    "municipio": "Cedeño",
-    "tipo": "I"
-  },
-  {
-    "centro_salud": "Hospital Rosario Vera Zurita",
-    "estado_geografico": "Bolívar",
-    "municipio": "nd",
-    "tipo": "I"
-  },
-  {
-    "centro_salud": "Hospital Militar Dr. Cesar Ares Bello D Estriban",
-    "estado_geografico": "Bolívar",
-    "municipio": "nd",
-    "tipo": "militar"
-  },
-  {
-    "centro_salud": "Hospital Hector Nouel Joubert (Ivss)",
-    "estado_geografico": "Bolívar",
-    "municipio": "Heres",
-    "tipo": "III"
-  },
-  {
-    "centro_salud": "Hospital Guri Ormesa",
-    "estado_geografico": "Bolívar",
-    "municipio": "Bolivariano Angostura",
-    "tipo": "I"
-  },
-  {
     "centro_salud": "Hospital Bejuma",
     "estado_geografico": "Carabobo",
     "municipio": "Bejuma",
     "tipo": "II"
   },
   {
-    "centro_salud": "Hospital Dr. Miguel Malpica",
-    "estado_geografico": "Carabobo",
-    "municipio": "Guacara",
-    "tipo": "I"
-  },
-  {
-    "centro_salud": "Hospital Vía",
-    "estado_geografico": "Carabobo",
-    "municipio": "Naguanagua",
-    "tipo": "IV"
-  },
-  {
     "centro_salud": "Hospital Dr. Francisco Molina Sierra (Iv Ss)",
     "estado_geografico": "Carabobo",
     "municipio": "Puerto Cabello",
     "tipo": "III"
+  },
+  {
+    "centro_salud": "Hospital Dr. Miguel Malpica",
+    "estado_geografico": "Carabobo",
+    "municipio": "Guacara",
+    "tipo": "I"
   },
   {
     "centro_salud": "Hospital Enrique Tejera",
@@ -240,9 +234,15 @@ export const HOSPITALES_SEED: HospitalSeed[] = [
     "tipo": "II"
   },
   {
-    "centro_salud": "Hospital Joaquina De Rotondaro",
+    "centro_salud": "Hospital Vía",
+    "estado_geografico": "Carabobo",
+    "municipio": "Naguanagua",
+    "tipo": "IV"
+  },
+  {
+    "centro_salud": "Hospital Dr. Egor Nucette H. De San Car Los",
     "estado_geografico": "Cojedes",
-    "municipio": "Tinaquillo",
+    "municipio": "Ezequiel Zamora",
     "tipo": "II"
   },
   {
@@ -258,16 +258,10 @@ export const HOSPITALES_SEED: HospitalSeed[] = [
     "tipo": "I"
   },
   {
-    "centro_salud": "Hospital Dr. Egor Nucette H. De San Car Los",
+    "centro_salud": "Hospital Joaquina De Rotondaro",
     "estado_geografico": "Cojedes",
-    "municipio": "Ezequiel Zamora",
+    "municipio": "Tinaquillo",
     "tipo": "II"
-  },
-  {
-    "centro_salud": "Hospital Dr. Luis Gomez Zabaleta",
-    "estado_geografico": "Delta Amacuro",
-    "municipio": "Antonio Diaz",
-    "tipo": "I"
   },
   {
     "centro_salud": "Hospital Complejo Hospitalario Dr. Luis Razetti",
@@ -276,16 +270,16 @@ export const HOSPITALES_SEED: HospitalSeed[] = [
     "tipo": ""
   },
   {
-    "centro_salud": "Hospital Ricardo Baquero Gonzalez",
-    "estado_geografico": "Distrito Capital",
-    "municipio": "Bolivariano Libertador",
-    "tipo": "II"
+    "centro_salud": "Hospital Dr. Luis Gomez Zabaleta",
+    "estado_geografico": "Delta Amacuro",
+    "municipio": "Antonio Diaz",
+    "tipo": "I"
   },
   {
-    "centro_salud": "Hospital Dr. Jose Maria Vargas",
+    "centro_salud": "Hospital Av. Anauco Av. Anauco",
     "estado_geografico": "Distrito Capital",
     "municipio": "Bolivariano Libertador",
-    "tipo": "IV"
+    "tipo": "III"
   },
   {
     "centro_salud": "Hospital Av. San Martin Av. San Martín",
@@ -294,10 +288,40 @@ export const HOSPITALES_SEED: HospitalSeed[] = [
     "tipo": "IV"
   },
   {
+    "centro_salud": "Hospital Cardiologico Infantil",
+    "estado_geografico": "Distrito Capital",
+    "municipio": "Bolivariano Libertador",
+    "tipo": "II"
+  },
+  {
+    "centro_salud": "Hospital Dr. Carlos Arvelo (Hosp. Militar )",
+    "estado_geografico": "Distrito Capital",
+    "municipio": "Bolivariano Libertador",
+    "tipo": "militar"
+  },
+  {
+    "centro_salud": "Hospital Dr. Jose Maria Vargas",
+    "estado_geografico": "Distrito Capital",
+    "municipio": "Bolivariano Libertador",
+    "tipo": "IV"
+  },
+  {
+    "centro_salud": "Hospital Hospital Perez Carreño",
+    "estado_geografico": "Distrito Capital",
+    "municipio": "Distrito Capital",
+    "tipo": "IV"
+  },
+  {
     "centro_salud": "Hospital J.m. De Los Rios",
     "estado_geografico": "Distrito Capital",
     "municipio": "Bolivariano Libertador",
     "tipo": "IV"
+  },
+  {
+    "centro_salud": "Hospital Jesus Yerena",
+    "estado_geografico": "Distrito Capital",
+    "municipio": "Bolivariano Libertador",
+    "tipo": "III"
   },
   {
     "centro_salud": "Hospital Jose Ignacio Baldo (Algodonal)",
@@ -312,40 +336,82 @@ export const HOSPITALES_SEED: HospitalSeed[] = [
     "tipo": "III"
   },
   {
-    "centro_salud": "Hospital Jesus Yerena",
-    "estado_geografico": "Distrito Capital",
-    "municipio": "Bolivariano Libertador",
-    "tipo": "III"
-  },
-  {
-    "centro_salud": "Hospital Cardiologico Infantil",
+    "centro_salud": "Hospital Ricardo Baquero Gonzalez",
     "estado_geografico": "Distrito Capital",
     "municipio": "Bolivariano Libertador",
     "tipo": "II"
   },
   {
-    "centro_salud": "Hospital Av. Anauco Av. Anauco",
-    "estado_geografico": "Distrito Capital",
-    "municipio": "Bolivariano Libertador",
-    "tipo": "III"
+    "centro_salud": "Hospital Carlos Diez Del Ciervo Ho Spital Ju Dibana Prolongacion Av. El Centro",
+    "estado_geografico": "Falcón",
+    "municipio": "Los Taques",
+    "tipo": "I"
   },
   {
-    "centro_salud": "Hospital Francisco Antonio Risquez",
-    "estado_geografico": "Distrito Capital",
-    "municipio": "Bolivariano Libertador",
-    "tipo": "II"
+    "centro_salud": "Hospital Dr. Egmidio Rios",
+    "estado_geografico": "Falcón",
+    "municipio": "Federacion",
+    "tipo": "I"
   },
   {
-    "centro_salud": "Hospital Dr. Carlos Arvelo (Hosp. Militar )",
-    "estado_geografico": "Distrito Capital",
-    "municipio": "Bolivariano Libertador",
-    "tipo": "militar"
+    "centro_salud": "Hospital Dr. Enrique Zavala",
+    "estado_geografico": "Falcón",
+    "municipio": "Dabajuro",
+    "tipo": "I"
   },
   {
-    "centro_salud": "Hospital Hospital Perez Carreño",
-    "estado_geografico": "Distrito Capital",
-    "municipio": "Distrito Capital",
+    "centro_salud": "Hospital Dr. Jose Maria Espinoza",
+    "estado_geografico": "Falcón",
+    "municipio": "Miranda",
+    "tipo": "I"
+  },
+  {
+    "centro_salud": "Hospital Dr. Juvenal Bracho El Cardon (Ivss) Comunidad Cardon Sector Maraven",
+    "estado_geografico": "Falcón",
+    "municipio": "Carirubana",
+    "tipo": ""
+  },
+  {
+    "centro_salud": "Hospital Dr. Romulo Farias Ho Spital Me Ne De Mauroa Calle Democracia Diagonal Comando",
+    "estado_geografico": "Falcón",
+    "municipio": "Mauroa",
+    "tipo": "I"
+  },
+  {
+    "centro_salud": "Hospital Dr.alfredo Van Grieken",
+    "estado_geografico": "Falcón",
+    "municipio": "Miranda",
     "tipo": "IV"
+  },
+  {
+    "centro_salud": "Hospital Francisco Bustamante",
+    "estado_geografico": "Falcón",
+    "municipio": "Zamora",
+    "tipo": "I"
+  },
+  {
+    "centro_salud": "Hospital Lino Arevalo",
+    "estado_geografico": "Falcón",
+    "municipio": "Silva",
+    "tipo": "II"
+  },
+  {
+    "centro_salud": "Hospital Ped. Jesus Garcia Coello (Ivss) Ho Spital Ju Dibana Sector Judibana Judibana",
+    "estado_geografico": "Falcón",
+    "municipio": "Los Taques",
+    "tipo": "II"
+  },
+  {
+    "centro_salud": "Hospital Rafael Calle Sierra (Ivss) Ho Spital Punta Cardon Punto Fijo",
+    "estado_geografico": "Falcón",
+    "municipio": "Carirubana",
+    "tipo": "III"
+  },
+  {
+    "centro_salud": "Hospital Rafael Gallardo (Ivss)",
+    "estado_geografico": "Falcón",
+    "municipio": "Miranda",
+    "tipo": "I"
   },
   {
     "centro_salud": "Hospital San Luis",
@@ -366,93 +432,9 @@ export const HOSPITALES_SEED: HospitalSeed[] = [
     "tipo": "III"
   },
   {
-    "centro_salud": "Hospital Dr. Juvenal Bracho El Cardon (Ivss) Comunidad Cardon Sector Maraven",
-    "estado_geografico": "Falcón",
-    "municipio": "Carirubana",
-    "tipo": ""
-  },
-  {
-    "centro_salud": "Hospital Rafael Calle Sierra (Ivss) Ho Spital Punta Cardon Punto Fijo",
-    "estado_geografico": "Falcón",
-    "municipio": "Carirubana",
-    "tipo": "III"
-  },
-  {
-    "centro_salud": "Hospital Dr. Enrique Zavala",
-    "estado_geografico": "Falcón",
-    "municipio": "Dabajuro",
-    "tipo": "I"
-  },
-  {
-    "centro_salud": "Hospital Dr. Egmidio Rios",
-    "estado_geografico": "Falcón",
-    "municipio": "Federacion",
-    "tipo": "I"
-  },
-  {
-    "centro_salud": "Hospital Carlos Diez Del Ciervo Ho Spital Ju Dibana Prolongacion Av. El Centro",
-    "estado_geografico": "Falcón",
-    "municipio": "Los Taques",
-    "tipo": "I"
-  },
-  {
-    "centro_salud": "Hospital Ped. Jesus Garcia Coello (Ivss) Ho Spital Ju Dibana Sector Judibana Judibana",
-    "estado_geografico": "Falcón",
-    "municipio": "Los Taques",
-    "tipo": "II"
-  },
-  {
-    "centro_salud": "Hospital Dr. Romulo Farias Ho Spital Me Ne De Mauroa Calle Democracia Diagonal Comando",
-    "estado_geografico": "Falcón",
-    "municipio": "Mauroa",
-    "tipo": "I"
-  },
-  {
-    "centro_salud": "Hospital Dr.alfredo Van Grieken",
-    "estado_geografico": "Falcón",
-    "municipio": "Miranda",
-    "tipo": "IV"
-  },
-  {
-    "centro_salud": "Hospital Rafael Gallardo (Ivss)",
-    "estado_geografico": "Falcón",
-    "municipio": "Miranda",
-    "tipo": "I"
-  },
-  {
-    "centro_salud": "Hospital Dr. Jose Maria Espinoza",
-    "estado_geografico": "Falcón",
-    "municipio": "Miranda",
-    "tipo": "I"
-  },
-  {
-    "centro_salud": "Hospital Lino Arevalo",
-    "estado_geografico": "Falcón",
-    "municipio": "Silva",
-    "tipo": "II"
-  },
-  {
-    "centro_salud": "Hospital Francisco Bustamante",
-    "estado_geografico": "Falcón",
-    "municipio": "Zamora",
-    "tipo": "I"
-  },
-  {
-    "centro_salud": "Hospital HOSPITAL GENERAL DR. ISRAEL RANUÁREZ BALZA",
+    "centro_salud": "Hospital D R. Francisco Antonio Risquez",
     "estado_geografico": "Guárico",
-    "municipio": "Juan German Roscio",
-    "tipo": "II"
-  },
-  {
-    "centro_salud": "Hospital Dr. Rafael Zamora Arevalo",
-    "estado_geografico": "Guárico",
-    "municipio": "Leonardo Infante",
-    "tipo": "III"
-  },
-  {
-    "centro_salud": "Hospital Dr. Pedro Del Corral",
-    "estado_geografico": "Guárico",
-    "municipio": "Jose Felix Ribas",
+    "municipio": "Julian Mellado",
     "tipo": "I"
   },
   {
@@ -462,15 +444,27 @@ export const HOSPITALES_SEED: HospitalSeed[] = [
     "tipo": "I"
   },
   {
-    "centro_salud": "Hospital D R. Francisco Antonio Risquez",
-    "estado_geografico": "Guárico",
-    "municipio": "Julian Mellado",
-    "tipo": "I"
-  },
-  {
     "centro_salud": "Hospital D R. Jose Francisco Urdaneta D",
     "estado_geografico": "Guárico",
     "municipio": "Francisco De Miranda",
+    "tipo": "II"
+  },
+  {
+    "centro_salud": "Hospital Dr. Pedro Del Corral",
+    "estado_geografico": "Guárico",
+    "municipio": "Jose Felix Ribas",
+    "tipo": "I"
+  },
+  {
+    "centro_salud": "Hospital Dr. Rafael Zamora Arevalo",
+    "estado_geografico": "Guárico",
+    "municipio": "Leonardo Infante",
+    "tipo": "III"
+  },
+  {
+    "centro_salud": "Hospital HOSPITAL GENERAL DR. ISRAEL RANUÁREZ BALZA",
+    "estado_geografico": "Guárico",
+    "municipio": "Juan German Roscio",
     "tipo": "II"
   },
   {
@@ -480,58 +474,16 @@ export const HOSPITALES_SEED: HospitalSeed[] = [
     "tipo": "III"
   },
   {
-    "centro_salud": "Hospital HOSPITAL DR. PASTOR OROPEZA R.",
-    "estado_geografico": "Lara",
-    "municipio": "Iribarren",
-    "tipo": "IV"
-  },
-  {
-    "centro_salud": "Hospital HOSPITAL CENTRAL UNIVERSITARIO DR. ANTONIO MARÍA PINEDA",
-    "estado_geografico": "Lara",
-    "municipio": "Iribarren",
-    "tipo": "IV"
-  },
-  {
-    "centro_salud": "Hospital Dr. Jose Maria Bengoa",
-    "estado_geografico": "Lara",
-    "municipio": "Andres Eloy Blanco",
-    "tipo": "I"
-  },
-  {
-    "centro_salud": "Hospital Rafael Antonio Gil",
-    "estado_geografico": "Lara",
-    "municipio": "Crespo",
-    "tipo": "I"
-  },
-  {
-    "centro_salud": "Hospital Esp. Ped. Agustin Zubillaga",
-    "estado_geografico": "Lara",
-    "municipio": "Iribarren",
-    "tipo": "III"
-  },
-  {
     "centro_salud": "Hospital Central Univ. Dr. Antonio Maria Pi Neda Ubicado En La Zona Centro Norte. En Av.",
     "estado_geografico": "Lara",
     "municipio": "Iribarren",
     "tipo": ""
   },
   {
-    "centro_salud": "Hospital Dr. Juan Daza Pereira (Ivss)",
+    "centro_salud": "Hospital Dr. Armando Velasquez Mago",
     "estado_geografico": "Lara",
-    "municipio": "Iribarren",
+    "municipio": "Simon Planas",
     "tipo": "I"
-  },
-  {
-    "centro_salud": "Hospital La Carucieña Hospita L Urb. La Carucieña Sector I - Av. 4 Esquina Calle 8 Sector Ii Telefono",
-    "estado_geografico": "Lara",
-    "municipio": "Iribarren",
-    "tipo": "I"
-  },
-  {
-    "centro_salud": "Hospital Dr. Pastor Oropeza (Ivss) Hospita L Andres E Loy Blanco Av. L Av. La Salle Entre Av. Florencio Jimenez Y",
-    "estado_geografico": "Lara",
-    "municipio": "Iribarren",
-    "tipo": "III"
   },
   {
     "centro_salud": "Hospital Dr. Baudilio Lara",
@@ -546,9 +498,21 @@ export const HOSPITALES_SEED: HospitalSeed[] = [
     "tipo": "I"
   },
   {
-    "centro_salud": "Hospital Dr. Armando Velasquez Mago",
+    "centro_salud": "Hospital Dr. Jose Maria Bengoa",
     "estado_geografico": "Lara",
-    "municipio": "Simon Planas",
+    "municipio": "Andres Eloy Blanco",
+    "tipo": "I"
+  },
+  {
+    "centro_salud": "Hospital Dr. Juan Daza Pereira (Ivss)",
+    "estado_geografico": "Lara",
+    "municipio": "Iribarren",
+    "tipo": "I"
+  },
+  {
+    "centro_salud": "Hospital Dr. Luis Ignacio Montero Hospit Al Siquis Ique 9 Siquisique",
+    "estado_geografico": "Lara",
+    "municipio": "Urdaneta",
     "tipo": "I"
   },
   {
@@ -558,106 +522,46 @@ export const HOSPITALES_SEED: HospitalSeed[] = [
     "tipo": "II"
   },
   {
-    "centro_salud": "Hospital Dr. Luis Ignacio Montero Hospit Al Siquis Ique 9 Siquisique",
+    "centro_salud": "Hospital Dr. Pastor Oropeza (Ivss) Hospita L Andres E Loy Blanco Av. L Av. La Salle Entre Av. Florencio Jimenez Y",
     "estado_geografico": "Lara",
-    "municipio": "Urdaneta",
-    "tipo": "I"
+    "municipio": "Iribarren",
+    "tipo": "III"
   },
   {
-    "centro_salud": "Hospital El Vigia",
-    "estado_geografico": "Mérida",
-    "municipio": "Alberto Adriani",
-    "tipo": "II"
+    "centro_salud": "Hospital Esp. Ped. Agustin Zubillaga",
+    "estado_geografico": "Lara",
+    "municipio": "Iribarren",
+    "tipo": "III"
   },
   {
-    "centro_salud": "Hospital Tulio Febres Cordero (La Azulita)",
-    "estado_geografico": "Mérida",
-    "municipio": "Andres Bello",
-    "tipo": "I"
-  },
-  {
-    "centro_salud": "Hospital Puerto Rico Sector Puerto Rico Mérida",
-    "estado_geografico": "Mérida",
-    "municipio": "Antonio Pinto Salinas",
-    "tipo": "I"
-  },
-  {
-    "centro_salud": "Hospital Canagua Ho Spital Canagua Bolivar Farmacia Canagua Media Cuadra Plaza",
-    "estado_geografico": "Mérida",
-    "municipio": "Arzobispo Chacon",
-    "tipo": "I"
-  },
-  {
-    "centro_salud": "Hospital Santo Domingo",
-    "estado_geografico": "Mérida",
-    "municipio": "Cardenal Quintero",
-    "tipo": "I"
-  },
-  {
-    "centro_salud": "Hospital Rafael Rangel",
-    "estado_geografico": "Mérida",
-    "municipio": "Miranda",
-    "tipo": "I"
-  },
-  {
-    "centro_salud": "Hospital Francisco V. Gutierrez (Mucuchies)",
-    "estado_geografico": "Mérida",
-    "municipio": "Rangel",
-    "tipo": "I"
-  },
-  {
-    "centro_salud": "Hospital Bailadores",
-    "estado_geografico": "Mérida",
-    "municipio": "Rivas Davila",
-    "tipo": "I"
-  },
-  {
-    "centro_salud": "Hospital Lagunillas",
-    "estado_geografico": "Mérida",
-    "municipio": "Sucre",
-    "tipo": "I"
-  },
-  {
-    "centro_salud": "Hospital San Jose De Tovar Ho Spital San Jose Carrera 4 Ta Av. Tachira El Llano Tovar Mérida Táchira",
-    "estado_geografico": "Mérida",
-    "municipio": "Tovar",
-    "tipo": "II"
-  },
-  {
-    "centro_salud": "Hospital Universitario De Los Andes",
-    "estado_geografico": "Mérida",
-    "municipio": "Libertador",
+    "centro_salud": "Hospital HOSPITAL CENTRAL UNIVERSITARIO DR. ANTONIO MARÍA PINEDA",
+    "estado_geografico": "Lara",
+    "municipio": "Iribarren",
     "tipo": "IV"
   },
   {
-    "centro_salud": "Hospital Dr. Hermogenes Rivero Saldivia",
-    "estado_geografico": "Miranda",
-    "municipio": "Acevedo",
-    "tipo": "I"
-  },
-  {
-    "centro_salud": "Hospital Higuerote",
-    "estado_geografico": "Miranda",
-    "municipio": "Brion",
-    "tipo": "I"
-  },
-  {
-    "centro_salud": "Hospital Ti Po I Carriz Al Capital Cementer Maternidad De Bajo Riesgo Y Atencion Calle Principal De Carrrizal Diagonal Al",
-    "estado_geografico": "Miranda",
-    "municipio": "Carrizal",
-    "tipo": "I"
-  },
-  {
-    "centro_salud": "Hospital Dr. V Ictorino Santaella",
-    "estado_geografico": "Miranda",
-    "municipio": "Guaicaipuro",
+    "centro_salud": "Hospital HOSPITAL DR. PASTOR OROPEZA R.",
+    "estado_geografico": "Lara",
+    "municipio": "Iribarren",
     "tipo": "IV"
   },
   {
-    "centro_salud": "Hospital Santa Teresita De Jesus",
-    "estado_geografico": "Miranda",
-    "municipio": "Independencia",
+    "centro_salud": "Hospital La Carucieña Hospita L Urb. La Carucieña Sector I - Av. 4 Esquina Calle 8 Sector Ii Telefono",
+    "estado_geografico": "Lara",
+    "municipio": "Iribarren",
     "tipo": "I"
+  },
+  {
+    "centro_salud": "Hospital Rafael Antonio Gil",
+    "estado_geografico": "Lara",
+    "municipio": "Crespo",
+    "tipo": "I"
+  },
+  {
+    "centro_salud": "Hospital Domin Go Luciani (Ivss)",
+    "estado_geografico": "Miranda",
+    "municipio": "Cre",
+    "tipo": "IV"
   },
   {
     "centro_salud": "Hospital Dr. E Rnesto Regener",
@@ -666,9 +570,27 @@ export const HOSPITALES_SEED: HospitalSeed[] = [
     "tipo": "I"
   },
   {
-    "centro_salud": "Hospital Dr. L Uis Razetti",
+    "centro_salud": "Hospital Dr. Hermogenes Rivero Saldivia",
     "estado_geografico": "Miranda",
-    "municipio": "Paz Castillo",
+    "municipio": "Acevedo",
+    "tipo": "I"
+  },
+  {
+    "centro_salud": "Hospital Dr. M Iguel Osio",
+    "estado_geografico": "Miranda",
+    "municipio": "Urdaneta",
+    "tipo": "II"
+  },
+  {
+    "centro_salud": "Hospital Dr. V Ictorino Santaella",
+    "estado_geografico": "Miranda",
+    "municipio": "Guaicaipuro",
+    "tipo": "IV"
+  },
+  {
+    "centro_salud": "Hospital Higuerote",
+    "estado_geografico": "Miranda",
+    "municipio": "Brion",
     "tipo": "I"
   },
   {
@@ -690,22 +612,22 @@ export const HOSPITALES_SEED: HospitalSeed[] = [
     "tipo": "II"
   },
   {
+    "centro_salud": "Hospital Santa Teresita De Jesus",
+    "estado_geografico": "Miranda",
+    "municipio": "Independencia",
+    "tipo": "I"
+  },
+  {
     "centro_salud": "Hospital T Ipo Ii La Urbina Calle",
     "estado_geografico": "Miranda",
     "municipio": "Cre",
     "tipo": "II"
   },
   {
-    "centro_salud": "Hospital Domin Go Luciani (Ivss)",
+    "centro_salud": "Hospital Ti Po I Carriz Al Capital Cementer Maternidad De Bajo Riesgo Y Atencion Calle Principal De Carrrizal Diagonal Al",
     "estado_geografico": "Miranda",
-    "municipio": "Cre",
-    "tipo": "IV"
-  },
-  {
-    "centro_salud": "Hospital Dr. M Iguel Osio",
-    "estado_geografico": "Miranda",
-    "municipio": "Urdaneta",
-    "tipo": "II"
+    "municipio": "Carrizal",
+    "tipo": "I"
   },
   {
     "centro_salud": "Hospital HOSPITAL UNIVERSITARIO DR. MANUEL NÚÑEZ TOVAR",
@@ -714,16 +636,64 @@ export const HOSPITALES_SEED: HospitalSeed[] = [
     "tipo": "IV"
   },
   {
-    "centro_salud": "Hospital Dr. David Espinoza Rojas",
-    "estado_geografico": "Nueva Esparta",
-    "municipio": "Arismendi",
+    "centro_salud": "Hospital Bailadores",
+    "estado_geografico": "Mérida",
+    "municipio": "Rivas Davila",
     "tipo": "I"
   },
   {
-    "centro_salud": "Hospital Dr. Agustin Rafael Hernandez",
-    "estado_geografico": "Nueva Esparta",
-    "municipio": "Marcano",
+    "centro_salud": "Hospital Canagua Ho Spital Canagua Bolivar Farmacia Canagua Media Cuadra Plaza",
+    "estado_geografico": "Mérida",
+    "municipio": "Arzobispo Chacon",
     "tipo": "I"
+  },
+  {
+    "centro_salud": "Hospital El Vigia",
+    "estado_geografico": "Mérida",
+    "municipio": "Alberto Adriani",
+    "tipo": "II"
+  },
+  {
+    "centro_salud": "Hospital Francisco V. Gutierrez (Mucuchies)",
+    "estado_geografico": "Mérida",
+    "municipio": "Rangel",
+    "tipo": "I"
+  },
+  {
+    "centro_salud": "Hospital Lagunillas",
+    "estado_geografico": "Mérida",
+    "municipio": "Sucre",
+    "tipo": "I"
+  },
+  {
+    "centro_salud": "Hospital Puerto Rico Sector Puerto Rico Mérida",
+    "estado_geografico": "Mérida",
+    "municipio": "Antonio Pinto Salinas",
+    "tipo": "I"
+  },
+  {
+    "centro_salud": "Hospital San Jose De Tovar Ho Spital San Jose Carrera 4 Ta Av. Tachira El Llano Tovar Mérida Táchira",
+    "estado_geografico": "Mérida",
+    "municipio": "Tovar",
+    "tipo": "II"
+  },
+  {
+    "centro_salud": "Hospital Santo Domingo",
+    "estado_geografico": "Mérida",
+    "municipio": "Cardenal Quintero",
+    "tipo": "I"
+  },
+  {
+    "centro_salud": "Hospital Tulio Febres Cordero (La Azulita)",
+    "estado_geografico": "Mérida",
+    "municipio": "Andres Bello",
+    "tipo": "I"
+  },
+  {
+    "centro_salud": "Hospital Universitario De Los Andes",
+    "estado_geografico": "Mérida",
+    "municipio": "Libertador",
+    "tipo": "IV"
   },
   {
     "centro_salud": "Hospital Central Dr. Luis Ortega (Ivss)",
@@ -732,15 +702,39 @@ export const HOSPITALES_SEED: HospitalSeed[] = [
     "tipo": "III"
   },
   {
+    "centro_salud": "Hospital Dr. Agustin Rafael Hernandez",
+    "estado_geografico": "Nueva Esparta",
+    "municipio": "Marcano",
+    "tipo": "I"
+  },
+  {
     "centro_salud": "Hospital Dr. Armando Mata Sanchez",
     "estado_geografico": "Nueva Esparta",
     "municipio": "Tubores",
     "tipo": "I"
   },
   {
+    "centro_salud": "Hospital Dr. David Espinoza Rojas",
+    "estado_geografico": "Nueva Esparta",
+    "municipio": "Arismendi",
+    "tipo": "I"
+  },
+  {
+    "centro_salud": "Hospital Capital Guanare Ipasme Guanare Unidades Casco Central Guanare Av. Limonero (Al Lado Del Hospital) Con",
+    "estado_geografico": "Portuguesa",
+    "municipio": "Guanare",
+    "tipo": "II"
+  },
+  {
     "centro_salud": "Hospital De Agua Blanca",
     "estado_geografico": "Portuguesa",
     "municipio": "Agua Blanca",
+    "tipo": "I"
+  },
+  {
+    "centro_salud": "Hospital Dr. Armando Delgado Monte Ro",
+    "estado_geografico": "Portuguesa",
+    "municipio": "Turen",
     "tipo": "I"
   },
   {
@@ -756,10 +750,10 @@ export const HOSPITALES_SEED: HospitalSeed[] = [
     "tipo": "I"
   },
   {
-    "centro_salud": "Hospital Capital Guanare Ipasme Guanare Unidades Casco Central Guanare Av. Limonero (Al Lado Del Hospital) Con",
+    "centro_salud": "Hospital Dr. Raul Humberto De P Ascuali",
     "estado_geografico": "Portuguesa",
-    "municipio": "Guanare",
-    "tipo": "II"
+    "municipio": "Ospino",
+    "tipo": "I"
   },
   {
     "centro_salud": "Hospital Universitario Dr. Miguel O Raa",
@@ -768,51 +762,9 @@ export const HOSPITALES_SEED: HospitalSeed[] = [
     "tipo": "III"
   },
   {
-    "centro_salud": "Hospital Dr. Raul Humberto De P Ascuali",
-    "estado_geografico": "Portuguesa",
-    "municipio": "Ospino",
-    "tipo": "I"
-  },
-  {
-    "centro_salud": "Hospital Dr. Armando Delgado Monte Ro",
-    "estado_geografico": "Portuguesa",
-    "municipio": "Turen",
-    "tipo": "I"
-  },
-  {
-    "centro_salud": "Hospital Dr. Pedro R. Figallo",
+    "centro_salud": "Hospital Dr. Andres Gutierrez Solis",
     "estado_geografico": "Sucre",
-    "municipio": "Arismendi",
-    "tipo": "I"
-  },
-  {
-    "centro_salud": "Hospital Dr. Santos Anibal Dominicci",
-    "estado_geografico": "Sucre",
-    "municipio": "Bermudez",
-    "tipo": "III"
-  },
-  {
-    "centro_salud": "Hospital I Yaguaraparo",
-    "estado_geografico": "Sucre",
-    "municipio": "Cajigal",
-    "tipo": "I"
-  },
-  {
-    "centro_salud": "Hospital Virgen Del Valle",
-    "estado_geografico": "Sucre",
-    "municipio": "Cruz Salmeron Acosta",
-    "tipo": "I"
-  },
-  {
-    "centro_salud": "Hospital Freddy Mocary De Irapa",
-    "estado_geografico": "Sucre",
-    "municipio": "Mariño",
-    "tipo": "I"
-  },
-  {
-    "centro_salud": "Hospital Dr. Luis D. Beauperthuy",
-    "estado_geografico": "Sucre",
-    "municipio": "Montes",
+    "municipio": "Valdez",
     "tipo": "I"
   },
   {
@@ -828,22 +780,52 @@ export const HOSPITALES_SEED: HospitalSeed[] = [
     "tipo": "III"
   },
   {
+    "centro_salud": "Hospital Dr. Luis D. Beauperthuy",
+    "estado_geografico": "Sucre",
+    "municipio": "Montes",
+    "tipo": "I"
+  },
+  {
+    "centro_salud": "Hospital Dr. Pedro R. Figallo",
+    "estado_geografico": "Sucre",
+    "municipio": "Arismendi",
+    "tipo": "I"
+  },
+  {
+    "centro_salud": "Hospital Dr. Santos Anibal Dominicci",
+    "estado_geografico": "Sucre",
+    "municipio": "Bermudez",
+    "tipo": "III"
+  },
+  {
+    "centro_salud": "Hospital Freddy Mocary De Irapa",
+    "estado_geografico": "Sucre",
+    "municipio": "Mariño",
+    "tipo": "I"
+  },
+  {
+    "centro_salud": "Hospital I Yaguaraparo",
+    "estado_geografico": "Sucre",
+    "municipio": "Cajigal",
+    "tipo": "I"
+  },
+  {
     "centro_salud": "Hospital U. Antonio Patricio De Alcala",
     "estado_geografico": "Sucre",
     "municipio": "Sucre",
     "tipo": "IV"
   },
   {
-    "centro_salud": "Hospital Dr. Andres Gutierrez Solis",
+    "centro_salud": "Hospital Virgen Del Valle",
     "estado_geografico": "Sucre",
-    "municipio": "Valdez",
+    "municipio": "Cruz Salmeron Acosta",
     "tipo": "I"
   },
   {
-    "centro_salud": "Hospital Hospital Central San Cristobal",
-    "estado_geografico": "Táchira",
-    "municipio": "San Cristóbal",
-    "tipo": ""
+    "centro_salud": "Hospital Dr. Jose Vasallo Cortez",
+    "estado_geografico": "Trujillo",
+    "municipio": "Sucre",
+    "tipo": "I"
   },
   {
     "centro_salud": "Hospital HOSPITAL DR. PEDRO EMILIO CARRILLO",
@@ -858,10 +840,16 @@ export const HOSPITALES_SEED: HospitalSeed[] = [
     "tipo": "I"
   },
   {
-    "centro_salud": "Hospital Dr. Jose Vasallo Cortez",
-    "estado_geografico": "Trujillo",
-    "municipio": "Sucre",
-    "tipo": "I"
+    "centro_salud": "Hospital Hospital Central San Cristobal",
+    "estado_geografico": "Táchira",
+    "municipio": "San Cristóbal",
+    "tipo": ""
+  },
+  {
+    "centro_salud": "Hospital D R. Placido Daniel Rodriguez",
+    "estado_geografico": "Yaracuy",
+    "municipio": "San Felipe",
+    "tipo": "III"
   },
   {
     "centro_salud": "Hospital Dr. Jose Elias Landinez",
@@ -882,75 +870,9 @@ export const HOSPITALES_SEED: HospitalSeed[] = [
     "tipo": "I"
   },
   {
-    "centro_salud": "Hospital D R. Placido Daniel Rodriguez",
-    "estado_geografico": "Yaracuy",
-    "municipio": "San Felipe",
-    "tipo": "III"
-  },
-  {
-    "centro_salud": "Hospital UNIVERSITARIO DE MARACAIBO",
-    "estado_geografico": "Zulia",
-    "municipio": "Maracaibo",
-    "tipo": "IV"
-  },
-  {
-    "centro_salud": "Hospital Isla De Toas",
-    "estado_geografico": "Zulia",
-    "municipio": "Almirante Padilla",
-    "tipo": "I"
-  },
-  {
-    "centro_salud": "Hospital El Guayabo Ho Spital El Guayabo Es Av. Principal El Guayabo Al Lado Del",
-    "estado_geografico": "Zulia",
-    "municipio": "Catatumbo",
-    "tipo": "I"
-  },
-  {
-    "centro_salud": "Hospital Santa Barbara",
-    "estado_geografico": "Zulia",
-    "municipio": "Colon",
-    "tipo": "III"
-  },
-  {
-    "centro_salud": "Hospital De",
-    "estado_geografico": "Zulia",
-    "municipio": "Jesus Enrique Lossada",
-    "tipo": "militar"
-  },
-  {
-    "centro_salud": "Hospital Concepcion Dr. Jose Maria Varg As",
-    "estado_geografico": "Zulia",
-    "municipio": "Jesus Enrique Lossada",
-    "tipo": "militar"
-  },
-  {
     "centro_salud": "Hospital Casigua El Cubo",
     "estado_geografico": "Zulia",
     "municipio": "Jesus Maria Semprun",
-    "tipo": "I"
-  },
-  {
-    "centro_salud": "Hospital La Concepcion Urdaneta",
-    "estado_geografico": "Zulia",
-    "municipio": "La Cañada De Urdaneta",
-    "tipo": "I"
-  },
-  {
-    "centro_salud": "Hospital Dr. Pedro Garcia Clara (Ivss)",
-    "estado_geografico": "Zulia",
-    "municipio": "Lagunillas",
-    "tipo": "III"
-  },
-  {
-    "centro_salud": "Hospital Nuestra Señora Del Carmen",
-    "estado_geografico": "Zulia",
-    "municipio": "Machiques De Perija",
-    "tipo": "I"
-  },
-  {
-    "centro_salud": "Hospital San Rafael De Mara",
-    "estado_geografico": "Zulia",
-    "municipio": "Mara",
     "tipo": "I"
   },
   {
@@ -960,19 +882,19 @@ export const HOSPITALES_SEED: HospitalSeed[] = [
     "tipo": "III"
   },
   {
+    "centro_salud": "Hospital Concepcion Dr. Jose Maria Varg As",
+    "estado_geografico": "Zulia",
+    "municipio": "Jesus Enrique Lossada",
+    "tipo": "militar"
+  },
+  {
+    "centro_salud": "Hospital De",
+    "estado_geografico": "Zulia",
+    "municipio": "Jesus Enrique Lossada",
+    "tipo": "militar"
+  },
+  {
     "centro_salud": "Hospital De Niños",
-    "estado_geografico": "Zulia",
-    "municipio": "Maracaibo",
-    "tipo": "II"
-  },
-  {
-    "centro_salud": "Hospital Dr. Pedro Iturbe (General Del S Ur)",
-    "estado_geografico": "Zulia",
-    "municipio": "Maracaibo",
-    "tipo": "IV"
-  },
-  {
-    "centro_salud": "Hospital Ministerio Del Poder Popular Para Las Comunas",
     "estado_geografico": "Zulia",
     "municipio": "Maracaibo",
     "tipo": "II"
@@ -984,10 +906,34 @@ export const HOSPITALES_SEED: HospitalSeed[] = [
     "tipo": "III"
   },
   {
-    "centro_salud": "Hospital Nuestra Señora De Chiquinquira",
+    "centro_salud": "Hospital Dr. Hugo Parra Leon",
+    "estado_geografico": "Zulia",
+    "municipio": "Miranda",
+    "tipo": "II"
+  },
+  {
+    "centro_salud": "Hospital Dr. Pedro Garcia Clara (Ivss)",
+    "estado_geografico": "Zulia",
+    "municipio": "Lagunillas",
+    "tipo": "III"
+  },
+  {
+    "centro_salud": "Hospital Dr. Pedro Iturbe (General Del S Ur)",
     "estado_geografico": "Zulia",
     "municipio": "Maracaibo",
-    "tipo": "III"
+    "tipo": "IV"
+  },
+  {
+    "centro_salud": "Hospital Dr. Senen Castillo Reverol",
+    "estado_geografico": "Zulia",
+    "municipio": "Santa Rita",
+    "tipo": "I"
+  },
+  {
+    "centro_salud": "Hospital El Guayabo Ho Spital El Guayabo Es Av. Principal El Guayabo Al Lado Del",
+    "estado_geografico": "Zulia",
+    "municipio": "Catatumbo",
+    "tipo": "I"
   },
   {
     "centro_salud": "Hospital Francisco Eugenio Bus Tamante Urb. Cuatricentenario Barrio Segunda",
@@ -996,33 +942,21 @@ export const HOSPITALES_SEED: HospitalSeed[] = [
     "tipo": "II"
   },
   {
-    "centro_salud": "Hospital Matern. Inf. Dr. Raul Leoni (E)",
-    "estado_geografico": "Zulia",
-    "municipio": "Maracaibo",
-    "tipo": "II"
-  },
-  {
-    "centro_salud": "Hospital Dr. Hugo Parra Leon",
-    "estado_geografico": "Zulia",
-    "municipio": "Miranda",
-    "tipo": "II"
-  },
-  {
-    "centro_salud": "Hospital Sinamaica",
-    "estado_geografico": "Zulia",
-    "municipio": "Guajira",
-    "tipo": "I"
-  },
-  {
     "centro_salud": "Hospital Guajira Centro De Diagnostico Integral Paraguaipoa Centros De Diagnóstico Integra L Paraguaipoa Campo San Indigena Bolivariano Av.principal De Paraguaipoa.sector",
     "estado_geografico": "Zulia",
     "municipio": "Guajira",
     "tipo": "II"
   },
   {
-    "centro_salud": "Hospital Nuestra Señora Del Rosario",
+    "centro_salud": "Hospital Isla De Toas",
     "estado_geografico": "Zulia",
-    "municipio": "Rosario De Perija",
+    "municipio": "Almirante Padilla",
+    "tipo": "I"
+  },
+  {
+    "centro_salud": "Hospital La Concepcion Urdaneta",
+    "estado_geografico": "Zulia",
+    "municipio": "La Cañada De Urdaneta",
     "tipo": "I"
   },
   {
@@ -1032,9 +966,27 @@ export const HOSPITALES_SEED: HospitalSeed[] = [
     "tipo": "II"
   },
   {
-    "centro_salud": "Hospital Dr. Senen Castillo Reverol",
+    "centro_salud": "Hospital Matern. Inf. Dr. Raul Leoni (E)",
     "estado_geografico": "Zulia",
-    "municipio": "Santa Rita",
+    "municipio": "Maracaibo",
+    "tipo": "II"
+  },
+  {
+    "centro_salud": "Hospital Ministerio Del Poder Popular Para Las Comunas",
+    "estado_geografico": "Zulia",
+    "municipio": "Maracaibo",
+    "tipo": "II"
+  },
+  {
+    "centro_salud": "Hospital Nuestra Señora De Chiquinquira",
+    "estado_geografico": "Zulia",
+    "municipio": "Maracaibo",
+    "tipo": "III"
+  },
+  {
+    "centro_salud": "Hospital Nuestra Señora Del Rosario",
+    "estado_geografico": "Zulia",
+    "municipio": "Rosario De Perija",
     "tipo": "I"
   },
   {
@@ -1042,5 +994,29 @@ export const HOSPITALES_SEED: HospitalSeed[] = [
     "estado_geografico": "Zulia",
     "municipio": "Sucre",
     "tipo": "I"
+  },
+  {
+    "centro_salud": "Hospital San Rafael De Mara",
+    "estado_geografico": "Zulia",
+    "municipio": "Mara",
+    "tipo": "I"
+  },
+  {
+    "centro_salud": "Hospital Santa Barbara",
+    "estado_geografico": "Zulia",
+    "municipio": "Colon",
+    "tipo": "III"
+  },
+  {
+    "centro_salud": "Hospital Sinamaica",
+    "estado_geografico": "Zulia",
+    "municipio": "Guajira",
+    "tipo": "I"
+  },
+  {
+    "centro_salud": "Hospital UNIVERSITARIO DE MARACAIBO",
+    "estado_geografico": "Zulia",
+    "municipio": "Maracaibo",
+    "tipo": "IV"
   }
 ];

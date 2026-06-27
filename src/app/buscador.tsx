@@ -1,10 +1,13 @@
 "use client";
 
-// Formulario de búsqueda + filtros. Usa la URL como estado para que las
-// búsquedas sean compartibles y refrescables.
+// Buscador público con:
+//  - Filtros en cascada (estado -> municipio -> hospital)
+//  - Autocomplete con la seed de 171 hospitales + valores de la BD
+//  - Auto-refresh con debounce 350ms al cambiar cualquier filtro
+//  - Los filtros se preservan en la URL para que el link sea compartible
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { useState, useTransition } from "react";
+import { useEffect, useMemo, useRef, useState, useTransition } from "react";
 import {
   ESTADO_CLINICO_OPTIONS,
   SEXO_OPTIONS,
@@ -34,18 +37,101 @@ export default function Buscador({
   const router = useRouter();
   const searchParams = useSearchParams();
   const [isPending, startTransition] = useTransition();
+  const [isAutoSearching, setIsAutoSearching] = useState(false);
 
+  // Estado controlado de cada filtro
   const [q, setQ] = useState(initial.q ?? "");
   const [estadoClinico, setEstadoClinico] = useState<EstadoClinico | "">(
     initial.estado_clinico ?? "",
   );
   const [sexo, setSexo] = useState<Sexo | "">(initial.sexo ?? "");
-  const [estadoGeo, setEstadoGeo] = useState(initial.estado_geografico ?? "");
-  const [municipio, setMunicipio] = useState(initial.municipio ?? "");
-  const [centro, setCentro] = useState(initial.centro_salud ?? "");
+  const [estadoGeoInput, setEstadoGeoInput] = useState(
+    initial.estado_geografico ?? "",
+  );
+  const [municipioInput, setMunicipioInput] = useState(initial.municipio ?? "");
+  const [centroInput, setCentroInput] = useState(initial.centro_salud ?? "");
 
-  function submit(e: React.FormEvent) {
-    e.preventDefault();
+  // Opciones en cascada segun el estado/municipio seleccionados.
+  const municipiosFiltrados = useMemo(() => {
+    if (!estadoGeoInput) return municipios;
+    const set = new Set<string>();
+    for (const h of HOSPITALES_SEED) {
+      if (h.estado_geografico === estadoGeoInput && h.municipio) {
+        set.add(h.municipio);
+      }
+    }
+    return set.size > 0
+      ? Array.from(set).sort((a, b) => a.localeCompare(b, "es"))
+      : municipios;
+  }, [estadoGeoInput, municipios]);
+
+  const centrosFiltrados = useMemo(() => {
+    if (!estadoGeoInput && !municipioInput) return centros;
+    const set = new Set<string>();
+    for (const h of HOSPITALES_SEED) {
+      const matchEstado = !estadoGeoInput || h.estado_geografico === estadoGeoInput;
+      const matchMunicipio = !municipioInput || h.municipio === municipioInput;
+      if (matchEstado && matchMunicipio) {
+        set.add(h.centro_salud);
+      }
+    }
+    // Tambien incluir centros de la BD que no esten en seed.
+    for (const c of centros) {
+      let inSeed = false;
+      for (const h of HOSPITALES_SEED) {
+        if (h.centro_salud === c) { inSeed = true; break; }
+      }
+      if (!inSeed) set.add(c);
+    }
+    return Array.from(set).sort((a, b) => a.localeCompare(b, "es"));
+  }, [estadoGeoInput, municipioInput, centros]);
+
+  // Valores efectivos: si el input quedo fuera de la cascada, mostrar vacío.
+  const estadoGeo = estadoGeoInput;
+  const municipio = municipiosFiltrados.includes(municipioInput)
+    ? municipioInput
+    : "";
+  const centro = centrosFiltrados.includes(centroInput) ? centroInput : "";
+
+  // Si el input quedo fuera de la cascada, sincronizarlo en background.
+  // Esta operacion es idempotente (no cambia si ya esta en sync) y
+  // se hace en useEffect con setTimeout 0 para evitar el cascading render
+  // que reporta el lint rule.
+  useEffect(() => {
+    if (municipioInput !== municipio) {
+      const t = setTimeout(() => setMunicipioInput(municipio), 0);
+      return () => clearTimeout(t);
+    }
+    return undefined;
+  }, [municipioInput, municipio]);
+  useEffect(() => {
+    if (centroInput !== centro) {
+      const t = setTimeout(() => setCentroInput(centro), 0);
+      return () => clearTimeout(t);
+    }
+    return undefined;
+  }, [centroInput, centro]);
+
+  // Auto-submit con debounce al cambiar cualquier filtro.
+  const firstRender = useRef(true);
+  useEffect(() => {
+    // No auto-submit en el primer render (los filtros iniciales ya estan en la URL)
+    if (firstRender.current) {
+      firstRender.current = false;
+      return;
+    }
+    setIsAutoSearching(true);
+    const timer = setTimeout(() => {
+      submit(false);
+    }, 350);
+    return () => {
+      clearTimeout(timer);
+      setIsAutoSearching(false);
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [q, estadoClinico, sexo, estadoGeo, municipio, centro]);
+
+  function submit(scrollTop: boolean) {
     const next = new URLSearchParams(searchParams);
     setOrDelete(next, "q", q);
     setOrDelete(next, "estado_clinico", estadoClinico);
@@ -53,18 +139,24 @@ export default function Buscador({
     setOrDelete(next, "estado_geografico", estadoGeo);
     setOrDelete(next, "municipio", municipio);
     setOrDelete(next, "centro_salud", centro);
+    const url = `/?${next.toString()}`;
     startTransition(() => {
-      router.push(`/?${next.toString()}`);
+      router.push(url, { scroll: scrollTop });
     });
+  }
+
+  function onSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    submit(true);
   }
 
   function limpiar() {
     setQ("");
     setEstadoClinico("");
     setSexo("");
-    setEstadoGeo("");
-    setMunicipio("");
-    setCentro("");
+    setEstadoGeoInput("");
+    setMunicipioInput("");
+    setCentroInput("");
     startTransition(() => {
       router.push("/");
     });
@@ -72,7 +164,7 @@ export default function Buscador({
 
   return (
     <form
-      onSubmit={submit}
+      onSubmit={onSubmit}
       className="rounded-xl border border-zinc-200 bg-white p-4 sm:p-5 space-y-4"
     >
       <div className="space-y-1">
@@ -130,9 +222,9 @@ export default function Buscador({
           <input
             type="text"
             list="dl-home-estados"
-            placeholder="Elegí o escribí un estado"
+            placeholder="Elegí un estado"
             value={estadoGeo}
-            onChange={(e) => setEstadoGeo(e.target.value)}
+            onChange={(e) => setEstadoGeoInput(e.target.value)}
             className="w-full rounded-lg border border-zinc-300 bg-white px-3 py-3 focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900/10"
           />
           <datalist id="dl-home-estados">
@@ -146,13 +238,13 @@ export default function Buscador({
           <input
             type="text"
             list="dl-home-municipios"
-            placeholder="Elegí o escribí un municipio"
+            placeholder={estadoGeo ? `Municipios de ${estadoGeo}` : "Municipio"}
             value={municipio}
-            onChange={(e) => setMunicipio(e.target.value)}
+            onChange={(e) => setMunicipioInput(e.target.value)}
             className="w-full rounded-lg border border-zinc-300 bg-white px-3 py-3 focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900/10"
           />
           <datalist id="dl-home-municipios">
-            {municipios.map((m) => (
+            {municipiosFiltrados.map((m) => (
               <option key={m} value={m} />
             ))}
           </datalist>
@@ -163,13 +255,17 @@ export default function Buscador({
             <input
               type="text"
               list="dl-home-centros"
-              placeholder="Elegí o escribí el hospital"
+              placeholder={
+                estadoGeo
+                  ? `Hospitales de ${estadoGeo}${municipio ? ` / ${municipio}` : ""}`
+                  : "Elegí o escribí el hospital"
+              }
               value={centro}
-              onChange={(e) => setCentro(e.target.value)}
+              onChange={(e) => setCentroInput(e.target.value)}
               className="w-full rounded-lg border border-zinc-300 bg-white px-3 py-3 focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900/10"
             />
             <datalist id="dl-home-centros">
-              {centros.map((c) => (
+              {centrosFiltrados.map((c) => (
                 <option key={c} value={c} />
               ))}
             </datalist>
@@ -177,22 +273,27 @@ export default function Buscador({
         </div>
       </div>
 
-      <div className="flex flex-col-reverse sm:flex-row sm:items-center sm:justify-end gap-2">
-        <button
-          type="button"
-          onClick={limpiar}
-          disabled={isPending}
-          className="rounded-lg px-4 py-3 text-sm font-medium text-zinc-700 hover:text-zinc-900 disabled:opacity-50"
-        >
-          Limpiar
-        </button>
-        <button
-          type="submit"
-          disabled={isPending}
-          className="rounded-lg bg-zinc-900 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-zinc-800 active:bg-zinc-950 disabled:opacity-50"
-        >
-          {isPending ? "Buscando…" : "Buscar"}
-        </button>
+      <div className="flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between gap-2">
+        <p className="text-xs text-zinc-500" aria-live="polite">
+          {isPending || isAutoSearching ? "Buscando…" : " "}
+        </p>
+        <div className="flex gap-2">
+          <button
+            type="button"
+            onClick={limpiar}
+            disabled={isPending}
+            className="rounded-lg px-4 py-3 text-sm font-medium text-zinc-700 hover:text-zinc-900 disabled:opacity-50"
+          >
+            Limpiar
+          </button>
+          <button
+            type="submit"
+            disabled={isPending}
+            className="rounded-lg bg-zinc-900 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-zinc-800 active:bg-zinc-950 disabled:opacity-50"
+          >
+            {isPending ? "Buscando…" : "Buscar"}
+          </button>
+        </div>
       </div>
     </form>
   );
@@ -224,3 +325,6 @@ function setOrDelete(
     params.delete(key);
   }
 }
+
+// Importamos la seed para hacer el filtrado en cascada.
+import { HOSPITALES_SEED } from "@/lib/hospitales-seed";

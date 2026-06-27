@@ -1,172 +1,168 @@
 centro_salud,estado_geografico,municipio,tipo
 Hospital Dr. Jose Gregorio Hernandez,Amazonas,Autonomo Atures,II
-Hospital Dr. Jesus Eduardo Angulo Rivas,Anzoátegui,Anaco,I
-Hospital Dr. Rafael Rangel,Anzoátegui,Aragua,I
 Hospital Antonio Jose Rondon Lugo,Anzoátegui,Manuel Ezequiel Bruzual,I
-Hospital Pedro Gomez Rolingson,Anzoátegui,Piritu,I
+Hospital Dr. Jesus Eduardo Angulo Rivas,Anzoátegui,Anaco,I
 Hospital Dr. Luis Razetti,Anzoátegui,Simon Bolivar,IV
+Hospital Dr. Rafael Rangel,Anzoátegui,Aragua,I
+Hospital Pedro Gomez Rolingson,Anzoátegui,Piritu,I
 Hospital Dr. Francisco Antonio Risqu Ez,Apure,Achaguas,I
+Hospital Dr. Pablo Acosta Ortiz,Apure,San Fernando,III
+Hospital Jose Antonio Paez,Apure,Paez,II
 Hospital Lorenza Castillo,Apure,Pedro Camejo,I
 Hospital Romulo Gallegos,Apure,Romulo Gallegos Urbana,I
-Hospital Jose Antonio Paez,Apure,Paez,II
-Hospital Dr. Pablo Acosta Ortiz,Apure,San Fernando,III
-Hospital Nuestra Señora De La Caridad,Aragua,San Sebastian,I
 Hospital . Jose Rangel (Corposalud) Hospit Al Villa De Cura Cura Av. Bolivar,Aragua,Zamora,II
 Hospital Hospital Central de Maracay,Aragua,Girardot,
+Hospital Nuestra Señora De La Caridad,Aragua,San Sebastian,I
+Hospital Dr. Francisco Lazo Marti,Barinas,Edraza,I
 Hospital Dr. Jesus Arnoldo Camacho Peña,Barinas,Alberto Arvelo Torrealba,I
 Hospital Dr. Jose Leon Tapia,Barinas,Antonio Jose De Sucre,I
-Hospital Luis Razeti,Barinas,Barinas,III
-Hospital Primero De D,Barinas,Barinas,II
-Hospital Nuestra Señora Del Car Men,Barinas,Olivar,I
-Hospital Dr. Francisco Lazo Marti,Barinas,Edraza,I
 Hospital Dr. Manuel Heredia Salas,Barinas,Ojas,I
+Hospital Luis Razeti,Barinas,Barinas,III
+Hospital Nuestra Señora Del Car Men,Barinas,Olivar,I
+Hospital Primero De D,Barinas,Barinas,II
+Hospital 25 De Marzo I Bolívar,Bolívar,nd,I
 Hospital COMPLEJO HOSPITALARIO UNIVERSITARIO RUIZ Y PÁEZ,Bolívar,Heres,IV
 Hospital Dr. Americo Babo,Bolívar,nd,I
-Hospital Dr. Raul Leoni O. (Ivss),Bolívar,Caroni,IV
-Hospital 25 De Marzo I Bolívar,Bolívar,nd,I
-Hospital Uyapar (Ivss),Bolívar,Caroni,III
 Hospital Dr. Arnoldo Gabaldon,Bolívar,Cedeño,I
-Hospital Rosario Vera Zurita,Bolívar,nd,I
-Hospital Militar Dr. Cesar Ares Bello D Estriban,Bolívar,nd,militar
-Hospital Hector Nouel Joubert (Ivss),Bolívar,Heres,III
+Hospital Dr. Raul Leoni O. (Ivss),Bolívar,Caroni,IV
 Hospital Guri Ormesa,Bolívar,Bolivariano Angostura,I
+Hospital Hector Nouel Joubert (Ivss),Bolívar,Heres,III
+Hospital Militar Dr. Cesar Ares Bello D Estriban,Bolívar,nd,militar
+Hospital Rosario Vera Zurita,Bolívar,nd,I
+Hospital Uyapar (Ivss),Bolívar,Caroni,III
 Hospital Bejuma,Carabobo,Bejuma,II
-Hospital Dr. Miguel Malpica,Carabobo,Guacara,I
-Hospital Vía,Carabobo,Naguanagua,IV
 Hospital Dr. Francisco Molina Sierra (Iv Ss),Carabobo,Puerto Cabello,III
+Hospital Dr. Miguel Malpica,Carabobo,Guacara,I
 Hospital Enrique Tejera,Carabobo,Valencia,IV
 Hospital La Mon Umental La Monumental Valencia,Carabobo,Valencia,II
-Hospital Joaquina De Rotondaro,Cojedes,Tinaquillo,II
+Hospital Vía,Carabobo,Naguanagua,IV
+Hospital Dr. Egor Nucette H. De San Car Los,Cojedes,Ezequiel Zamora,II
 Hospital Dr. Juan Aponte - El Baul,Cojedes,Girardot,I
 Hospital Entrada A La Ciudad De Las Vegas Av Bolívar,Cojedes,Romulo Gallegos,I
-Hospital Dr. Egor Nucette H. De San Car Los,Cojedes,Ezequiel Zamora,II
-Hospital Dr. Luis Gomez Zabaleta,Delta Amacuro,Antonio Diaz,I
+Hospital Joaquina De Rotondaro,Cojedes,Tinaquillo,II
 Hospital Complejo Hospitalario Dr. Luis Razetti,Delta Amacuro,Tucupita,
-Hospital Ricardo Baquero Gonzalez,Distrito Capital,Bolivariano Libertador,II
-Hospital Dr. Jose Maria Vargas,Distrito Capital,Bolivariano Libertador,IV
+Hospital Dr. Luis Gomez Zabaleta,Delta Amacuro,Antonio Diaz,I
+Hospital Av. Anauco Av. Anauco,Distrito Capital,Bolivariano Libertador,III
 Hospital Av. San Martin Av. San Martín,Distrito Capital,Bolivariano Libertador,IV
+Hospital Cardiologico Infantil,Distrito Capital,Bolivariano Libertador,II
+Hospital Dr. Carlos Arvelo (Hosp. Militar ),Distrito Capital,Bolivariano Libertador,militar
+Hospital Dr. Jose Maria Vargas,Distrito Capital,Bolivariano Libertador,IV
+Hospital Hospital Perez Carreño,Distrito Capital,Distrito Capital,IV
 Hospital J.m. De Los Rios,Distrito Capital,Bolivariano Libertador,IV
+Hospital Jesus Yerena,Distrito Capital,Bolivariano Libertador,III
 Hospital Jose Ignacio Baldo (Algodonal),Distrito Capital,Bolivariano Libertador,militar
 Hospital Materno Infantil Pastor Oropeza De Caricuao,Distrito Capital,Bolivariano Libertador,III
-Hospital Jesus Yerena,Distrito Capital,Bolivariano Libertador,III
-Hospital Cardiologico Infantil,Distrito Capital,Bolivariano Libertador,II
-Hospital Av. Anauco Av. Anauco,Distrito Capital,Bolivariano Libertador,III
-Hospital Francisco Antonio Risquez,Distrito Capital,Bolivariano Libertador,II
-Hospital Dr. Carlos Arvelo (Hosp. Militar ),Distrito Capital,Bolivariano Libertador,militar
-Hospital Hospital Perez Carreño,Distrito Capital,Distrito Capital,IV
+Hospital Ricardo Baquero Gonzalez,Distrito Capital,Bolivariano Libertador,II
+Hospital Carlos Diez Del Ciervo Ho Spital Ju Dibana Prolongacion Av. El Centro,Falcón,Los Taques,I
+Hospital Dr. Egmidio Rios,Falcón,Federacion,I
+Hospital Dr. Enrique Zavala,Falcón,Dabajuro,I
+Hospital Dr. Jose Maria Espinoza,Falcón,Miranda,I
+Hospital Dr. Juvenal Bracho El Cardon (Ivss) Comunidad Cardon Sector Maraven,Falcón,Carirubana,
+Hospital Dr. Romulo Farias Ho Spital Me Ne De Mauroa Calle Democracia Diagonal Comando,Falcón,Mauroa,I
+Hospital Dr.alfredo Van Grieken,Falcón,Miranda,IV
+Hospital Francisco Bustamante,Falcón,Zamora,I
+Hospital Lino Arevalo,Falcón,Silva,II
+Hospital Ped. Jesus Garcia Coello (Ivss) Ho Spital Ju Dibana Sector Judibana Judibana,Falcón,Los Taques,II
+Hospital Rafael Calle Sierra (Ivss) Ho Spital Punta Cardon Punto Fijo,Falcón,Carirubana,III
+Hospital Rafael Gallardo (Ivss),Falcón,Miranda,I
 Hospital San Luis,Falcón,Bolivar,I
 Hospital Simon Bolivar,Falcón,Bolivar,I
 Hospital Tn. Pedro M Chirinos (Defensa),Falcón,Carirubana,III
-Hospital Dr. Juvenal Bracho El Cardon (Ivss) Comunidad Cardon Sector Maraven,Falcón,Carirubana,
-Hospital Rafael Calle Sierra (Ivss) Ho Spital Punta Cardon Punto Fijo,Falcón,Carirubana,III
-Hospital Dr. Enrique Zavala,Falcón,Dabajuro,I
-Hospital Dr. Egmidio Rios,Falcón,Federacion,I
-Hospital Carlos Diez Del Ciervo Ho Spital Ju Dibana Prolongacion Av. El Centro,Falcón,Los Taques,I
-Hospital Ped. Jesus Garcia Coello (Ivss) Ho Spital Ju Dibana Sector Judibana Judibana,Falcón,Los Taques,II
-Hospital Dr. Romulo Farias Ho Spital Me Ne De Mauroa Calle Democracia Diagonal Comando,Falcón,Mauroa,I
-Hospital Dr.alfredo Van Grieken,Falcón,Miranda,IV
-Hospital Rafael Gallardo (Ivss),Falcón,Miranda,I
-Hospital Dr. Jose Maria Espinoza,Falcón,Miranda,I
-Hospital Lino Arevalo,Falcón,Silva,II
-Hospital Francisco Bustamante,Falcón,Zamora,I
-Hospital HOSPITAL GENERAL DR. ISRAEL RANUÁREZ BALZA,Guárico,Juan German Roscio,II
-Hospital Dr. Rafael Zamora Arevalo,Guárico,Leonardo Infante,III
-Hospital Dr. Pedro Del Corral,Guárico,Jose Felix Ribas,I
-Hospital D R. Francisco Troconis,Guárico,Pedro Zaraza,I
 Hospital D R. Francisco Antonio Risquez,Guárico,Julian Mellado,I
+Hospital D R. Francisco Troconis,Guárico,Pedro Zaraza,I
 Hospital D R. Jose Francisco Urdaneta D,Guárico,Francisco De Miranda,II
+Hospital Dr. Pedro Del Corral,Guárico,Jose Felix Ribas,I
+Hospital Dr. Rafael Zamora Arevalo,Guárico,Leonardo Infante,III
+Hospital HOSPITAL GENERAL DR. ISRAEL RANUÁREZ BALZA,Guárico,Juan German Roscio,II
 Hospital Dr Jose Maria Vargas (Ivss),La Guaira,Vargas,III
-Hospital HOSPITAL DR. PASTOR OROPEZA R.,Lara,Iribarren,IV
-Hospital HOSPITAL CENTRAL UNIVERSITARIO DR. ANTONIO MARÍA PINEDA,Lara,Iribarren,IV
-Hospital Dr. Jose Maria Bengoa,Lara,Andres Eloy Blanco,I
-Hospital Rafael Antonio Gil,Lara,Crespo,I
-Hospital Esp. Ped. Agustin Zubillaga,Lara,Iribarren,III
 Hospital Central Univ. Dr. Antonio Maria Pi Neda Ubicado En La Zona Centro Norte. En Av.,Lara,Iribarren,
-Hospital Dr. Juan Daza Pereira (Ivss),Lara,Iribarren,I
-Hospital La Carucieña Hospita L Urb. La Carucieña Sector I - Av. 4 Esquina Calle 8 Sector Ii Telefono,Lara,Iribarren,I
-Hospital Dr. Pastor Oropeza (Ivss) Hospita L Andres E Loy Blanco Av. L Av. La Salle Entre Av. Florencio Jimenez Y,Lara,Iribarren,III
+Hospital Dr. Armando Velasquez Mago,Lara,Simon Planas,I
 Hospital Dr. Baudilio Lara,Lara,Jimenez,I
 Hospital Dr. Egidio Montesino Ho Spital El Tocuyo -66 El Tocuyo,Lara,Moran,I
-Hospital Dr. Armando Velasquez Mago,Lara,Simon Planas,I
-Hospital Dr. Pastor Oropeza,Lara,Torres,II
+Hospital Dr. Jose Maria Bengoa,Lara,Andres Eloy Blanco,I
+Hospital Dr. Juan Daza Pereira (Ivss),Lara,Iribarren,I
 Hospital Dr. Luis Ignacio Montero Hospit Al Siquis Ique 9 Siquisique,Lara,Urdaneta,I
-Hospital El Vigia,Mérida,Alberto Adriani,II
-Hospital Tulio Febres Cordero (La Azulita),Mérida,Andres Bello,I
-Hospital Puerto Rico Sector Puerto Rico Mérida,Mérida,Antonio Pinto Salinas,I
-Hospital Canagua Ho Spital Canagua Bolivar Farmacia Canagua Media Cuadra Plaza,Mérida,Arzobispo Chacon,I
-Hospital Santo Domingo,Mérida,Cardenal Quintero,I
-Hospital Rafael Rangel,Mérida,Miranda,I
-Hospital Francisco V. Gutierrez (Mucuchies),Mérida,Rangel,I
-Hospital Bailadores,Mérida,Rivas Davila,I
-Hospital Lagunillas,Mérida,Sucre,I
-Hospital San Jose De Tovar Ho Spital San Jose Carrera 4 Ta Av. Tachira El Llano Tovar Mérida Táchira,Mérida,Tovar,II
-Hospital Universitario De Los Andes,Mérida,Libertador,IV
-Hospital Dr. Hermogenes Rivero Saldivia,Miranda,Acevedo,I
-Hospital Higuerote,Miranda,Brion,I
-Hospital Ti Po I Carriz Al Capital Cementer Maternidad De Bajo Riesgo Y Atencion Calle Principal De Carrrizal Diagonal Al,Miranda,Carrizal,I
-Hospital Dr. V Ictorino Santaella,Miranda,Guaicaipuro,IV
-Hospital Santa Teresita De Jesus,Miranda,Independencia,I
+Hospital Dr. Pastor Oropeza,Lara,Torres,II
+Hospital Dr. Pastor Oropeza (Ivss) Hospita L Andres E Loy Blanco Av. L Av. La Salle Entre Av. Florencio Jimenez Y,Lara,Iribarren,III
+Hospital Esp. Ped. Agustin Zubillaga,Lara,Iribarren,III
+Hospital HOSPITAL CENTRAL UNIVERSITARIO DR. ANTONIO MARÍA PINEDA,Lara,Iribarren,IV
+Hospital HOSPITAL DR. PASTOR OROPEZA R.,Lara,Iribarren,IV
+Hospital La Carucieña Hospita L Urb. La Carucieña Sector I - Av. 4 Esquina Calle 8 Sector Ii Telefono,Lara,Iribarren,I
+Hospital Rafael Antonio Gil,Lara,Crespo,I
+Hospital Domin Go Luciani (Ivss),Miranda,Cre,IV
 Hospital Dr. E Rnesto Regener,Miranda,Paez,I
-Hospital Dr. L Uis Razetti,Miranda,Paz Castillo,I
+Hospital Dr. Hermogenes Rivero Saldivia,Miranda,Acevedo,I
+Hospital Dr. M Iguel Osio,Miranda,Urdaneta,II
+Hospital Dr. V Ictorino Santaella,Miranda,Guaicaipuro,IV
+Hospital Higuerote,Miranda,Brion,I
 Hospital Jesus Leon Rivas,Miranda,Dro Gual,I
 Hospital Luis Salazar Dominguez (Ivss),Miranda,Aza,II
 Hospital Perez De Leon Ii,Miranda,Cre,II
+Hospital Santa Teresita De Jesus,Miranda,Independencia,I
 Hospital T Ipo Ii La Urbina Calle,Miranda,Cre,II
-Hospital Domin Go Luciani (Ivss),Miranda,Cre,IV
-Hospital Dr. M Iguel Osio,Miranda,Urdaneta,II
+Hospital Ti Po I Carriz Al Capital Cementer Maternidad De Bajo Riesgo Y Atencion Calle Principal De Carrrizal Diagonal Al,Miranda,Carrizal,I
 Hospital HOSPITAL UNIVERSITARIO DR. MANUEL NÚÑEZ TOVAR,Monagas,Maturín,IV
-Hospital Dr. David Espinoza Rojas,Nueva Esparta,Arismendi,I
-Hospital Dr. Agustin Rafael Hernandez,Nueva Esparta,Marcano,I
+Hospital Bailadores,Mérida,Rivas Davila,I
+Hospital Canagua Ho Spital Canagua Bolivar Farmacia Canagua Media Cuadra Plaza,Mérida,Arzobispo Chacon,I
+Hospital El Vigia,Mérida,Alberto Adriani,II
+Hospital Francisco V. Gutierrez (Mucuchies),Mérida,Rangel,I
+Hospital Lagunillas,Mérida,Sucre,I
+Hospital Puerto Rico Sector Puerto Rico Mérida,Mérida,Antonio Pinto Salinas,I
+Hospital San Jose De Tovar Ho Spital San Jose Carrera 4 Ta Av. Tachira El Llano Tovar Mérida Táchira,Mérida,Tovar,II
+Hospital Santo Domingo,Mérida,Cardenal Quintero,I
+Hospital Tulio Febres Cordero (La Azulita),Mérida,Andres Bello,I
+Hospital Universitario De Los Andes,Mérida,Libertador,IV
 Hospital Central Dr. Luis Ortega (Ivss),Nueva Esparta,Mariño,III
+Hospital Dr. Agustin Rafael Hernandez,Nueva Esparta,Marcano,I
 Hospital Dr. Armando Mata Sanchez,Nueva Esparta,Tubores,I
+Hospital Dr. David Espinoza Rojas,Nueva Esparta,Arismendi,I
+Hospital Capital Guanare Ipasme Guanare Unidades Casco Central Guanare Av. Limonero (Al Lado Del Hospital) Con,Portuguesa,Guanare,II
 Hospital De Agua Blanca,Portuguesa,Agua Blanca,I
+Hospital Dr. Armando Delgado Monte Ro,Portuguesa,Turen,I
 Hospital Dr. Jesus M. Casal Ramos,Portuguesa,Araure,III
 Hospital Dr. Oswaldo Barrios,Portuguesa,Esteller,I
-Hospital Capital Guanare Ipasme Guanare Unidades Casco Central Guanare Av. Limonero (Al Lado Del Hospital) Con,Portuguesa,Guanare,II
-Hospital Universitario Dr. Miguel O Raa,Portuguesa,Guanare,III
 Hospital Dr. Raul Humberto De P Ascuali,Portuguesa,Ospino,I
-Hospital Dr. Armando Delgado Monte Ro,Portuguesa,Turen,I
-Hospital Dr. Pedro R. Figallo,Sucre,Arismendi,I
-Hospital Dr. Santos Anibal Dominicci,Sucre,Bermudez,III
-Hospital I Yaguaraparo,Sucre,Cajigal,I
-Hospital Virgen Del Valle,Sucre,Cruz Salmeron Acosta,I
-Hospital Freddy Mocary De Irapa,Sucre,Mariño,I
-Hospital Dr. Luis D. Beauperthuy,Sucre,Montes,I
+Hospital Universitario Dr. Miguel O Raa,Portuguesa,Guanare,III
+Hospital Dr. Andres Gutierrez Solis,Sucre,Valdez,I
 Hospital Dr. Diego Carbonell Hospit Al Comuni Dad Cariaco Cariaco,Sucre,Ribero,I
 Hospital Dr. Julio Rodriguez Hospit Al Parroq Uia Altagracia Altagracia,Sucre,Sucre,III
+Hospital Dr. Luis D. Beauperthuy,Sucre,Montes,I
+Hospital Dr. Pedro R. Figallo,Sucre,Arismendi,I
+Hospital Dr. Santos Anibal Dominicci,Sucre,Bermudez,III
+Hospital Freddy Mocary De Irapa,Sucre,Mariño,I
+Hospital I Yaguaraparo,Sucre,Cajigal,I
 Hospital U. Antonio Patricio De Alcala,Sucre,Sucre,IV
-Hospital Dr. Andres Gutierrez Solis,Sucre,Valdez,I
-Hospital Hospital Central San Cristobal,Táchira,San Cristóbal,
+Hospital Virgen Del Valle,Sucre,Cruz Salmeron Acosta,I
+Hospital Dr. Jose Vasallo Cortez,Trujillo,Sucre,I
 Hospital HOSPITAL DR. PEDRO EMILIO CARRILLO,Trujillo,Valera,III
 Hospital Maria Arcelis Alvarez,Trujillo,Rafael Rangel,I
-Hospital Dr. Jose Vasallo Cortez,Trujillo,Sucre,I
+Hospital Hospital Central San Cristobal,Táchira,San Cristóbal,
+Hospital D R. Placido Daniel Rodriguez,Yaracuy,San Felipe,III
 Hospital Dr. Jose Elias Landinez,Yaracuy,Bolivar,I
 Hospital Dr. Tiburcio Garrido,Yaracuy,Bruzual,I
 Hospital P Adre Oliveros Hospita L Nirgua (Capital),Yaracuy,Nirgua,I
-Hospital D R. Placido Daniel Rodriguez,Yaracuy,San Felipe,III
-Hospital UNIVERSITARIO DE MARACAIBO,Zulia,Maracaibo,IV
-Hospital Isla De Toas,Zulia,Almirante Padilla,I
-Hospital El Guayabo Ho Spital El Guayabo Es Av. Principal El Guayabo Al Lado Del,Zulia,Catatumbo,I
-Hospital Santa Barbara,Zulia,Colon,III
-Hospital De,Zulia,Jesus Enrique Lossada,militar
-Hospital Concepcion Dr. Jose Maria Varg As,Zulia,Jesus Enrique Lossada,militar
 Hospital Casigua El Cubo,Zulia,Jesus Maria Semprun,I
-Hospital La Concepcion Urdaneta,Zulia,La Cañada De Urdaneta,I
-Hospital Dr. Pedro Garcia Clara (Ivss),Zulia,Lagunillas,III
-Hospital Nuestra Señora Del Carmen,Zulia,Machiques De Perija,I
-Hospital San Rafael De Mara,Zulia,Mara,I
 Hospital Central Dr. Urquinaona,Zulia,Maracaibo,III
+Hospital Concepcion Dr. Jose Maria Varg As,Zulia,Jesus Enrique Lossada,militar
+Hospital De,Zulia,Jesus Enrique Lossada,militar
 Hospital De Niños,Zulia,Maracaibo,II
-Hospital Dr. Pedro Iturbe (General Del S Ur),Zulia,Maracaibo,IV
-Hospital Ministerio Del Poder Popular Para Las Comunas,Zulia,Maracaibo,II
 Hospital Dr. Adolfo Pons (Ivss),Zulia,Maracaibo,III
-Hospital Nuestra Señora De Chiquinquira,Zulia,Maracaibo,III
-Hospital Francisco Eugenio Bus Tamante Urb. Cuatricentenario Barrio Segunda,Zulia,Maracaibo,II
-Hospital Matern. Inf. Dr. Raul Leoni (E),Zulia,Maracaibo,II
 Hospital Dr. Hugo Parra Leon,Zulia,Miranda,II
-Hospital Sinamaica,Zulia,Guajira,I
-Hospital Guajira Centro De Diagnostico Integral Paraguaipoa Centros De Diagnóstico Integra L Paraguaipoa Campo San Indigena Bolivariano Av.principal De Paraguaipoa.sector,Zulia,Guajira,II
-Hospital Nuestra Señora Del Rosario,Zulia,Rosario De Perija,I
-Hospital Matern. Inf. Dr. Rafael Belloso (E ),Zulia,San Francisco,II
+Hospital Dr. Pedro Garcia Clara (Ivss),Zulia,Lagunillas,III
+Hospital Dr. Pedro Iturbe (General Del S Ur),Zulia,Maracaibo,IV
 Hospital Dr. Senen Castillo Reverol,Zulia,Santa Rita,I
+Hospital El Guayabo Ho Spital El Guayabo Es Av. Principal El Guayabo Al Lado Del,Zulia,Catatumbo,I
+Hospital Francisco Eugenio Bus Tamante Urb. Cuatricentenario Barrio Segunda,Zulia,Maracaibo,II
+Hospital Guajira Centro De Diagnostico Integral Paraguaipoa Centros De Diagnóstico Integra L Paraguaipoa Campo San Indigena Bolivariano Av.principal De Paraguaipoa.sector,Zulia,Guajira,II
+Hospital Isla De Toas,Zulia,Almirante Padilla,I
+Hospital La Concepcion Urdaneta,Zulia,La Cañada De Urdaneta,I
+Hospital Matern. Inf. Dr. Rafael Belloso (E ),Zulia,San Francisco,II
+Hospital Matern. Inf. Dr. Raul Leoni (E),Zulia,Maracaibo,II
+Hospital Ministerio Del Poder Popular Para Las Comunas,Zulia,Maracaibo,II
+Hospital Nuestra Señora De Chiquinquira,Zulia,Maracaibo,III
+Hospital Nuestra Señora Del Rosario,Zulia,Rosario De Perija,I
 Hospital Parroquia Romulo Gallego,Zulia,Sucre,I
+Hospital San Rafael De Mara,Zulia,Mara,I
+Hospital Santa Barbara,Zulia,Colon,III
+Hospital Sinamaica,Zulia,Guajira,I
+Hospital UNIVERSITARIO DE MARACAIBO,Zulia,Maracaibo,IV
