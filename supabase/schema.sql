@@ -111,6 +111,44 @@ create policy "update_autenticado_solicitudes" on solicitudes_baja
   using (auth.role() = 'authenticated');
 
 -- =====================================================================
+-- Centros de salud — catálogo de hospitales / clínicas / CDI de Venezuela.
+-- El seed en /supabase/seed-centros.sql carga la lista oficial con 241
+-- centros de 24 estados. Editable por SQL si necesitas agregar uno.
+-- =====================================================================
+create table if not exists centros_salud (
+  id uuid primary key default gen_random_uuid(),
+  nombre text not null,
+  estado text not null,
+  municipio text,
+  red text not null check (red in ('MPPS', 'IVSS', 'BARRIO ADENTRO', 'MILITAR', 'PRIVADO')),
+  tipo text,
+  fuente text default 'Lista oficial 2026',
+  created_at timestamptz default now()
+);
+
+-- Indice unico por (nombre normalizado, estado) para upserts idempotentes.
+create unique index if not exists idx_centros_nombre_estado
+  on centros_salud (lower(nombre), lower(estado));
+
+create index if not exists idx_centros_estado on centros_salud (estado);
+create index if not exists idx_centros_municipio on centros_salud (municipio);
+
+-- Lectura publica (anon). La app usa esta tabla para el autocomplete.
+alter table centros_salud enable row level security;
+
+drop policy if exists "lectura_publica_centros" on centros_salud;
+create policy "lectura_publica_centros" on centros_salud
+  for select using (true);
+
+-- Escritura solo para autenticados (admin puede agregar via SQL o
+-- proximamente via UI).
+drop policy if exists "admin_write_centros" on centros_salud;
+create policy "admin_write_centros" on centros_salud
+  for all
+  using (auth.role() = 'authenticated')
+  with check (auth.role() = 'authenticated');
+
+-- =====================================================================
 -- Verificación rápida tras crear las políticas:
 -- 1. Con la anon key, un SELECT no debe devolver filas con caso_cerrado = true.
 -- 2. Con la anon key, INSERT y UPDATE deben fallar.

@@ -31,7 +31,15 @@ Proyecto **open source** impulsado por un medio de comunicación venezolano. Las
    npm install
    ```
 
-2. **Crear proyecto en Supabase** (https://supabase.com) y, en el SQL Editor, ejecutar el contenido de [`supabase/schema.sql`](./supabase/schema.sql). Crea la tabla `pacientes`, los índices, el RLS, los triggers y la tabla `solicitudes_baja` para el botón "Marcar como encontrado" del público.
+2. **Crear proyecto en Supabase** (https://supabase.com) y, en el SQL Editor, ejecutar **en este orden**:
+   - [`supabase/schema.sql`](./supabase/schema.sql) — crea las tablas `pacientes`, `solicitudes_baja`, `centros_salud`, índices, RLS y triggers.
+   - [`supabase/seed-centros.sql`](./supabase/seed-centros.sql) — carga 241 centros de salud oficiales (24 estados) como catálogo para el autocomplete.
+   - Al terminar, refrescá el caché de PostgREST (esencial, sino PostgREST no ve las tablas nuevas):
+     ```sql
+     NOTIFY pgrst, 'reload schema';
+     ```
+
+3. **Crear el bucket de Storage** llamado `fotos-pacientes` (público).
 
 3. **Crear el bucket de Storage** llamado `fotos-pacientes` (público, para que las fotos se puedan mostrar a visitantes anónimos).
 
