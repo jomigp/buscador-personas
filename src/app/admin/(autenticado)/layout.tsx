@@ -46,6 +46,12 @@ export default async function AdminLayout({
           >
             Importar CSV
           </Link>
+          <Link
+            href="/admin/importar-foto"
+            className="text-sm font-medium text-zinc-700 hover:text-zinc-900 underline underline-offset-2"
+          >
+            Leer de foto
+          </Link>
           <form action={signOutAction}>
             <button
               type="submit"

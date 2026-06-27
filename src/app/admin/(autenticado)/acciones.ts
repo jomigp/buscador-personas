@@ -255,3 +255,62 @@ export async function importarCSVAction(
   revalidatePath("/");
   return { ok: true, inserted };
 }
+
+// ---------- Importar pacientes desde fotos (Fase 2) -------------------
+
+export type FotoRowInsert = {
+  nombre_completo: string;
+  estado_clinico: EstadoClinico;
+  edad_aprox?: number | null;
+  sexo?: Sexo | null;
+  descripcion_fisica?: string | null;
+  centro_salud: string;
+  estado_geografico?: string | null;
+  municipio?: string | null;
+};
+
+export async function importarFotoOCRAction(
+  rows: FotoRowInsert[],
+): Promise<{ ok: boolean; inserted?: number; error?: string }> {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user) return { ok: false, error: "Sesión inválida." };
+  if (!Array.isArray(rows) || rows.length === 0) {
+    return { ok: false, error: "No hay filas para importar." };
+  }
+
+  const sanitized = rows.map((r) => ({
+    nombre_completo: r.nombre_completo,
+    estado_clinico: r.estado_clinico,
+    edad_aprox: r.edad_aprox ?? null,
+    sexo: r.sexo ?? null,
+    descripcion_fisica: r.descripcion_fisica ?? null,
+    centro_salud: r.centro_salud,
+    estado_geografico: r.estado_geografico ?? null,
+    municipio: r.municipio ?? null,
+    registrado_por: user.email ?? "desconocido",
+    verificado: false, // SIEMPRE false al entrar por OCR — el admin confirma después
+    origen: "foto_ocr" as const,
+  }));
+
+  const BATCH = 100;
+  let inserted = 0;
+  for (let i = 0; i < sanitized.length; i += BATCH) {
+    const chunk = sanitized.slice(i, i + BATCH);
+    const { error } = await supabase.from("pacientes").insert(chunk);
+    if (error) {
+      return {
+        ok: false,
+        inserted,
+        error: `Fallo en lote ${Math.floor(i / BATCH) + 1}: ${error.message}`,
+      };
+    }
+    inserted += chunk.length;
+  }
+
+  revalidatePath("/admin");
+  revalidatePath("/");
+  return { ok: true, inserted };
+}
