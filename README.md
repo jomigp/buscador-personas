@@ -61,6 +61,25 @@ Proyecto **open source** impulsado por un medio de comunicación venezolano. Las
 - `src/lib/clinical.ts` — etiquetas y colores para el estado clínico.
 - `supabase/schema.sql` — tabla `pacientes`, RLS y `solicitudes_baja`.
 
+## Leer lista desde foto (Gemini)
+
+1. Inicia sesión en `/admin/login`.
+2. Click en **Leer de foto** (esquina superior derecha).
+3. **Elegí el centro de salud** abajo. Si la foto no tiene el hospital escrito, lo elegís acá y se aplica a **todas** las filas extraídas. Lo mismo con estado y municipio (opcionales).
+4. **Subí una o varias fotos** de la lista (JPG/PNG/WebP, máx 8 MB cada una).
+5. Click en **Procesar fotos** — Gemini analiza cada imagen y devuelve los pacientes.
+6. **Revisá fila por fila**: podés editar cualquier campo, marcar/desmarcar para incluir, y ver la confianza estimada. Las filas con baja confianza quedan resaltadas en rojo.
+7. Click en **Importar N filas** — solo se guardan las que vos marcaste.
+
+### Variables de entorno
+
+- `GEMINI_API_KEY` — clave de [Google AI Studio](https://aistudio.google.com/apikey).
+  Tier gratuito: 15 RPM, 1500 RPD. Más que suficiente para la emergencia.
+
+Los registros importados por foto quedan con `origen = 'foto_ocr'` y
+`verificado = false`. El personal del centro los revisa y marca como
+verificados después desde el dashboard.
+
 ## Importar pacientes desde CSV
 
 1. Inicia sesión en `/admin/login`.

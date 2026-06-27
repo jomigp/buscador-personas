@@ -23,6 +23,8 @@ import type {
 
 export type CSVRow = {
   nombre_completo?: string;
+  apellido?: string;
+  nombre?: string;
   edad_aprox?: string;
   sexo?: string;
   estado_clinico?: string;
@@ -69,15 +71,30 @@ const HEADER_MAP: Record<keyof CSVRow, string[]> = {
     "nombre_completo",
     "nombre y apellido",
     "nombres y apellidos",
-    "nombre",
-    "nombres",
-    "apellido y nombre",
-    "apellido",
-    "apellidos",
     "paciente",
     "name",
     "full name",
     "patient",
+  ],
+  // Si el CSV tiene Apellido y Nombre como columnas separadas,
+  // se combinan como "Nombre Apellido" durante la validación.
+  apellido: [
+    "apellido",
+    "apellidos",
+    "apellido y nombre",
+    "apellido,nombre",
+    "surname",
+    "last name",
+    "lastname",
+    "family name",
+  ],
+  nombre: [
+    "nombre",
+    "nombres",
+    "primer nombre",
+    "name",
+    "first name",
+    "given name",
   ],
   estado_clinico: [
     "estado_clinico",
@@ -88,17 +105,27 @@ const HEADER_MAP: Record<keyof CSVRow, string[]> = {
     "condicion",
     "condición",
     "situacion",
+    "estatus",
   ],
   centro_salud: [
     "centro_salud",
     "centro",
     "hospital",
     "centro de salud",
+    "centro donde se encuentra",
+    "centro donde se encuentra reportado",
+    "lugar donde se encuentra",
+    "lugar donde se encuentra reportado",
+    "donde se encuentra",
+    "donde se encuentra reportado",
+    "centro hospitalario",
+    "ubicacion del paciente",
+    "ubicación del paciente",
     "center",
     "clínica",
     "clinica",
   ],
-  edad_aprox: ["edad_aprox", "edad", "age", "años"],
+  edad_aprox: ["edad_aprox", "edad", "age", "años", "edad aproximada"],
   sexo: ["sexo", "genero", "género", "gender", "sex"],
   descripcion_fisica: [
     "descripcion_fisica",
@@ -108,6 +135,7 @@ const HEADER_MAP: Record<keyof CSVRow, string[]> = {
     "notas",
     "observaciones",
     "detalles",
+    "rasgos",
   ],
   estado_geografico: [
     "estado_geografico",
@@ -347,16 +375,31 @@ export function validateRows(
     const normList: Normalization[] = [];
 
     // ----- nombre_completo (obligatorio) -----
-    const nombreRaw = normalized.nombre_completo ?? "";
-    const nombre_completo = nombreRaw.replace(/\s+/g, " ").trim();
+    // Si el CSV tiene Apellido y Nombre como columnas separadas, las
+    // combinamos como "Nombre Apellido" (formato legible para búsqueda).
+    const nombreDirecto = (normalized.nombre_completo ?? "").trim();
+    const nombrePartes = (normalized.nombre ?? "").trim();
+    const apellidoPartes = (normalized.apellido ?? "").trim();
+    let nombre_completo = nombreDirecto;
+    let nombreOriginal = nombreDirecto;
+    if (nombrePartes || apellidoPartes) {
+      nombre_completo = [nombrePartes, apellidoPartes]
+        .filter((s) => s.length > 0)
+        .join(" ")
+        .replace(/\s+/g, " ")
+        .trim();
+      nombreOriginal = `${nombrePartes} + ${apellidoPartes}`;
+    }
     if (!nombre_completo) {
-      errors.push("Falta nombre_completo");
+      errors.push(
+        "Falta nombre_completo (o columnas Apellido/Nombre)",
+      );
     } else if (nombre_completo.length > 120) {
       errors.push("nombre_completo > 120 chars");
-    } else if (nombre_completo !== nombreRaw.trim()) {
+    } else if (nombreOriginal && nombre_completo !== nombreOriginal.trim()) {
       normList.push({
         field: "nombre_completo",
-        from: nombreRaw,
+        from: nombreOriginal,
         to: nombre_completo,
       });
     }
@@ -376,16 +419,23 @@ export function validateRows(
       });
     }
 
-    // ----- estado_clinico (obligatorio, fuzzy) -----
+    // ----- estado_clinico (OPCIONAL, fuzzy) -----
+// En listas crudas de ingreso el estado clínico a veces no aparece.
+// Si falta o no se reconoce, asumimos 'sin_identificar' con warning.
+// El admin puede corregirlo después desde el form de edición.
     const estadoRaw = normalized.estado_clinico ?? "";
     const estadoResult = normalizeEstado(estadoRaw);
-    const estado_clinico: EstadoClinico | null = estadoResult.value;
+    let estado_clinico: EstadoClinico | null = estadoResult.value;
     if (!estadoResult.matched) {
       if (estadoRaw.trim().length === 0) {
-        errors.push("Falta estado_clinico");
+        estado_clinico = "sin_identificar";
+        warnings.push(
+          "estado_clinico no presente: se asumió 'sin_identificar'. Corregí desde la edición si tenés el dato.",
+        );
       } else {
-        errors.push(
-          `estado_clinico irreconocible: "${estadoRaw}" (usa: ${ESTADOS_VALIDOS.join(", ")})`,
+        estado_clinico = "sin_identificar";
+        warnings.push(
+          `estado_clinico irreconocible: "${estadoRaw}" — se guardó como 'sin_identificar'`,
         );
       }
     } else if (estado_clinico !== normalize(estadoRaw)) {
