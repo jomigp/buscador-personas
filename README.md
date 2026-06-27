@@ -1,158 +1,286 @@
 # Buscador de Personas en Centros de Salud
 
-Web app de emergencia para reunificación familiar tras el **doblete sísmico del 24 de junio de 2026** en Venezuela (magnitudes 7.2 y 7.5 Mw). Permite que las familias encuentren a sus seres queridos ingresados en hospitales, clínicas y centros de triaje, y que el personal de salud cargue y actualice los registros.
+Web app de emergencia para **reunificación familiar** tras el **doblete sísmico del 24 de junio de 2026 en Venezuela** (magnitudes 7.2 y 7.5 Mw). Permite que las familias encuentren a sus seres queridos ingresados en hospitales, clínicas y centros de triaje, y que el personal de salud registre y actualice los casos.
 
-Proyecto **open source** impulsado por un medio de comunicación venezolano. Las contribuciones son bienvenidas (ver [CONTRIBUTING.md](./CONTRIBUTING.md)).
+Proyecto **open source** impulsado por un medio de comunicación venezolano.
 
-> ⚠️ Esta app maneja datos personales de personas vulnerables en una emergencia. Léase [PRIVACY.md](./PRIVACY.md) antes de contribuir o desplegar.
+> ⚠️ Esta app maneja datos personales de personas vulnerables en una emergencia. Léase [PRIVACY.md](./PRIVACY.md) y [SECURITY.md](./SECURITY.md) antes de contribuir o desplegar.
 
 ---
 
-## Qué hace
+## 🆘 TL;DR — Si tenés 30 segundos
 
-- **Buscador público** (sin login): cualquier familiar busca por nombre, centro de salud o ubicación.
-- **Carga restringida**: solo personal de salud autenticado registra y actualiza pacientes.
-- **Lectura de listas por foto** (fase 2): sube la foto de un listado y un modelo de visión extrae los datos para revisión y carga rápida.
-- **Sello de verificación**: distingue la información validada por centros del ruido de redes.
+**¿Qué hace?** Familias buscan pacientes ingresados → Personal de salud registra casos.
 
-## Stack
+**¿Cómo está construida?** Next.js 16 + Supabase + Vercel. Lee [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) para el detalle.
 
-- **Next.js 16** (App Router, TypeScript) + **React 19** — requiere **Node.js 20+**
-- **Tailwind CSS**
-- **Supabase** (Postgres + Auth + Storage)
-- **Vercel** (deploy)
+**¿Querés levantarla local?** Ver [Puesta en marcha](#-puesta-en-marcha-local).
 
-## Puesta en marcha (local)
+**¿Querés entender el modelo de datos?** [docs/DATA-MODEL.md](./docs/DATA-MODEL.md).
 
-1. **Clonar e instalar**
-   ```bash
-   git clone <url-del-repo>
-   cd buscador-personas
-   npm install
-   ```
+**¿Sos una IA?** Saltá a [AGENTS.md](./AGENTS.md) — son instrucciones precisas para que tu clase opere el proyecto.
 
-2. **Crear proyecto en Supabase** (https://supabase.com) y, en el SQL Editor, ejecutar **en este orden**:
-   - [`supabase/schema.sql`](./supabase/schema.sql) — crea las tablas `pacientes`, `solicitudes_baja`, `centros_salud`, índices, RLS y triggers.
-   - [`supabase/seed-centros.sql`](./supabase/seed-centros.sql) — carga 241 centros de salud oficiales (24 estados) como catálogo para el autocomplete.
-   - Al terminar, refrescá el caché de PostgREST (esencial, sino PostgREST no ve las tablas nuevas):
-     ```sql
-     NOTIFY pgrst, 'reload schema';
-     ```
+---
 
-3. **Crear el bucket de Storage** llamado `fotos-pacientes` (público).
+## 📚 Tabla de contenidos
 
-3. **Crear el bucket de Storage** llamado `fotos-pacientes` (público, para que las fotos se puedan mostrar a visitantes anónimos).
+### Para humanos
+- [Qué hace](#-qué-hace)
+- [Stack](#-stack)
+- [Puesta en marcha (local)](#-puesta-en-marcha-local)
+- [Puesta en marcha (producción)](#-puesta-en-marcha-producción)
+- [Estructura del repo](#-estructura-del-repo)
+- [Cómo contribuir](./CONTRIBUTING.md)
 
-4. **Crear al menos un usuario** en Supabase Auth (Authentication → Users → Add user). Una cuenta por centro de salud. Esa cuenta será la que use el personal del centro para cargar y editar pacientes.
+### Documentación técnica
+- [**docs/ARCHITECTURE.md**](./docs/ARCHITECTURE.md) — arquitectura, decisiones de diseño, trade-offs
+- [**docs/DATA-MODEL.md**](./docs/DATA-MODEL.md) — schema de BD, RLS, índices
+- [**docs/API.md**](./docs/API.md) — rutas, endpoints, server actions
+- [**docs/OPERATIONS.md**](./docs/OPERATIONS.md) — manual de operación en emergencia
+- [**docs/DEPLOYMENT.md**](./docs/DEPLOYMENT.md) — deploy, env vars, troubleshooting
+- [**docs/ROADMAP.md**](./docs/ROADMAP.md) — fase 2 (OCR) y fase 3 (verificación MPPS)
+- [**docs/SACS-VERIFICACION.md**](./docs/SACS-VERIFICACION.md) — diseño del sello "verificado MPPS"
 
-5. **Variables de entorno**: copiar `.env.example` a `.env.local` y rellenar:
-   ```bash
-   cp .env.example .env.local
-   ```
-   - `NEXT_PUBLIC_SUPABASE_URL` y `NEXT_PUBLIC_SUPABASE_ANON_KEY`: del panel de Supabase (Settings → API).
-   - `VISION_API_KEY`: solo necesaria para la lectura de listas por foto (fase 2).
+### Para IAs y herramientas IA
+- [**AGENTS.md**](./AGENTS.md) — instrucciones para cualquier agente IA (Claude Code, Cursor, Copilot, etc.)
+- [**CLAUDE.md**](./CLAUDE.md) — alias de AGENTS.md para Claude Code
+- [**llms.txt**](./llms.txt) — resumen estructurado para crawlers IA
+- [**`.cursorrules`**](./.cursorrules) — reglas para Cursor IDE
+- [**`.github/copilot-instructions.md`**](./.github/copilot-instructions.md) — instrucciones para GitHub Copilot
 
-5. **Levantar**
-   ```bash
-   npm run dev
-   ```
-   Abrir http://localhost:3000. La página principal es el buscador público; `/admin` lleva al login del personal de salud.
+### Compliance y comunidad
+- [**PRIVACY.md**](./PRIVACY.md) — privacidad y manejo de datos sensibles
+- [**SECURITY.md**](./SECURITY.md) — cómo reportar vulnerabilidades
+- [**CODE_OF_CONDUCT.md**](./CODE_OF_CONDUCT.md) — código de conducta
+- [**LICENSE**](./LICENSE) — MIT
 
-## Estructura del proyecto
+---
 
-- `src/app/page.tsx` — buscador público (Server Component).
-- `src/app/admin/(autenticado)/` — rutas protegidas: dashboard, alta y edición.
-- `src/app/admin/login/` — login del personal.
-- `src/app/acciones.ts` — Server Actions del flujo público.
-- `src/app/admin/(autenticado)/acciones.ts` — Server Actions del admin.
-- `src/lib/supabase/` — clientes Supabase (browser / server) y tipos.
-- `src/lib/clinical.ts` — etiquetas y colores para el estado clínico.
-- `supabase/schema.sql` — tabla `pacientes`, RLS y `solicitudes_baja`.
+## 🎯 Qué hace
 
-## Leer lista desde foto (Gemini)
+### Buscador público (sin login)
+Cualquier familiar entra a la home, escribe el nombre o filtra por **estado / municipio / centro de salud** y ve coincidencias de pacientes. El filtro es **case-insensitive y tolerante a typos parciales** (`ilike '%term%'`). Los resultados incluyen:
+- Nombre y apellido
+- Estado clínico (estable / delicado / crítico / sin identificar)
+- Edad y sexo
+- Centro de salud donde se encuentra
+- Municipio y estado geográfico
+- Foto (si el personal la subió)
+- Fecha de ingreso
 
-1. Inicia sesión en `/admin/login`.
-2. Click en **Leer de foto** (esquina superior derecha).
-3. **Elegí el centro de salud** abajo. Si la foto no tiene el hospital escrito, lo elegís acá y se aplica a **todas** las filas extraídas. Lo mismo con estado y municipio (opcionales).
-4. **Subí una o varias fotos** de la lista (JPG/PNG/WebP, máx 8 MB cada una).
-5. Click en **Procesar fotos** — Gemini analiza cada imagen y devuelve los pacientes.
-6. **Revisá fila por fila**: podés editar cualquier campo, marcar/desmarcar para incluir, y ver la confianza estimada. Las filas con baja confianza quedan resaltadas en rojo.
-7. Click en **Importar N filas** — solo se guardan las que vos marcaste.
+Las páginas de detalle (futuro) y los datos personales sensibles están protegidos — solo el **sello "Verificado por centro"** indica confianza.
 
-### Variables de entorno
+### Carga restringida (login de personal de salud)
+Personal de salud autenticado registra pacientes con:
+- Datos básicos: nombre, apellido, edad, sexo
+- Ubicación: centro de salud (autocomplete), estado, municipio
+- Estado clínico: estable / delicado / crítico / sin_identificar / recuperado / fallecido
+- Foto opcional (Storage bucket `fotos-pacientes`)
+- Notas internas (visibles solo al personal)
 
-- `GEMINI_API_KEY` — clave de [Google AI Studio](https://aistudio.google.com/apikey).
-  Tier gratuito: 15 RPM, 1500 RPD. Más que suficiente para la emergencia.
+### Carga masiva por foto (Fase 2)
+Subís la foto de un listado de mano y un modelo de visión (Gemini 2.5 Flash) extrae los datos. El admin revisa la confianza por campo y acepta/rechaza antes de guardar. Endpoint: [`/admin/importar-foto`](./docs/API.md#adminimportar-foto).
 
-Los registros importados por foto quedan con `origen = 'foto_ocr'` y
-`verificado = false`. El personal del centro los revisa y marca como
-verificados después desde el dashboard.
+### "Marcar como encontrado" (público)
+Si un familiar cree reconocer a alguien, no edita datos — crea una **solicitud de baja** que el personal revisa y decide. Principio: **solo autenticados escriben en `pacientes`**.
 
-## Importar pacientes desde CSV
+---
 
-1. Inicia sesión en `/admin/login`.
-2. Click en **Importar CSV** (esquina superior derecha o desde el dashboard).
-3. Arrastra o selecciona un archivo CSV exportado de Google Sheets / Excel.
-4. Revisa la vista previa: filas válidas en verde, errores en rojo (se
-   pueden ignorar o corregir en el archivo y volver a subir).
-5. Click en **Importar N filas válidas**.
+## 🧱 Stack
 
-### Columnas aceptadas (case-insensitive)
+| Capa | Tecnología |
+|------|------------|
+| **Framework** | Next.js 16 (App Router, Turbopack) |
+| **Lenguaje** | TypeScript (strict) |
+| **UI** | React 19, Tailwind CSS v4 |
+| **Backend** | Next.js Server Actions + Route Handlers |
+| **Base de datos** | Supabase (Postgres 15) |
+| **Auth** | Supabase Auth (email + password) |
+| **Storage** | Supabase Storage (bucket `fotos-pacientes`) |
+| **IA** | Google Gemini 2.5 Flash (OCR de listados) |
+| **Deploy** | Vercel |
+| **Tests** | Pendiente (Fase 2) |
+| **Lint/format** | ESLint + Prettier (Tailwind config) |
 
-| Columna | Obligatoria | Valores |
-|---|---|---|
-| `nombre_completo` | sí | texto, máx 120 chars |
-| `centro_salud` | sí | texto, máx 120 chars |
-| `estado_clinico` | sí | `estable`, `critico`, `sin_identificar`, `fallecido` |
-| `edad_aprox` | no | número 0–130 |
-| `sexo` | no | `M`, `F`, `desconocido` |
-| `estado_geografico` | no | texto |
-| `municipio` | no | texto |
-| `descripcion_fisica` | no | texto |
-| `foto_path` | no | ruta en el bucket `fotos-pacientes` |
-| `verificado` | no | `true` / `false` |
+**Requisitos**: Node.js 20+, npm 10+, cuenta Supabase (free tier alcanza), cuenta Vercel (free tier alcanza), API key de Google AI Studio (Gemini free tier).
 
-Se acepta separador `,` o `;` (típico de Excel en español). La primera
-fila debe tener los encabezados. Las fotos **no** se suben por CSV;
-eso se hace desde el formulario individual.
+---
 
-### Ejemplo
+## 🏃 Puesta en marcha (local)
 
-```csv
-nombre_completo,edad_aprox,sexo,estado_clinico,centro_salud,municipio,verificado
-"María Rodríguez",45,F,estable,"Hospital Central de Valencia",Valencia,true
-"Juan Pérez",,M,sin_identificar,"Hospital Central de Valencia",Valencia,false
+### 1. Clonar e instalar
+
+```bash
+git clone https://github.com/jomigp/buscador-personas.git
+cd buscador-personas
+npm install
 ```
 
-## Decisiones de implementación documentadas
+### 2. Configurar Supabase
 
-- **"Marcar como encontrado"** crea una fila en `solicitudes_baja` (el anónimo puede INSERT por RLS, pero NO puede actualizar `caso_cerrado` en `pacientes`). El personal del centro ve las solicitudes pendientes en `/admin` y cierra los casos desde ahí.
-- **Filtro del dashboard** muestra solo los registros cargados con la cuenta logueada (`registrado_por = user.email`). El personal autenticado puede ver todos los casos (abiertos y cerrados) vía la política `lectura_autenticado`.
-- **Fase 2** (`/admin/importar-foto`, OCR con visión) **no está incluida en esta versión** — sigue documentada en `docs/vision-extractor-prompt.md` para cuando llegue el momento.
+1. Crear proyecto en [https://supabase.com](https://supabase.com).
+2. Ir a **SQL Editor** y correr **en este orden**:
+   - [`supabase/schema.sql`](./supabase/schema.sql) — crea tablas, RLS, índices y triggers.
+   - [`supabase/seed-centros.sql`](./supabase/seed-centros.sql) — carga 241 centros de salud oficiales como catálogo.
+   - `NOTIFY pgrst, 'reload schema';` — refresca caché PostgREST (CRÍTICO, sino no ve las tablas nuevas).
+3. Crear bucket Storage **`fotos-pacientes`** (público).
+4. Crear usuario admin en **Authentication → Users → Add user** con email + password.
+5. Copiar las keys de **Settings → API** (URL + anon key + service_role key).
 
-## Importar datos existentes (CSV)
+### 3. Variables de entorno
 
-1. Exportar la hoja de Google Drive a CSV con columnas que coincidan con el esquema (ver `supabase/schema.sql`).
-2. En Supabase: Table editor → tabla `pacientes` → Import data from CSV.
-3. Subir las fotos al bucket `fotos-pacientes` y rellenar la columna `foto_path`.
-4. Marcar `verificado = true` en los registros que provienen de centros confirmados.
+```bash
+cp .env.example .env.local
+```
 
-## Despliegue (Vercel + subdominio)
+Completar `.env.local` con:
+```bash
+NEXT_PUBLIC_SUPABASE_URL=https://<tu-proyecto>.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJ...           # pública, va al cliente
+SUPABASE_SERVICE_ROLE_KEY=eyJ...                # PRIVADA, solo server-side
+GEMINI_API_KEY=AIzaSy...                        # https://aistudio.google.com/app/apikey
+```
 
-1. Subir el repo a GitHub.
-2. Importar en Vercel y configurar las variables de entorno.
-3. Añadir el dominio `personas.tuportal.com` en Vercel.
-4. Crear un registro **CNAME** en el DNS del portal apuntando al destino que indique Vercel.
-5. Verificar propagación y certificado SSL.
+### 4. Correr dev server
 
-## Documentación
+```bash
+npm run dev
+```
 
-- [`SPEC.md`](./SPEC.md) — especificación completa de construcción (lo que sigue la IA / el equipo).
-- [`AGENTS.md`](./AGENTS.md) — instrucciones para agentes de IA que trabajen en el repo.
-- [`PRIVACY.md`](./PRIVACY.md) — manejo de datos personales y aviso de privacidad.
-- [`CONTRIBUTING.md`](./CONTRIBUTING.md) — cómo contribuir.
-- [`docs/vision-extractor-prompt.md`](./docs/vision-extractor-prompt.md) — prompt del extractor de listas por foto.
+Abrir [http://localhost:3000](http://localhost:3000). El admin está en `/admin/login`.
 
-## Licencia
+### 5. Verificar
 
-MIT — ver [LICENSE](./LICENSE).
+```bash
+npm run build   # build de producción
+npm run lint    # ESLint
+```
+
+---
+
+## 🚀 Puesta en marcha (producción)
+
+Ver [**docs/DEPLOYMENT.md**](./docs/DEPLOYMENT.md) para el detalle paso a paso (Vercel + custom domain + env vars + monitoring).
+
+Resumen rápido:
+1. Conectar repo en Vercel.
+2. Configurar env vars (las mismas que local).
+3. Deploy.
+4. Verificar `https://<tu-dominio>/api/pacientes` (debe devolver JSON).
+
+---
+
+## 📁 Estructura del repo
+
+```
+buscador-personas/
+├── README.md                            ← este archivo
+├── AGENTS.md                            ← instrucciones para IAs
+├── CLAUDE.md                            ← alias para Claude Code
+├── llms.txt                             ← resumen para crawlers IA
+├── .cursorrules                         ← reglas para Cursor IDE
+├── .github/
+│   └── copilot-instructions.md          ← instrucciones para GitHub Copilot
+├── CONTRIBUTING.md
+├── SECURITY.md
+├── PRIVACY.md
+├── CODE_OF_CONDUCT.md
+├── LICENSE
+│
+├── docs/                                ← documentación técnica
+│   ├── ARCHITECTURE.md
+│   ├── DATA-MODEL.md
+│   ├── API.md
+│   ├── OPERATIONS.md
+│   ├── DEPLOYMENT.md
+│   ├── ROADMAP.md
+│   └── SACS-VERIFICACION.md
+│
+├── supabase/                            ← SQL ejecutado en Supabase
+│   ├── schema.sql                       ← estructura + RLS + triggers
+│   └── seed-centros.sql                 ← 241 centros de salud
+│
+├── scripts/                             ← utilidades de mantenimiento
+│   └── hospitales-venezuela-completo.csv
+│
+├── public/
+│   ├── icon.svg
+│   └── manifest.json
+│
+└── src/
+    ├── app/                             ← Next.js App Router
+    │   ├── layout.tsx
+    │   ├── page.tsx                     ← buscador público
+    │   ├── globals.css
+    │   ├── acciones.ts                  ← server actions del público
+    │   ├── admin/
+    │   │   ├── login/page.tsx
+    │   │   ├── page.tsx
+    │   │   ├── nuevo/page.tsx
+    │   │   ├── importar-csv/page.tsx
+    │   │   ├── importar-foto/page.tsx
+    │   │   ├── [id]/page.tsx
+    │   │   └── (autenticado)/
+    │   │       ├── layout.tsx           ← guard de autenticación
+    │   │       └── acciones.ts
+    │   └── api/
+    │       ├── pacientes/route.ts
+    │       └── leer-lista/route.ts
+    │
+    ├── components/
+    │   ├── paciente-card.tsx
+    │   ├── buscador.tsx
+    │   ├── formulario-paciente.tsx
+    │   └── ...
+    │
+    └── lib/
+        ├── supabase/
+        │   ├── client.ts                ← @supabase/ssr para cliente
+        │   └── server.ts                ← @supabase/ssr para server
+        ├── centros.ts                   ← getDistinctValues()
+        ├── hospitales-seed.ts           ← fallback estático de 241 centros
+        ├── csv.ts                       ← parser CSV con normalización fuzzy
+        ├── vision.ts                    ← Gemini 2.5 Flash para OCR
+        └── clinical.ts                  ← etiquetas canónicas de estados clínicos
+```
+
+---
+
+## 🤝 Cómo contribuir
+
+Ver [**CONTRIBUTING.md**](./CONTRIBUTING.md). Resumen:
+- Fork → branch → PR.
+- Mensajes de commit en español o inglés, formato `feat:`, `fix:`, `docs:`, etc.
+- Antes de PR: `npm run build && npm run lint` verde.
+- Para features grandes, abrí issue primero.
+
+---
+
+## 🆘 Operación en emergencia
+
+Si estás operando la app durante el desastre, leé [**docs/OPERATIONS.md**](./docs/OPERATIONS.md) — incluye:
+- Cómo agregar un centro nuevo al catálogo
+- Cómo crear un usuario de personal de salud
+- Cómo restaurar la BD si se borra
+- Cómo escalar si hay picos de tráfico
+- Qué hacer si Vercel/Supabase caen
+
+---
+
+## 📜 Licencia
+
+[MIT](./LICENSE). Código abierto para que cualquier medio o gobierno pueda clonar la app y adaptarla a su contexto.
+
+---
+
+## 🙏 Reconocimientos
+
+- **Google Gemini** por la API gratuita de visión
+- **Supabase** por el backend generoso en free tier
+- **Vercel** por el hosting rápido
+- **Convite AC** por el Monitor de Hospitales (fuente original de la lista de centros)
+- **MPPS** por los datos oficiales
+
+---
+
+**Contacto del maintainer**: ver [SECURITY.md](./SECURITY.md) para issues de seguridad; el resto por issues de GitHub.

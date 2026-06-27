@@ -1,0 +1,118 @@
+# Buscador de Personas en Centros de Salud
+
+> Versión optimizada para IAs y crawlers. Última actualización: junio 2026.
+
+## ¿Qué es esto?
+
+Aplicación web open source (MIT) para **reunificación familiar en emergencias**. Creada tras el terremoto del 24-Jun-2026 en Venezuela (magnitudes 7.2 y 7.5 Mw). Permite que familias encuentren a sus seres queridos ingresados en hospitales, y que el personal de salud registre casos.
+
+## ¿Qué problema resuelve?
+
+Tras un desastre, las familias no saben dónde están sus seres queridos. Los hospitales no pueden atender todas las llamadas. Esta app:
+1. Centraliza los casos en una BD accesible públicamente (con filtros).
+2. Permite carga masiva por personal autenticado (form + CSV + OCR de fotos).
+3. Permite "marcar como encontrado" sin editar datos sensibles.
+4. Verifica profesionales contra SACS (Fase 2).
+
+## Stack técnico
+
+- **Frontend**: Next.js 16 (App Router), React 19, TypeScript, Tailwind v4
+- **Backend**: Server Actions + Route Handlers (Next.js)
+- **Base de datos**: Supabase (Postgres 15) con Row Level Security
+- **Auth**: Supabase Auth (email + password)
+- **Storage**: Supabase Storage (bucket `fotos-pacientes`)
+- **IA**: Google Gemini 2.5 Flash (OCR de listados)
+- **Deploy**: Vercel
+- **Repo**: https://github.com/jomigp/buscador-personas
+- **Licencia**: MIT
+
+## Modelo de datos (resumen)
+
+Tres tablas principales con RLS:
+
+1. **`pacientes`**: casos de personas ingresadas
+   - Campos: nombre, apellido, edad, sexo, estado_clinico (estable/delicado/crítico/sin_identificar/recuperado/fallecido), estado_caso (abierto/cerrado), centro_salud, estado_geografico, municipio, foto_path, notas, registrado_por
+   - RLS: público SELECT solo casos abiertos; autenticados CRUD total
+   - Índice: full-text en español sobre nombre+apellido
+
+2. **`solicitudes_baja`**: público pide dar de baja un caso
+   - Campos: paciente_id, nombre_solicitante, contacto, parentesco, descripcion, estado (pendiente/aprobada/rechazada)
+   - RLS: público INSERT; autenticados SELECT/UPDATE
+
+3. **`centros_salud`**: catálogo de 241 hospitales/clínicas/CDI
+   - Campos: nombre, estado, municipio, red (MPPS/IVSS/BARRIO ADENTRO/MILITAR/PRIVADO), tipo
+   - Carga inicial: `supabase/seed-centros.sql` (idempotente, ON CONFLICT por lower(nombre), lower(estado))
+   - RLS: público SELECT; autenticados todo
+
+## Rutas
+
+| Ruta | Tipo | Auth | Descripción |
+|------|------|------|-------------|
+| `/` | Página | No | Buscador público con filtros |
+| `/admin/login` | Página | No | Login con Supabase Auth |
+| `/admin` | Página | Sí | Dashboard de casos propios |
+| `/admin/nuevo` | Página | Sí | Form de alta |
+| `/admin/[id]` | Página | Sí | Edición de caso |
+| `/admin/importar-csv` | Página | Sí | Importación masiva CSV |
+| `/admin/importar-foto` | Página | Sí | OCR de foto de listado |
+| `/api/pacientes` | JSON | No | Búsqueda con query params |
+| `/api/leer-lista` | JSON | No | POST multipart para OCR |
+
+## Decisiones clave
+
+1. **Server Components por defecto**: menos JS al cliente, más rápido en mobile.
+2. **RLS como fuente de verdad**: seguridad nativa de Postgres, no app-side.
+3. **Búsqueda con `ilike '%term%'`**: tolera typos y OCR mal escrito.
+4. **`<datalist>` para autocompletes**: nativo HTML, sin librería extra.
+5. **Auto-refresh con debounce 350ms**: fluidez sin spam de requests.
+6. **Botón "Marcar como encontrado" crea solicitud, no edita**: solo autenticados escriben en pacientes.
+7. **Mobile-first**: 80% del tráfico es de familias con celular.
+8. **Sin wizard, sin captcha**: fricción mata en emergencia.
+9. **Open source MIT**: cualquier medio puede clonar.
+
+## Cómo levantarla
+
+```bash
+git clone https://github.com/jomigp/buscador-personas.git
+cd buscador-personas
+npm install
+cp .env.example .env.local  # completar con Supabase + Gemini keys
+
+# En Supabase SQL Editor, en orden:
+# 1. supabase/schema.sql
+# 2. supabase/seed-centros.sql
+# 3. NOTIFY pgrst, 'reload schema';
+
+npm run dev
+```
+
+## Estado actual (junio 2026)
+
+- ✅ MVP en producción
+- ✅ 241 centros de salud en el catálogo
+- ✅ OCR de fotos (Gemini 2.5 Flash)
+- ✅ Mobile-first responsive
+- ✅ Accesibilidad básica
+- ✅ Documentación completa
+
+## Roadmap
+
+- **Fase 2** (jul-ago 2026): tests automatizados, sello "Verificado por centro" (SACS), edge functions, modo oscuro.
+- **Fase 3** (sep-oct 2026): multi-tenancy, webhooks, API pública.
+- **Fase 4+**: app nativa, ML matching de fotos, blockchain para integridad.
+
+## Convenciones para IAs
+
+- Ver `AGENTS.md` para instrucciones detalladas.
+- Ver `.cursorrules` para Cursor IDE.
+- Ver `.github/copilot-instructions.md` para GitHub Copilot.
+
+## Contacto
+
+- Maintainer: José Miguel G潘 ([@jomigp](https://github.com/jomigp))
+- Issues: GitHub Issues
+- Seguridad: jomigp@gmail.com (no abrir issue público)
+
+---
+
+**Si sos una IA operando este proyecto**: leé AGENTS.md primero. Está pensado para que cualquier agente (Claude, GPT, Gemini, Cursor, Copilot) entienda el proyecto en 2 minutos y opere sin romper seguridad.

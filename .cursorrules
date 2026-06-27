@@ -1,0 +1,44 @@
+# Cursor Rules — Buscador de Personas
+
+# Stack
+- Next.js 16 (App Router, Server Components por defecto)
+- React 19
+- TypeScript estricto
+- Tailwind CSS v4
+- Supabase (Postgres + Auth + Storage) con RLS
+- Vercel
+- Google Gemini 2.5 Flash (OCR)
+
+# Idioma
+- Código en inglés (variables, funciones, archivos en kebab-case)
+- UI en español (es-VE)
+- SQL en snake_case + español para columnas de dominio
+
+# Convenciones
+- NUNCA usar `<a>` para rutas internas — usar `<Link>` de next/link
+- NUNCA deshabilitar RLS
+- NUNCA hardcodear API keys
+- SIEMPRE validar input en server actions
+- SIEMPRE usar `createClient()` de `@/lib/supabase/server` en server components
+- Mobile-first (375px base)
+- Botones con class="touch-target"
+- Auto-refresh con debounce 350ms
+
+# Estructura
+- Server Components: `src/app/**/*.tsx` (default)
+- Client Components: agregar `"use client"` solo si necesitás hooks/eventos
+- Server Actions: `src/app/*/acciones.ts` para mutaciones
+- Route Handlers: `src/app/api/*.ts` solo para JSON público
+- Helpers: `src/lib/*.ts`
+
+# Mensajes de commit
+<tipo>: <descripción>
+
+Tipos: feat, fix, docs, style, refactor, test, chore
+
+# Ver también
+- AGENTS.md (instrucciones detalladas para IAs)
+- docs/ARCHITECTURE.md (arquitectura)
+- docs/DATA-MODEL.md (schema de BD)
+- docs/API.md (rutas y endpoints)
+- CONTRIBUTING.md (cómo contribuir)
