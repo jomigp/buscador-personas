@@ -1,8 +1,13 @@
-// Devuelve los valores distintos ya cargados en `pacientes` para usar
-// como sugerencias en los inputs con datalist. Si escribís un valor
-// nuevo y guardás, aparece automáticamente la próxima vez.
+// Devuelve los valores distintos para usar como sugerencias en los inputs
+// con datalist. Combina:
+//   1. La seed de hospitales publicos de Venezuela (Convite AC, 2026)
+//   2. Los valores ya cargados en `pacientes` (lo que el personal agrego)
+//
+// Si escribis un valor nuevo y guardas, aparece automaticamente la proxima
+// vez (porque ya estara en la BD).
 
 import { createClient } from "@/lib/supabase/server";
+import { HOSPITALES_SEED } from "@/lib/hospitales-seed";
 
 export type DistinctValues = {
   centros: string[];
@@ -12,19 +17,37 @@ export type DistinctValues = {
 
 export async function getDistinctValues(): Promise<DistinctValues> {
   const supabase = await createClient();
-  // Traemos solo las 3 columnas que necesitamos. Sin filtro: cualquier
-  // paciente cargado por cualquier centro aporta valores al pool.
   const { data, error } = await supabase
     .from("pacientes")
     .select("centro_salud, estado_geografico, municipio");
 
-  const empty: DistinctValues = { centros: [], estados: [], municipios: [] };
-  if (error || !data) return empty;
+  if (error || !data) {
+    // Fallback: solo seed
+    return {
+      centros: HOSPITALES_SEED.map((h) => h.centro_salud).sort((a, b) =>
+        a.localeCompare(b, "es"),
+      ),
+      estados: Array.from(
+        new Set(HOSPITALES_SEED.map((h) => h.estado_geografico)),
+      ).sort((a, b) => a.localeCompare(b, "es")),
+      municipios: Array.from(
+        new Set(HOSPITALES_SEED.map((h) => h.municipio).filter(Boolean)),
+      ).sort((a, b) => a.localeCompare(b, "es")),
+    };
+  }
 
   const centros = new Set<string>();
   const estados = new Set<string>();
   const municipios = new Set<string>();
 
+  // Seed primero (mas estable, ordenado)
+  for (const h of HOSPITALES_SEED) {
+    if (h.centro_salud) centros.add(h.centro_salud);
+    if (h.estado_geografico) estados.add(h.estado_geografico);
+    if (h.municipio) municipios.add(h.municipio);
+  }
+
+  // Luego los valores reales de la BD
   for (const row of data as Array<{
     centro_salud?: string | null;
     estado_geografico?: string | null;
