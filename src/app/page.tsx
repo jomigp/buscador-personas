@@ -2,6 +2,7 @@
 // con el cliente anon; el RLS garantiza que solo se ven casos abiertos.
 
 import { createClient } from "@/lib/supabase/server";
+import { getDistinctValues } from "@/lib/centros";
 import type { Paciente, EstadoClinico, Sexo } from "@/lib/supabase/types";
 import Buscador from "./buscador";
 import PacienteCard from "./paciente-card";
@@ -27,6 +28,7 @@ export default async function Home({
 }) {
   const params = await searchParams;
   const supabase = await createClient();
+  const { centros, estados, municipios } = await getDistinctValues();
 
   let query = supabase
     .from("pacientes")
@@ -77,7 +79,12 @@ export default async function Home({
         </p>
       </section>
 
-      <Buscador initial={params} />
+      <Buscador
+        initial={params}
+        centros={centros}
+        estados={estados}
+        municipios={municipios}
+      />
 
       {error ? (
         <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">

@@ -20,9 +20,17 @@ type Props = {
     centro_salud?: string;
     sexo?: Sexo;
   };
+  centros: string[];
+  estados: string[];
+  municipios: string[];
 };
 
-export default function Buscador({ initial }: Props) {
+export default function Buscador({
+  initial,
+  centros,
+  estados,
+  municipios,
+}: Props) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [isPending, startTransition] = useTransition();
@@ -121,32 +129,50 @@ export default function Buscador({ initial }: Props) {
         <Field label="Estado (geográfico)">
           <input
             type="text"
-            placeholder="Ej. Carabobo"
+            list="dl-home-estados"
+            placeholder="Elegí o escribí un estado"
             value={estadoGeo}
             onChange={(e) => setEstadoGeo(e.target.value)}
             className="w-full rounded-lg border border-zinc-300 bg-white px-3 py-3 focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900/10"
           />
+          <datalist id="dl-home-estados">
+            {estados.map((e) => (
+              <option key={e} value={e} />
+            ))}
+          </datalist>
         </Field>
 
         <Field label="Municipio">
           <input
             type="text"
-            placeholder="Ej. Valencia"
+            list="dl-home-municipios"
+            placeholder="Elegí o escribí un municipio"
             value={municipio}
             onChange={(e) => setMunicipio(e.target.value)}
             className="w-full rounded-lg border border-zinc-300 bg-white px-3 py-3 focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900/10"
           />
+          <datalist id="dl-home-municipios">
+            {municipios.map((m) => (
+              <option key={m} value={m} />
+            ))}
+          </datalist>
         </Field>
 
         <div className="sm:col-span-2">
           <Field label="Centro de salud">
             <input
               type="text"
-              placeholder="Ej. Hospital Central de Valencia"
+              list="dl-home-centros"
+              placeholder="Elegí o escribí el hospital"
               value={centro}
               onChange={(e) => setCentro(e.target.value)}
               className="w-full rounded-lg border border-zinc-300 bg-white px-3 py-3 focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900/10"
             />
+            <datalist id="dl-home-centros">
+              {centros.map((c) => (
+                <option key={c} value={c} />
+              ))}
+            </datalist>
           </Field>
         </div>
       </div>
