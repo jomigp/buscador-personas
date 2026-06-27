@@ -47,8 +47,6 @@ export default async function Home({
     query = query.eq("estado_clinico", params.estado_clinico);
   }
   if (params.estado_geografico) {
-    // ILIKE para tolerar typos y diferencias de tipeo entre centros
-    // (ej. "Carlos Arvelo" encuentra "Carlos Arveledo").
     query = query.ilike("estado_geografico", `%${params.estado_geografico}%`);
   }
   if (params.municipio) {
@@ -65,7 +63,11 @@ export default async function Home({
   const pacientes: Paciente[] = data ?? [];
   const total = count ?? pacientes.length;
 
-  // Filtros que se pasan al cliente para "Cargar más"
+  const filtrosActivos = Object.entries(params).filter(
+    ([, v]) => v && v.length > 0,
+  ).length;
+  const hayFiltros = filtrosActivos > 0;
+
   const filters: Record<string, string> = {};
   if (params.q) filters.q = params.q;
   if (params.estado_clinico) filters.estado_clinico = params.estado_clinico;
@@ -75,18 +77,22 @@ export default async function Home({
   if (params.sexo) filters.sexo = params.sexo;
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-6 space-y-6">
-      <section className="space-y-2">
-        <h1 className="text-2xl sm:text-3xl font-bold text-zinc-900">
-          Buscar a una persona ingresada
+    <div className="mx-auto max-w-5xl px-4 py-6 sm:py-10 space-y-6">
+      <section className="space-y-3">
+        <p className="text-xs font-medium uppercase tracking-wide text-zinc-500">
+          Emergencia sísmica · 24 de junio de 2026
+        </p>
+        <h1 className="text-3xl sm:text-4xl font-bold text-zinc-900 text-balance leading-tight">
+          Buscá a una persona ingresada en un hospital
         </h1>
-        <p className="text-sm text-zinc-600 max-w-2xl">
-          Escribe el nombre (o una parte) y aplica los filtros que conozcas.
-          La información proviene de los centros de salud que están
-          reportando pacientes. Si tu familiar está aquí y ya lo encontraste,
-          usa el botón{" "}
-          <span className="font-medium">&ldquo;Marcar como encontrado&rdquo;</span>{" "}
-          para retirarlo del listado público.
+        <p className="text-base text-zinc-600 max-w-2xl text-pretty">
+          Escribí el nombre (o una parte) y usá los filtros para acotar la
+          búsqueda. Los registros vienen de los centros de salud que están
+          reportando pacientes. Si encontraste a tu familiar, usá{" "}
+          <span className="font-medium text-zinc-900">
+            &ldquo;Marcar como encontrado&rdquo;
+          </span>{" "}
+          en su tarjeta para retirarlo del listado.
         </p>
       </section>
 
@@ -99,26 +105,28 @@ export default async function Home({
 
       {error ? (
         <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">
-          No pudimos consultar la base de datos. Intenta de nuevo en un
-          momento.
+          <p className="font-medium">No pudimos consultar la base de datos.</p>
+          <p className="text-xs mt-1">
+            Intentá de nuevo en un momento. Si el problema persiste,
+            contactá al administrador.
+          </p>
         </div>
       ) : null}
 
       <section aria-label="Resultados" className="space-y-3">
-        <div className="flex items-baseline justify-between">
+        <div className="flex items-baseline justify-between flex-wrap gap-2">
           <h2 className="text-sm font-medium text-zinc-700">
-            {total === 0
-              ? "Sin resultados"
-              : `${total} ${total === 1 ? "persona listada" : "personas listadas"}`}
+            {hayFiltros ? "Resultados" : "Pacientes reportados recientemente"}
+            <span className="ml-2 text-zinc-500">
+              ({total} {total === 1 ? "persona" : "personas"})
+            </span>
           </h2>
-          <p className="text-xs text-zinc-500">Ordenadas por fecha de carga</p>
+          {total > 0 ? (
+            <p className="text-xs text-zinc-500">Ordenadas por fecha de carga</p>
+          ) : null}
         </div>
 
-        <PacientesList
-          initial={pacientes}
-          total={total}
-          filters={filters}
-        />
+        <PacientesList initial={pacientes} total={total} filters={filters} />
       </section>
     </div>
   );

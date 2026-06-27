@@ -31,179 +31,208 @@ export default function NuevoForm({
     const form = e.currentTarget;
     const formData = new FormData(form);
 
-    const centro = String(formData.get("centro_salud") ?? "").trim();
-    if (centro) {
-      try {
-        window.localStorage.setItem("buscador.ultimo_centro", centro);
-      } catch {
-        /* localStorage no disponible */
-      }
-    }
-
     startTransition(async () => {
       const res = await crearPacienteAction(formData);
       if (!res.ok) {
         setError(res.error ?? "Error desconocido");
         return;
       }
-      setSuccess("Registro creado. Cargando lista…");
+      setSuccess("Registro creado. Yendo al listado…");
       form.reset();
-      router.push("/admin");
-      router.refresh();
+      setTimeout(() => {
+        router.push("/admin");
+        router.refresh();
+      }, 500);
     });
   }
 
   return (
     <form
       onSubmit={onSubmit}
-      className="space-y-4 rounded-xl border border-zinc-200 bg-white p-5"
+      className="space-y-5 rounded-xl border border-zinc-200 bg-white p-5 sm:p-6"
     >
       {error ? (
-        <div className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-800">
-          {error}
+        <div
+          role="alert"
+          className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-800"
+        >
+          <p className="font-medium">No se pudo guardar</p>
+          <p className="text-xs mt-0.5">{error}</p>
         </div>
       ) : null}
       {success ? (
-        <div className="rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm text-emerald-800">
+        <div
+          role="status"
+          className="rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm text-emerald-800"
+        >
           {success}
         </div>
       ) : null}
 
-      <Field label="Nombre completo" required>
-        <input
-          name="nombre_completo"
-          required
-          maxLength={120}
-          className="w-full rounded-lg border border-zinc-300 px-3 py-3 focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900/10"
-        />
-      </Field>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-        <Field label="Edad (aprox.)">
+      <Section title="Identificación">
+        <Field label="Nombre completo" required>
           <input
-            name="edad_aprox"
-            type="number"
-            inputMode="numeric"
-            min={0}
-            max={130}
-            className="w-full rounded-lg border border-zinc-300 px-3 py-3 focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900/10"
-          />
-        </Field>
-        <Field label="Sexo">
-          <select
-            name="sexo"
-            defaultValue="desconocido"
-            className="w-full rounded-lg border border-zinc-300 px-3 py-3 focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900/10"
-          >
-            {SEXO_OPTIONS.map((o) => (
-              <option key={o.value ?? ""} value={o.value}>
-                {o.label}
-              </option>
-            ))}
-          </select>
-        </Field>
-        <Field label="Estado clínico" required>
-          <select
-            name="estado_clinico"
-            required
-            defaultValue="sin_identificar"
-            className="w-full rounded-lg border border-zinc-300 px-3 py-3 focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900/10"
-          >
-            {ESTADO_CLINICO_OPTIONS.map((o) => (
-              <option key={o.value} value={o.value}>
-                {o.label}
-              </option>
-            ))}
-          </select>
-        </Field>
-        <Field label="Centro de salud" required>
-          <input
-            name="centro_salud"
+            name="nombre_completo"
             required
             maxLength={120}
-            list="dl-centros"
-            placeholder="Elegí o escribí un centro"
-            autoComplete="organization"
+            placeholder="Ej. María Rodríguez"
             className="w-full rounded-lg border border-zinc-300 px-3 py-3 focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900/10"
           />
-          <datalist id="dl-centros">
-            {centros.map((c) => (
-              <option key={c} value={c} />
-            ))}
-          </datalist>
-          <p className="text-xs text-zinc-500">
-            Si el centro no aparece, escribilo. Quedará guardado para la próxima.
-          </p>
         </Field>
-        <Field label="Estado (geográfico)">
+      </Section>
+
+      <Section title="Detalles clínicos">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <Field label="Edad (aprox.)">
+            <input
+              name="edad_aprox"
+              type="number"
+              inputMode="numeric"
+              min={0}
+              max={130}
+              placeholder="0–130"
+              className="w-full rounded-lg border border-zinc-300 px-3 py-3 focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900/10"
+            />
+          </Field>
+          <Field label="Sexo">
+            <select
+              name="sexo"
+              defaultValue="desconocido"
+              className="w-full rounded-lg border border-zinc-300 px-3 py-3 focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900/10"
+            >
+              {SEXO_OPTIONS.map((o) => (
+                <option key={o.value ?? ""} value={o.value}>
+                  {o.label}
+                </option>
+              ))}
+            </select>
+          </Field>
+          <Field label="Estado clínico" required>
+            <select
+              name="estado_clinico"
+              required
+              defaultValue="sin_identificar"
+              className="w-full rounded-lg border border-zinc-300 px-3 py-3 focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900/10"
+            >
+              {ESTADO_CLINICO_OPTIONS.map((o) => (
+                <option key={o.value} value={o.value}>
+                  {o.label}
+                </option>
+              ))}
+            </select>
+          </Field>
+        </div>
+      </Section>
+
+      <Section title="Ubicación">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <Field label="Centro de salud" required>
+            <input
+              name="centro_salud"
+              required
+              maxLength={120}
+              list="dl-centros"
+              placeholder="Elegí o escribí el centro"
+              autoComplete="organization"
+              className="w-full rounded-lg border border-zinc-300 px-3 py-3 focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900/10"
+            />
+            <datalist id="dl-centros">
+              {centros.map((c) => (
+                <option key={c} value={c} />
+              ))}
+            </datalist>
+            <p className="text-xs text-zinc-500">
+              Si el centro no aparece, escribilo. Quedará guardado para la próxima.
+            </p>
+          </Field>
+          <Field label="Estado (geográfico)">
+            <input
+              name="estado_geografico"
+              maxLength={80}
+              list="dl-estados"
+              placeholder="Elegí o escribí un estado"
+              className="w-full rounded-lg border border-zinc-300 px-3 py-3 focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900/10"
+            />
+            <datalist id="dl-estados">
+              {estados.map((e) => (
+                <option key={e} value={e} />
+              ))}
+            </datalist>
+          </Field>
+          <Field label="Municipio">
+            <input
+              name="municipio"
+              maxLength={80}
+              list="dl-municipios"
+              placeholder="Elegí o escribí un municipio"
+              className="w-full rounded-lg border border-zinc-300 px-3 py-3 focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900/10"
+            />
+            <datalist id="dl-municipios">
+              {municipios.map((m) => (
+                <option key={m} value={m} />
+              ))}
+            </datalist>
+          </Field>
+        </div>
+      </Section>
+
+      <Section title="Detalles adicionales">
+        <Field label="Descripción física (opcional)">
+          <textarea
+            name="descripcion_fisica"
+            maxLength={500}
+            rows={3}
+            placeholder="Rasgos visibles, vestimenta, señas particulares. Sé breve y respetuoso."
+            className="w-full rounded-lg border border-zinc-300 px-3 py-3 focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900/10"
+          />
+        </Field>
+        <Field label="Foto (opcional)">
           <input
-            name="estado_geografico"
-            maxLength={80}
-            list="dl-estados"
-            placeholder="Elegí o escribí un estado"
-            className="w-full rounded-lg border border-zinc-300 px-3 py-3 focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900/10"
+            name="foto"
+            type="file"
+            accept="image/jpeg,image/png,image/webp"
+            className="block w-full text-sm text-zinc-700 file:mr-3 file:rounded-lg file:border-0 file:bg-zinc-900 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-white hover:file:bg-zinc-800"
           />
-          <datalist id="dl-estados">
-            {estados.map((e) => (
-              <option key={e} value={e} />
-            ))}
-          </datalist>
+          <p className="text-xs text-zinc-500">JPG, PNG o WebP. Máx 5 MB.</p>
         </Field>
-        <Field label="Municipio">
+        <label className="touch-target inline-flex items-center gap-2 text-sm text-zinc-800 cursor-pointer">
           <input
-            name="municipio"
-            maxLength={80}
-            list="dl-municipios"
-            placeholder="Elegí o escribí un municipio"
-            className="w-full rounded-lg border border-zinc-300 px-3 py-3 focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900/10"
+            type="checkbox"
+            name="verificado"
+            defaultChecked
+            className="h-4 w-4 rounded border-zinc-300 text-zinc-900 focus:ring-zinc-900"
           />
-          <datalist id="dl-municipios">
-            {municipios.map((m) => (
-              <option key={m} value={m} />
-            ))}
-          </datalist>
-        </Field>
-      </div>
+          <span>Marcar como verificado por el centro</span>
+        </label>
+      </Section>
 
-      <Field label="Descripción física (opcional)">
-        <textarea
-          name="descripcion_fisica"
-          maxLength={500}
-          rows={3}
-          placeholder="Rasgos visibles, vestimenta, señas particulares. Sé breve y respetuoso."
-          className="w-full rounded-lg border border-zinc-300 px-3 py-3 focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900/10"
-        />
-      </Field>
-
-      <Field label="Foto (opcional, JPG/PNG/WebP, máx 5 MB)">
-        <input
-          name="foto"
-          type="file"
-          accept="image/jpeg,image/png,image/webp"
-          className="block w-full text-sm text-zinc-700 file:mr-3 file:rounded-lg file:border-0 file:bg-zinc-900 file:px-3 file:py-2 file:text-sm file:font-semibold file:text-white hover:file:bg-zinc-800"
-        />
-      </Field>
-
-      <label className="inline-flex items-center gap-2 text-sm text-zinc-800">
-        <input
-          type="checkbox"
-          name="verificado"
-          defaultChecked
-          className="h-4 w-4 rounded border-zinc-300 text-zinc-900 focus:ring-zinc-900"
-        />
-        <span>Marcar como verificado por el centro</span>
-      </label>
-
-      <div className="flex justify-end gap-2">
+      <div className="flex justify-end gap-2 pt-2 border-t border-zinc-100">
         <button
           type="submit"
           disabled={isPending}
-          className="rounded-lg bg-zinc-900 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-zinc-800 active:bg-zinc-950 disabled:opacity-50"
+          className="touch-target inline-flex items-center rounded-lg bg-zinc-900 px-6 text-sm font-semibold text-white shadow-sm hover:bg-zinc-800 active:bg-zinc-950 disabled:opacity-50"
         >
           {isPending ? "Guardando…" : "Guardar paciente"}
         </button>
       </div>
     </form>
+  );
+}
+
+function Section({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <section className="space-y-3">
+      <h3 className="text-xs font-semibold uppercase tracking-wide text-zinc-500">
+        {title}
+      </h3>
+      <div className="space-y-3">{children}</div>
+    </section>
   );
 }
 
@@ -217,10 +246,10 @@ function Field({
   children: React.ReactNode;
 }) {
   return (
-    <label className="block space-y-1">
+    <label className="block space-y-1.5">
       <span className="block text-sm font-medium text-zinc-800">
         {label}
-        {required ? <span className="text-red-600"> *</span> : null}
+        {required ? <span className="text-red-600 ml-0.5">*</span> : null}
       </span>
       {children}
     </label>

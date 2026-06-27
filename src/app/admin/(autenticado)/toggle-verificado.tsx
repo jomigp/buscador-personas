@@ -14,7 +14,7 @@ export default function ToggleVerificado({
   const [isPending, startTransition] = useTransition();
 
   return (
-    <label className="inline-flex items-center gap-2 text-xs text-zinc-700">
+    <label className="touch-target inline-flex items-center gap-2 text-xs text-zinc-700 cursor-pointer">
       <input
         type="checkbox"
         checked={v}

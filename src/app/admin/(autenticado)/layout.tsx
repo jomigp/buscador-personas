@@ -1,4 +1,4 @@
-// Layout del admin. Verifica sesión y expone el email + botón de logout.
+// Layout del admin. Verifica sesión y expone el email + navegación.
 // Cualquier ruta bajo /admin queda cubierta por este guard.
 
 import { createClient } from "@/lib/supabase/server";
@@ -20,47 +20,46 @@ export default async function AdminLayout({
     redirect("/admin/login");
   }
 
+  const navItems = [
+    { href: "/admin", label: "Pacientes" },
+    { href: "/admin/nuevo", label: "Cargar" },
+    { href: "/admin/importar-csv", label: "Importar CSV" },
+    { href: "/admin/importar-foto", label: "Foto" },
+  ];
+
   return (
     <div className="mx-auto max-w-5xl px-4 py-6 space-y-6">
-      <div className="flex items-center justify-between gap-3 border-b border-zinc-200 pb-3">
-        <div>
-          <p className="text-xs text-zinc-500">Sesión iniciada como</p>
-          <p className="text-sm font-medium text-zinc-900">{user.email}</p>
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pb-3 border-b border-zinc-200">
+        <div className="min-w-0">
+          <p className="text-[11px] uppercase tracking-wide text-zinc-500 font-medium">
+            Sesión iniciada
+          </p>
+          <p className="text-sm font-medium text-zinc-900 truncate">
+            {user.email}
+          </p>
         </div>
-        <div className="flex items-center gap-3">
-          <Link
-            href="/admin"
-            className="text-sm font-medium text-zinc-700 hover:text-zinc-900 underline underline-offset-2"
-          >
-            Pacientes
-          </Link>
-          <Link
-            href="/admin/nuevo"
-            className="text-sm font-medium text-zinc-700 hover:text-zinc-900 underline underline-offset-2"
-          >
-            Cargar nuevo
-          </Link>
-          <Link
-            href="/admin/importar-csv"
-            className="text-sm font-medium text-zinc-700 hover:text-zinc-900 underline underline-offset-2"
-          >
-            Importar CSV
-          </Link>
-          <Link
-            href="/admin/importar-foto"
-            className="text-sm font-medium text-zinc-700 hover:text-zinc-900 underline underline-offset-2"
-          >
-            Leer de foto
-          </Link>
-          <form action={signOutAction}>
+        <nav
+          className="flex flex-wrap items-center gap-x-4 gap-y-2"
+          aria-label="Navegación del admin"
+        >
+          {navItems.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="touch-target inline-flex items-center text-sm font-medium text-zinc-700 hover:text-zinc-900 underline underline-offset-2 px-2"
+            >
+              {item.label}
+            </Link>
+          ))}
+          <form action={signOutAction} className="ml-auto sm:ml-2">
             <button
               type="submit"
-              className="rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm font-medium text-zinc-700 hover:bg-zinc-50"
+              className="touch-target inline-flex items-center rounded-lg border border-zinc-300 bg-white px-3 text-sm font-medium text-zinc-700 hover:bg-zinc-50"
             >
               Cerrar sesión
             </button>
           </form>
-        </div>
+        </nav>
       </div>
       {children}
     </div>
