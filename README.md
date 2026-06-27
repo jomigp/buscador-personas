@@ -61,6 +61,42 @@ Proyecto **open source** impulsado por un medio de comunicación venezolano. Las
 - `src/lib/clinical.ts` — etiquetas y colores para el estado clínico.
 - `supabase/schema.sql` — tabla `pacientes`, RLS y `solicitudes_baja`.
 
+## Importar pacientes desde CSV
+
+1. Inicia sesión en `/admin/login`.
+2. Click en **Importar CSV** (esquina superior derecha o desde el dashboard).
+3. Arrastra o selecciona un archivo CSV exportado de Google Sheets / Excel.
+4. Revisa la vista previa: filas válidas en verde, errores en rojo (se
+   pueden ignorar o corregir en el archivo y volver a subir).
+5. Click en **Importar N filas válidas**.
+
+### Columnas aceptadas (case-insensitive)
+
+| Columna | Obligatoria | Valores |
+|---|---|---|
+| `nombre_completo` | sí | texto, máx 120 chars |
+| `centro_salud` | sí | texto, máx 120 chars |
+| `estado_clinico` | sí | `estable`, `critico`, `sin_identificar`, `fallecido` |
+| `edad_aprox` | no | número 0–130 |
+| `sexo` | no | `M`, `F`, `desconocido` |
+| `estado_geografico` | no | texto |
+| `municipio` | no | texto |
+| `descripcion_fisica` | no | texto |
+| `foto_path` | no | ruta en el bucket `fotos-pacientes` |
+| `verificado` | no | `true` / `false` |
+
+Se acepta separador `,` o `;` (típico de Excel en español). La primera
+fila debe tener los encabezados. Las fotos **no** se suben por CSV;
+eso se hace desde el formulario individual.
+
+### Ejemplo
+
+```csv
+nombre_completo,edad_aprox,sexo,estado_clinico,centro_salud,municipio,verificado
+"María Rodríguez",45,F,estable,"Hospital Central de Valencia",Valencia,true
+"Juan Pérez",,M,sin_identificar,"Hospital Central de Valencia",Valencia,false
+```
+
 ## Decisiones de implementación documentadas
 
 - **"Marcar como encontrado"** crea una fila en `solicitudes_baja` (el anónimo puede INSERT por RLS, pero NO puede actualizar `caso_cerrado` en `pacientes`). El personal del centro ve las solicitudes pendientes en `/admin` y cierra los casos desde ahí.

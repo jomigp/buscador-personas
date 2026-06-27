@@ -8,7 +8,7 @@ import { createClient } from "@/lib/supabase/server";
 import { FOTOS_BUCKET } from "@/lib/supabase/storage";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
-import type { EstadoClinico, Sexo } from "@/lib/supabase/types";
+import type { EstadoClinico, Sexo, PacienteInsert } from "@/lib/supabase/types";
 
 const MAX_FOTO_BYTES = 5 * 1024 * 1024; // 5 MB
 const TIPOS_FOTO = new Set(["image/jpeg", "image/png", "image/webp"]);
@@ -212,4 +212,46 @@ export async function toggleFieldAction(
   revalidatePath("/admin");
   revalidatePath("/");
   return { ok: true };
+}
+
+// ---------- Importar CSV en lote ---------------------------------------
+
+export async function importarCSVAction(
+  rows: PacienteInsert[],
+): Promise<{ ok: boolean; inserted?: number; error?: string }> {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user) return { ok: false, error: "Sesión inválida." };
+  if (!Array.isArray(rows) || rows.length === 0) {
+    return { ok: false, error: "No hay filas para importar." };
+  }
+
+  // Forzar el registrado_por al usuario actual, sin importar lo que diga el CSV.
+  const sanitized = rows.map((r) => ({
+    ...r,
+    registrado_por: user.email ?? r.registrado_por ?? "desconocido",
+    origen: "csv" as const,
+  }));
+
+  // Insertar en lotes de 100 para no saturar la API.
+  const BATCH = 100;
+  let inserted = 0;
+  for (let i = 0; i < sanitized.length; i += BATCH) {
+    const chunk = sanitized.slice(i, i + BATCH);
+    const { error } = await supabase.from("pacientes").insert(chunk);
+    if (error) {
+      return {
+        ok: false,
+        inserted,
+        error: `Fallo en lote ${Math.floor(i / BATCH) + 1}: ${error.message}`,
+      };
+    }
+    inserted += chunk.length;
+  }
+
+  revalidatePath("/admin");
+  revalidatePath("/");
+  return { ok: true, inserted };
 }

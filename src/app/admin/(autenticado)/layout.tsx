@@ -40,6 +40,12 @@ export default async function AdminLayout({
           >
             Cargar nuevo
           </Link>
+          <Link
+            href="/admin/importar-csv"
+            className="text-sm font-medium text-zinc-700 hover:text-zinc-900 underline underline-offset-2"
+          >
+            Importar CSV
+          </Link>
           <form action={signOutAction}>
             <button
               type="submit"

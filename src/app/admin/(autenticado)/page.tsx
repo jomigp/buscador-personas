@@ -50,12 +50,20 @@ export default async function AdminHome() {
       <section className="space-y-2">
         <div className="flex items-center justify-between gap-3">
           <h1 className="text-2xl font-bold text-zinc-900">Pacientes cargados</h1>
-          <Link
-            href="/admin/nuevo"
-            className="rounded-lg bg-zinc-900 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-zinc-800"
-          >
-            + Cargar nuevo
-          </Link>
+          <div className="flex items-center gap-2">
+            <Link
+              href="/admin/importar-csv"
+              className="rounded-lg border border-zinc-300 bg-white px-4 py-2 text-sm font-semibold text-zinc-800 hover:bg-zinc-50"
+            >
+              Importar CSV
+            </Link>
+            <Link
+              href="/admin/nuevo"
+              className="rounded-lg bg-zinc-900 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-zinc-800"
+            >
+              + Cargar nuevo
+            </Link>
+          </div>
         </div>
         <p className="text-sm text-zinc-600">
           Aquí ves los registros cargados con tu cuenta. Edita el estado
