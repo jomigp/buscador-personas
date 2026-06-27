@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fafafa;
+  --foreground: #18181b;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Inputs grandes y táctiles — uso bajo estrés y mala conexión. */
+input,
+select,
+textarea,
+button {
+  font-size: 16px;
+}
+
+/* Quitar ring feo por defecto en iOS. */
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
